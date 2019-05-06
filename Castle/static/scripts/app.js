@@ -102,7 +102,6 @@ $(document).ready(function(){
 
 	$('#search_zip').on('click', (e) => {
 		e.preventDefault()
-		e.stopPropagation()
 		$('#chooseZIP').modal('show');
 	})
 
