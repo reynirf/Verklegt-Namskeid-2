@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'Castle.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'rdmzryoe',
+        'USER': 'rdmzryoe',
+        'PASSWORD': '9kWVI4oXA0lZspKpUVlcZaaKJ2ZRz2os',
+        'HOST': 'balarama.db.elephantsql.com',
+        'PORT': '5432'
     }
 }
 
