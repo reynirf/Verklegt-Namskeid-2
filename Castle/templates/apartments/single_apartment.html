@@ -1,0 +1,16 @@
+<div class="card w-25 apartment-card m-2 red-color text-white">
+    <img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic">
+    <div class="card-body">
+        <h5 class="card-title">{{ apartment.address }} {{ apartment.zip_code }}</h5>
+        <p>{{ apartment.price }}</p>
+        <div class="d-flex justify-content-between">
+            <div>
+                <p>{{ apartment.size }} sqm</p>
+            </div>
+            <div>
+                <p>Rooms: {{ apartment.rooms }}</p>
+            </div>
+        </div>
+
+    </div>
+</div>

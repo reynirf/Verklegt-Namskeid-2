@@ -1,6 +1,20 @@
 .bg-custom {
     background-color: #5e1d1d;
 }
+.apartment-card {
+    display: inline-block;
+}
+#slider-range {
+    width:100%;
+    background: #5e1d1d;
+}
+.sliderText {
+    width:40%;
+    margin-bottom:30px;
+    border-bottom: 2px solid red;
+    padding: 10px 0 10px 0px;
+    font-weight:bold;
+}
 .login-column {
     float:none;
     margin:0 auto;
