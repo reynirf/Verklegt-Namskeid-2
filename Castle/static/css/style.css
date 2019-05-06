@@ -1,8 +1,9 @@
 .bg-custom {
     background-color: #5e1d1d;
 }
-
-
+.apartment-card {
+    display: inline-block;
+}
 #slider-range {
     width:100%;
     background: #5e1d1d;
@@ -33,35 +34,6 @@
     display:inline-block;
     padding-right:40px;
     float:left;
-}
-
-.price-range-search {
-    width:100%;
-    background-color: #f9f9f9; 
-    border: 1px solid #6e6666;
-    min-width: 40%;
-    display: inline-block;
-    height: 32px;
-    border-radius: 5px;
-    float: left;
-    margin-bottom:20px;
-    font-size:16px;
-}
-.price-range-field{
-    width:30%;
-    margin: 0rem 1rem 0rem 0rem;
-    min-width: 16%;
-    background-color:#f9f9f9; 
-    border: 1px solid #6e6666; 
-    color: black; 
-    font: normal 14px Arial, Helvetica, sans-serif; 
-    border-radius: 5px; 
-    height:26px; 
-    padding:5px;
-}
-.search-results-block{
-    width:100%;
-    position: relative;
 }
 .password-label{
     display:inline-block;
@@ -112,6 +84,9 @@
 }
 .item h4 {
     margin-bottom:0;
+}
+.reset_btn{
+    width:40%;
 }
 @media screen and (max-width: 1240px) {
     .forgot-password-label{
