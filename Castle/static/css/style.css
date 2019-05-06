@@ -4,6 +4,17 @@
 .apartment-card {
     display: inline-block;
 }
+#slider-range {
+    width:100%;
+    background: #5e1d1d;
+}
+.sliderText {
+    width:40%;
+    margin-bottom:30px;
+    border-bottom: 2px solid red;
+    padding: 10px 0 10px 0px;
+    font-weight:bold;
+}
 .login-column {
     float:none;
     margin:0 auto;
@@ -23,6 +34,35 @@
     display:inline-block;
     padding-right:40px;
     float:left;
+}
+
+.price-range-search {
+    width:100%;
+    background-color: #f9f9f9; 
+    border: 1px solid #6e6666;
+    min-width: 40%;
+    display: inline-block;
+    height: 32px;
+    border-radius: 5px;
+    float: left;
+    margin-bottom:20px;
+    font-size:16px;
+}
+.price-range-field{
+    width:30%;
+    margin: 0rem 1rem 0rem 0rem;
+    min-width: 16%;
+    background-color:#f9f9f9; 
+    border: 1px solid #6e6666; 
+    color: black; 
+    font: normal 14px Arial, Helvetica, sans-serif; 
+    border-radius: 5px; 
+    height:26px; 
+    padding:5px;
+}
+.search-results-block{
+    width:100%;
+    position: relative;
 }
 .password-label{
     display:inline-block;
@@ -48,11 +88,33 @@
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.price-range-block {
+    width:100%;
+}
+.expander {
+    background: gray;
+    width:100%
+}
 
+.item {
+    font-size: 1.5rem;
+}
+.item .zip_option {
+    font-size:1rem;
+    margin-left:1rem
+}
+.item a, .item p {
+    height:0.8rem;
+    display:none;
+}
+.item h4 i:hover {
+    text-decoration: underline;
+    cursor:pointer;
+}
+.item h4 {
+    margin-bottom:0;
+}
 @media screen and (max-width: 1240px) {
-  body {
-    background-color: lightgreen;
-  }
     .forgot-password-label{
         padding-left:62%;
     }
