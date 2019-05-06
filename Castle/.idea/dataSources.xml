@@ -7,5 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://balarama.db.elephantsql.com:5432/rdmzryoe</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="castle" uuid="276efa4f-d6e5-4942-94d6-07a1c36c56dd">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://balarama.db.elephantsql.com:5432/rdmzryoe</jdbc-url>
+    </data-source>
   </component>
 </project>
