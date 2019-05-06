@@ -2,6 +2,8 @@
 
 {% block mainbody %}
 
-    <h5>Sellers list</h5>
+    {% for seller in sellers %}
+        {% include 'sellers/single_seller.html' with seller=seller %}
+    {% endfor %}
 
 {% endblock %}

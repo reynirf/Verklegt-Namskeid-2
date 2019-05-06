@@ -2,29 +2,37 @@
     background-color: #5e1d1d;
 }
 
-/* SLIDER */
 
 #slider-range {
     width:100%;
     background: #5e1d1d;
 }
-.sliderText{
+.sliderText {
     width:40%;
     margin-bottom:30px;
     border-bottom: 2px solid red;
     padding: 10px 0 10px 0px;
     font-weight:bold;
 }
-
-.ui-slider-horizontal {
-    height: .6em;
+.login-column {
+    float:none;
+    margin:0 auto;
 }
-.ui-slider-horizontal {
-    margin-bottom: 15px;
-    width:40%;
+.login-btn {
+    width: 60%;
 }
-.ui-widget-header {
-    background: #3FE331;
+.red-color{
+    background-color:#5E1D1D;
+}
+.login-card{
+    border-width:10px;
+    border-color:#5E1D1D;
+    border-style:solid;
+}
+.username-label{
+    display:inline-block;
+    padding-right:40px;
+    float:left;
 }
 
 .price-range-search {
@@ -46,7 +54,6 @@
     background-color:#f9f9f9; 
     border: 1px solid #6e6666; 
     color: black; 
-    font-family: myFont; 
     font: normal 14px Arial, Helvetica, sans-serif; 
     border-radius: 5px; 
     height:26px; 
@@ -55,16 +62,34 @@
 .search-results-block{
     width:100%;
     position: relative;
+}
+.password-label{
+    display:inline-block;
+    padding-right:44px;
+    float:left;
+}
+.forgot-password-label{
+    padding-left:70%;
+    padding-bottom:15px;
+}
+.user_input{
     display: block;
-    clear: both;
+    width: 70%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .price-range-block {
     width:100%;
 }
-
-/* END SLIDER */
-
-
 .expander {
     background: gray;
     width:100%
@@ -87,4 +112,19 @@
 }
 .item h4 {
     margin-bottom:0;
+}
+@media screen and (max-width: 1240px) {
+    .forgot-password-label{
+        padding-left:62%;
+    }
+}
+@media screen and (max-width: 1208px) {
+    .forgot-password-label{
+        padding-left:62%;
+    }
+}
+@media screen and (max-width: 1035px) {
+    .forgot-password-label{
+        padding-left:50%;
+    }
 }
