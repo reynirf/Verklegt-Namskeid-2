@@ -22,5 +22,6 @@ from apartments import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.home, name="homepage"),
-    path("apartments/", include('apartments.urls'))
+    path("apartments/", include('apartments.urls')),
+    path("sellers/",include('sellers.urls'))
 ]
