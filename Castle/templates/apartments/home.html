@@ -6,7 +6,31 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Search engine</h5>
-                    <p class="card-text">Add search options here</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="search_address" placeholder="Name/address">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <select id="search_zip" class="form-control">
+                                    <option selected>Zip code</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <select id="search_rooms" class="form-control">
+                                    <option selected>Rooms</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <button class="btn btn-secondary">Clear</button>
+                            </div>
+                            <div class="form-group col-6">
+                                <button type="submit" class="btn btn-success">Search</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
