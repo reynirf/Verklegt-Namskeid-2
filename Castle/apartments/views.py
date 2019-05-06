@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, "apartments/home.html")
+
+def apartment_list(request):
+    return render(request, "apartments/apartment_list.html")
