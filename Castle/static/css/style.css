@@ -1,6 +1,9 @@
 .bg-custom {
     background-color: #5e1d1d;
 }
+.apartment-card {
+    display: inline-block;
+}
 .login-column {
     float:none;
     margin:0 auto;

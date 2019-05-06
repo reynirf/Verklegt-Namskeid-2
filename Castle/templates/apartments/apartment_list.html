@@ -2,6 +2,8 @@
 
 {% block mainbody %}
 
-    <h5>Apartment list</h5>
+    {% for apartment in apartments %}
+        {% include 'apartments/single_apartment.html' with apartment=apartment %}
+    {% endfor %}
 
 {% endblock %}
