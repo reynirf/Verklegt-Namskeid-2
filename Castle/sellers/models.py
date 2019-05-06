@@ -7,3 +7,9 @@ class Seller(models.Model):
     phone = models.IntegerField()
     email = models.CharField(max_length=100)
 
+class Sales(models.Model):
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    apartment = models.ForeignKey('apartments.Apartment', on_delete=models.CASCADE)
+    # buyer = models.ForeignKey(Buyer)
+    date_sold = models.DateField()
+    price = models.IntegerField()
