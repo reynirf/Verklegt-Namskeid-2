@@ -45,11 +45,10 @@
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-
+.reset_btn{
+    width:40%;
+}
 @media screen and (max-width: 1240px) {
-  body {
-    background-color: lightgreen;
-  }
     .forgot-password-label{
         padding-left:62%;
     }
