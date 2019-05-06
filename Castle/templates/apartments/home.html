@@ -1,72 +1,287 @@
 {% extends 'base.html' %}
 
 {% block mainbody %}
-    <div class="row m-3">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Search engine</h5>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="search_address" placeholder="Name/address">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-6">
-                                <select id="search_zip" class="form-control">
-                                    <option selected>Zip code</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-6">
-                                <select id="search_rooms" class="form-control">
-                                    <option selected>Rooms</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-6">
-                                <button class="btn btn-secondary">Clear</button>
-                            </div>
-                            <div class="form-group col-6">
-                                <button type="submit" class="btn btn-success">Search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Featured apartment</h5>
-                    <p class="card-text">Add apartment info here</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card-deck m-3">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">New apartment</h5>
-                <p class="card-text">Info on new apartment</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">New apartment</h5>
-                <p class="card-text">Info on new apartment</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">New apartment</h5>
-                <p class="card-text">Info on new apartment</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">New apartment</h5>
-                <p class="card-text">Info on new apartment</p>
-            </div>
-        </div>
-    </div>
+	<div class="row m-3">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Search engine</h5>
+					<form>
+						<div class="form-group">
+							<input type="text" class="form-control" id="search_address" placeholder="Name/address">
+						</div>
+						<div class="form-row">
+							<div class="form-group col-6">
+								<select id="search_zip" class="form-control">
+									<option selected>Zip code</option>
+								</select>
+							</div>
+							<div class="form-group col-6">
+								<select id="search_rooms" class="form-control">
+									<option selected>Rooms</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6+</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="price-range-block">
+								<div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+								<div style="margin:0.3rem auto;text-align:center">
+									<span class="input-group-addon">ISK</span>
+									<input type="text" placeholder="Min price" min=0 autocomplete="off" max="199999999" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='20000000');" id="min_price" class="price-range-field" />
+									<span class="input-group-addon">ISK</span>
+									<input type="text" placeholder="Max price" min=0 autocomplete="off" max="200000000" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='90000000');" id="max_price" class="price-range-field" />
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-6">
+								<button id="clearFormButton" class="btn btn-secondary">Clear</button>
+							</div>
+							<div class="form-group col-6">
+								<button id="submitFormButton" type="submit" class="btn btn-success">Search</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Featured apartment</h5>
+					<p class="card-text">Add apartment info here</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-deck m-3">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">New apartment</h5>
+				<p class="card-text">Info on new apartment</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">New apartment</h5>
+				<p class="card-text">Info on new apartment</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">New apartment</h5>
+				<p class="card-text">Info on new apartment</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">New apartment</h5>
+				<p class="card-text">Info on new apartment</p>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="modal fade" id="chooseZIP" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<button id="clear_zip_query" class="modal-title btn-secondary" id="exampleModalLongTitle">
+					Clear query
+				</button>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<h2>Choose ZIP codes</h2>
+				<div id="zip_codes">
+					<div class="item">
+						<h4><i data-area='capital_area' data-all="choose_all_capital" id="open_capital" class="fas fa-plus-square"></i> Höfuðborgarsvæðið</h4>
+						<a href="#" id="choose_all_capital" data-area="capital_area" class="zip_option capital_area btn-secondary btn-sm">Velja allt</a>
+						<p class="zip_option capital_area"><input type="checkbox" />  101 - Miðbær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  103 - Kringlan/Hvassal</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  104 - Vogar</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  105 - Austurbær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  107 - Vesturbær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  108 - Austurbær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  109 - Neðra Breiðholt</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  110 - Árbær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  111 - Efra Breiðholt</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  112 - Grafarvogur</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  113 - Grafarholt</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  116 - Kjalarnes</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  162 - Dreifbýli</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  170 - Seltjararnes</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  200 - Kópavogur</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  201 - Kópavogur</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  202 - Kópavogur</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  203 - Kópavogur</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  210 - Garðabær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  212 - Garðabær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  225 - Garðabær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  220 - Hafnarfjörður</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  221 - Hafnarfjörður</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  222 - Hafnarfjörður</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  270 - Mosfellsbær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  271 - Mosfellsbær</p>
+						<p class="zip_option capital_area"><input type="checkbox" />  276 - Mosfellsbær</p>
+					</div>
+
+					<div class="item">
+						<h4 style="margin-bottom:0"><i data-area='sudurnes' data-all="choose_all_sudurnes" id="open_sudurnes" class="fas fa-plus-square"></i> Suðurnes</h4>
+						<a href="#" id="choose_all_sudurnes" data-area="sudurnes" class="zip_option sudurnes btn-secondary btn-sm">Velja allt</a>
+						<p class="zip_option sudurnes"><input type="checkbox" />  230 - Keflavík</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  232 - Keflavík</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  233 - Hafnir</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  235 - Ásbrú</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  240 - Grindavík</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  245 - Sandgerði</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  250 - Garður</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  260 - Njarðvík</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  262 - Reykjanesbær</p>
+						<p class="zip_option sudurnes"><input type="checkbox" />  190 - Vogar</p>
+					</div>
+
+					<div class="item">
+						<h4 style="margin-bottom:0"><i data-area='nordurland' data-all="choose_all_nordurland" id="open_nordurland" class="fas fa-plus-square"></i> Norðurland</h4>
+						<a href="#" id="choose_all_nordurland" data-area="nordurland" class="zip_option nordurland btn-secondary btn-sm">Velja allt</a>
+							<p class="zip_option nordurland"><input type="checkbox" />  500 - Staður</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  510 - Hólmavík</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  520 - Drangsnes</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  522 - Kjörvogur</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  523 - Bær</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  524 - Norðurfjörður</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  530 - Hvammstangi</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  531 - Hvammstangi</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  540 - Blönduós</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  541 - Blönduós</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  545 - Skagaströnd</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  550 - Sauðárkrókur</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  551 - Sauðárkrókur</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  560 - Varmahlíð</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  565 - Hofsós</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  566 - Hofsós</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  570 - Fljót</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  580 - Siglufjörður</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  600 - Akureyri</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  601 - Akureyri</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  602 - Akureyri</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  603 - Akureyri</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  610 - Grenivík</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  611 - Grímsey</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  620 - Dalvík</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  621 - Dalvík</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  625 - Ólafsfjörður</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  630 - Hrísey</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  640 - Húsavík</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  641 - Húsavík</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  645 - Fosshóll</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  650 - Laugar</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  660 - Mývatn</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  670 - Kópasker</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  671 - Kópasker</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  675 - Raufarhöfn</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  680 - Þórshöfn</p>
+							<p class="zip_option nordurland"><input type="checkbox" />  681 - Þórshöfn</p>
+					</div>
+					
+					<div class="item">
+						<h4 style="margin-bottom:0"><i data-area='vestfirdir' data-all="choose_all_vestfirdir" id="open_vestfirdir" class="fas fa-plus-square"></i> Vestfirðir</h4>
+						<a href="#" id="choose_all_vestfirdir" data-area="vestfirdir" class="zip_option vestfirdir btn-secondary btn-sm">Velja allt</a>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  400 - Ísafjörður</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  401 - Ísafjörður</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  410 - Hnífsdalur</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  415 - Bolungarvík</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  420 - Súðavík</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  425 - Flateyri</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  430 - Suðureyri</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  450 - Patreksfjörður</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  451 - Patreksfjörður</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  460 - Tálknafjörður</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  465 - Bíldudalur</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  470 - Þingeyri</p>
+						<p class="zip_option vestfirdir"><input type="checkbox" />  471 - Þingeyri</p>
+					</div>
+					
+					<div class="item">
+						<h4 style="margin-bottom:0"><i data-area='vesturland' data-all="choose_all_vesturland" id="open_vesturland" class="fas fa-plus-square"></i> Vesturland</h4>
+						<a href="#" id="choose_all_vesturland" data-area="vesturland" class="zip_option vesturland btn-secondary btn-sm">Velja allt</a>
+						<p class="zip_option vesturland"><input type="checkbox" /> 300 - Akranes</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 301 - Akranes</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 302 - Akranes</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 310 - Borgarnes</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 311 - Borgarbyggð</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 320 - Reykholt í Borgarfirði</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 340 - Stykkishólmur</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 345 - Flatey á Breiðafirði</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 350 - Grundarfjörður</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 355 - Snæfellsbær</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 356 - Snæfellsbær</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 360 - Snæfellsbær</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 370 - Búðardalur</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 371 - Búðardalur</p>
+						<p class="zip_option vesturland"><input type="checkbox" /> 380 - Króksfjarðarnes</p>
+					</div>
+					
+					<div class="item">
+						<h4 style="margin-bottom:0"><i data-area='austurland' data-all="choose_all_austurland" id="open_austurland" class="fas fa-plus-square"></i> Austurland</h4>
+						<a href="#" id="choose_all_austurland" data-area="austurland" class="zip_option austurland btn-secondary btn-sm">Velja allt</a>
+						<p class="zip_option austurland"><input type="checkbox" /> 685 - Bakkafjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 690 - Vopnafjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 700 - Egilsstaðir</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 701 - Egilsstaðir</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 710 - Seyðisfjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 715 - Mjóifjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 720 - Borgarfjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 730 - Reyðarfjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 735 - Eskifjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 740 - Neskaupstaður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 750 - Fáskrúðsfjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 755 - Stöðvarfjörður</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 760 - Breiðdalsvík</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 765 - Djúpivogur</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 780 - Höfn í Hornafirði</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 781 - Höfn í Hornafirði</p>
+						<p class="zip_option austurland"><input type="checkbox" /> 785 - Fagurhólsmýri</p>
+					</div>
+					
+					<div class="item">
+						<h4 style="margin-bottom:0"><i data-area='sudurland' data-all="choose_all_sudurland" id="open_sudurland" class="fas fa-plus-square"></i> Suðurland</h4>
+						<a href="#" id="choose_all_sudurland" data-area="sudurland" class="zip_option sudurland btn-secondary btn-sm">Velja allt</a>
+						<p class="zip_option sudurland"><input type="checkbox" /> 800 - Selfoss</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 801 - Selfoss</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 802 - Selfoss</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 810 - Hveragerði</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 815 - Þorlákshöfn</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 820 - Eyrarbakki</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 825 - Stokkseyri</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 840 - Laugarvatn</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 845 - Flúðir</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 850 - Hella</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 851 - Hella</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 860 - Hvolsvöllur</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 861 - Hvolsvöllur</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 870 - Vík</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 871 - Vík</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 880 - Kirkjubæjarklaustur</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 900 - Vestmannaeyjar</p>
+						<p class="zip_option sudurland"><input type="checkbox" /> 901 - Vestmannaeyjabær</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

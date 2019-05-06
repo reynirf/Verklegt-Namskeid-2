@@ -45,6 +45,32 @@
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.price-range-block {
+    width:100%;
+}
+.expander {
+    background: gray;
+    width:100%
+}
+
+.item {
+    font-size: 1.5rem;
+}
+.item .zip_option {
+    font-size:1rem;
+    margin-left:1rem
+}
+.item a, .item p {
+    height:0.8rem;
+    display:none;
+}
+.item h4 i:hover {
+    text-decoration: underline;
+    cursor:pointer;
+}
+.item h4 {
+    margin-bottom:0;
+}
 .reset_btn{
     width:40%;
 }
