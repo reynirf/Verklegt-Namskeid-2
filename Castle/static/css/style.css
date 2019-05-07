@@ -19,7 +19,7 @@
     background-color: #5E1D1D;
     padding: 1rem;
 }
-#slider-range {
+#slider-range, #size-range {
     width:100%;
     background: #5e1d1d;
 }
@@ -66,7 +66,7 @@
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-.price-range-block {
+.price-range-block, .size-range-block {
     width:100%;
 }
 .expander {
@@ -95,6 +95,13 @@
 .reset_btn{
     width:40%;
 }
+#choose_rooms {
+    display:none;
+}
+input[type="checkbox"]
+{
+    vertical-align:middle;
+}
 @media screen and (max-width: 1240px) {
     .forgot-password-label{
         padding-left:62%;
@@ -108,5 +115,21 @@
 @media screen and (max-width: 1035px) {
     .forgot-password-label{
         padding-left:50%;
+    }
+}
+
+.min_price, .min_size {
+    float:left;
+}
+.max_price, .max_size {
+    float:right;
+}
+
+@media screen and (max-width: 971px) {
+    .slide-prices-container, .slide-sizes-container {
+        text-align:center
+    }
+    .min_price, .max_price, .min_size, .max_size {
+        float: inherit !important;
     }
 }
