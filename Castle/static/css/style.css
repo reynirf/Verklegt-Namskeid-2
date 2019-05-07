@@ -1,8 +1,23 @@
 .bg-custom {
     background-color: #5e1d1d;
 }
-.apartment-card {
+.border-shadow {
+    border-width: 0;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 4px 4px;
+}
+.gray-background {
     display: inline-block;
+    background-color: #d9d6d6;
+    padding: 1rem;
+}
+.white-background {
+    background-color: white;
+    padding: 1rem;
+}
+.red-background {
+    background-color: #5E1D1D;
+    padding: 1rem;
 }
 #slider-range {
     width:100%;
@@ -21,14 +36,6 @@
 }
 .login-btn {
     width: 60%;
-}
-.red-color{
-    background-color:#5E1D1D;
-}
-.login-card{
-    border-width:10px;
-    border-color:#5E1D1D;
-    border-style:solid;
 }
 .username-label{
     display:inline-block;
