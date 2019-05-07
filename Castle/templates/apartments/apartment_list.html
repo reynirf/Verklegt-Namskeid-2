@@ -77,6 +77,8 @@
         </div>
     </div>
 
+    {% include 'apartments/zip_codes.html' %}
+
     {% for apartment in apartments %}
         {% include 'apartments/single_apartment.html' with apartment=apartment %}
     {% endfor %}
