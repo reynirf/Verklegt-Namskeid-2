@@ -1,6 +1,10 @@
 .bg-custom {
     background-color: #5e1d1d;
 }
+.simple-border {
+    border: 2px solid #5E1D1D;
+    border-radius: 5px;
+}
 .border-shadow {
     border-width: 0;
     border-radius: 5px;

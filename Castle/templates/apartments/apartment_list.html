@@ -2,6 +2,79 @@
 
 {% block mainbody %}
 
+    <div class="m-3 red-background border-shadow">
+        <div class="card border-shadow bg-white">
+            <div class="card-body">
+                <div class="row form-group">
+                    <div class="col-8">
+                        <input autocomplete="off" type="text" class="form-control" id="search_address" placeholder="Name/address">
+                    </div>
+                    <div class="col-2">
+                        <select id="search_zip" class="form-control">
+                            <option id="howManyZips" selected>Zip codes</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <select id="search_rooms" class="form-control">
+                            <option selected>Rooms</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-6 price-range-block">
+                        <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+                        <div class="slide-prices-container" style="margin:0.5rem auto;text-align:center">
+                            <div class="min_price">
+                                <span class="input-group-addon">ISK</span>
+                                <input type="text" placeholder="Min price" min=0 autocomplete="off" max="199999999" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='20000000');" id="min_price" class="price-range-field" />
+                            </div>
+                            <div class="max_price">
+                                <span class="input-group-addon">ISK</span>
+                                <input type="text" placeholder="Max price" min=0 autocomplete="off" max="200000000" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='90000000');" id="max_price" class="price-range-field" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 size-range-block">
+                        <div id="size-range" class="size-filter-range" name="rangeInput"></div>
+                        <div class="slide-sizes-container" style="margin:0.5rem auto;text-align:center">
+                            <div class="min_size">
+                                <span class="input-group-addon">SQM</span>
+                                <input type="text" placeholder="Min size" min=0 autocomplete="off" max="499" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='40');" id="min_size" class="size-range-field" />
+                            </div>
+                            <div class="max_size">
+                                <span class="input-group-addon">SQM</span>
+                                <input type="text" placeholder="Max size" min=0 autocomplete="off" max="500" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='250');" id="max_size" class="size-range-field" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row form-group">
+                    <div class="col-12 text-right">
+                        <button id="clearFormButton" class="btn btn-secondary">Clear</button>
+                        <button id="submitFormButton" type="submit" class="btn btn-success">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3 simple-border">
+        <div class="row">
+            <div class="col-6">
+                <p>Apartments found: </p>
+            </div>
+            <div class="col-6 text-right">
+                <p>Order by</p>
+            </div>
+        </div>
+    </div>
+
     {% for apartment in apartments %}
         {% include 'apartments/single_apartment.html' with apartment=apartment %}
     {% endfor %}
