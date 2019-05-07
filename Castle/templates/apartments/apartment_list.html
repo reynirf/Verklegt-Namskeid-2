@@ -67,20 +67,30 @@
         </div>
     </div>
     <div class="m-3 simple-border">
-        <div class="row">
+        <div class="row mx-2">
             <div class="col-6">
-                <p>Apartments found: </p>
+                <p>Apartments found: {{ apartments|length }}</p>
             </div>
-            <div class="col-6 text-right">
-                <p>Order by</p>
+            <div class="col-6">
+                <label for="order_by">Order by</label>
+                <select id="order_by" class="form-control">
+                    <option selected>Default</option>
+                    <option>Name a..z</option>
+                    <option>Name z..a</option>
+                    <option>Price highest</option>
+                    <option>Price lowest</option>
+                </select>
             </div>
         </div>
     </div>
 
     {% include 'apartments/zip_codes.html' %}
 
+    <div class="ml-3">
     {% for apartment in apartments %}
         {% include 'apartments/single_apartment.html' with apartment=apartment %}
     {% endfor %}
+    </div>
+
 
 {% endblock %}
