@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d37e011-c968-4c7b-82a4-5ce1adbfb449" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/apartments/apartment_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/apartment_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/apartments/single_apartment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/single_apartment.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,11 +94,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="74" column="14" lean-forward="true" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
+            <state relative-caret-position="119">
+              <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
+              <folding>
+                <element signature="e#1509#1553#0#HTML" expanded="true" />
+                <element signature="e#2635#2679#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="65" column="115" lean-forward="true" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="115" />
+            <state relative-caret-position="102">
+              <caret line="63" column="85" lean-forward="true" selection-start-line="63" selection-start-column="85" selection-end-line="63" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -140,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+            <state relative-caret-position="-255">
+              <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -175,15 +178,15 @@
         <option value="$PROJECT_DIR$/templates/users/forgot_pass.html" />
         <option value="$PROJECT_DIR$/templates/apartments/home.html" />
         <option value="$PROJECT_DIR$/templates/apartments/single_apartment.html" />
-        <option value="$PROJECT_DIR$/templates/apartments/apartment_list.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/templates/apartments/apartment_list.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="230" />
-    <option name="y" value="27" />
-    <option name="width" value="1678" />
+    <option name="x" value="542" />
+    <option name="y" value="48" />
+    <option name="width" value="1382" />
     <option name="height" value="980" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -288,12 +291,12 @@
       <workItem from="1556905147234" duration="5428000" />
       <workItem from="1556985805231" duration="51000" />
       <workItem from="1556997669060" duration="25000" />
-      <workItem from="1557016948135" duration="62190000" />
+      <workItem from="1557016948135" duration="66799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69782000" />
+    <option name="totallyTimeSpent" value="74391000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -305,10 +308,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="184" y="22" width="1342" height="784" extended-state="0" />
+    <frame x="434" y="39" width="1105" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17445482" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2139446" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="manage.py@Castle" weight="0.39356816" />
@@ -544,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="65" column="115" lean-forward="true" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/apartments/single_apartment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -558,17 +554,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_list.html">
+    <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="74" column="14" lean-forward="true" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
+        <state relative-caret-position="102">
+          <caret line="63" column="85" lean-forward="true" selection-start-line="63" selection-start-column="85" selection-end-line="63" selection-end-column="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="-255">
+          <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
+          <folding>
+            <element signature="e#1509#1553#0#HTML" expanded="true" />
+            <element signature="e#2635#2679#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
