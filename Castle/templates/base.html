@@ -41,13 +41,19 @@
 
     {% endblock %}
 
-    <nav class="navbar fixed-bottom navbar-dark bg-custom">
-        <span class="navbar-text">
-            <a href = '/site_information/about_us'> Castle apartments <br> About us</a>
-        </span>
-        <span class="navbar-text">
-            <a href = '/site_information/contact_us'> castle@castle-apartments.com <br> Contact us</a>
-        </span>
+    <nav class="footer navbar-dark bg-custom">
+        <div class="row mx-2">
+            <div class="col-6">
+                <span class="navbar-text">
+                    <a href = '/site_information/about_us'> Castle apartments <br> About us</a>
+                </span>
+            </div>
+            <div class="col-6 text-right">
+                <span class="navbar-text">
+                    <a href = '/site_information/contact_us'> castle@castle-apartments.com<br> Contact us</a>
+                </span>
+            </div>
+        </div>
     </nav>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

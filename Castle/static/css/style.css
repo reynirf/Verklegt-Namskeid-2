@@ -48,6 +48,14 @@
     padding: 10px 0 10px 0px;
     font-weight:bold;
 }
+.single-apartment {
+    width: 31%;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+#order_by {
+    width: 8rem;
+}
 .login-column {
     float:none;
     margin:0 auto;
