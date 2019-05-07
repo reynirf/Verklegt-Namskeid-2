@@ -30,9 +30,9 @@
                     <div class="row form-group">
                         <div class="col-6 price-range-block">
                             <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-                            <div class="slide-prices-container" style="margin:0.5rem auto;text-align:center">
-                                <div class="min_price d-inline-flex">
-                                    <span class="input-group-addon m-1">ISK</span>
+                            <div class="apartments slide-prices-container" style="margin:0.5rem auto;text-align:center">
+                                <div class="min_price d-inline-flex m-1">
+                                    <span class="input-group-addon">ISK</span>
                                     <input type="text" min=0 autocomplete="off" max="199999999" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='20000000');" id="min_price" class="price-range-field form-control m-1" />
                                 </div>
                                 <div class="max_price d-inline-flex m-1">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-6 size-range-block">
                             <div id="size-range" class="size-filter-range" name="rangeInput"></div>
-                            <div class="slide-sizes-container" style="margin:0.5rem auto;text-align:center">
+                            <div class="apartments slide-sizes-container" style="margin:0.5rem auto;text-align:center">
                                 <div class="min_size d-inline-flex m-1">
                                     <span class="input-group-addon">SQM</span>
                                     <input type="text" min=0 autocomplete="off" max="499" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='40');" id="min_size" class="size-range-field form-control m-1" />

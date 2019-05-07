@@ -129,11 +129,29 @@ input[type="checkbox"]
     float:right;
 }
 
+.min_size, .max_size, .min_price, .max_price {
+    display:table !important;
+}
+.min_size span, .max_size span, .min_price span, .max_price span {
+    display:table-cell;
+    /* vertical-align:middle; */
+}
+
 @media screen and (max-width: 971px) {
     .slide-prices-container, .slide-sizes-container {
         text-align:center
     }
     .min_price, .max_price, .min_size, .max_size {
         float: inherit !important;
+    }
+}
+
+@media screen and (min-width:970px) and (max-width: 1120px) {
+    .apartments .min_size, .apartments .max_size {
+        float:right
+    }
+    .apartments .min_price, .apartments .max_price {
+        width:53%;
+        float:left
     }
 }
