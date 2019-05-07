@@ -2,7 +2,7 @@
    <div class="card bg-custom border-shadow text-white">
     <img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic">
         <div class="card-body">
-            <h5 class="card-title">{{ apartment.address }} {{ apartment.zip_code }}</h5>
+            <h5 class="card-title"><a href="{{ apartment.id }}">{{ apartment.address }} {{ apartment.zip_code }}</a></h5>
             <p>{{ apartment.price }}</p>
             <div class="d-flex justify-content-between">
                 <div>
