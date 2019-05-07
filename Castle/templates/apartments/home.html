@@ -8,12 +8,12 @@
 					<h5 class="card-title">Search engine</h5>
 					<form>
 						<div class="form-group">
-							<input type="text" class="form-control" id="search_address" placeholder="Name/address">
+							<input autocomplete="off" type="text" class="form-control" id="search_address" placeholder="Name/address">
 						</div>
 						<div class="form-row">
 							<div class="form-group col-6">
 								<select id="search_zip" class="form-control">
-									<option selected>Zip code</option>
+									<option id="howManyZips" selected>Zip codes</option>
 								</select>
 							</div>
 							<div class="form-group col-6">
@@ -31,19 +31,38 @@
 						<div class="form-row">
 							<div class="price-range-block">
 								<div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-								<div style="margin:0.3rem auto;text-align:center">
-									<span class="input-group-addon">ISK</span>
-									<input type="text" placeholder="Min price" min=0 autocomplete="off" max="199999999" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='20000000');" id="min_price" class="price-range-field" />
-									<span class="input-group-addon">ISK</span>
-									<input type="text" placeholder="Max price" min=0 autocomplete="off" max="200000000" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='90000000');" id="max_price" class="price-range-field" />
+								<div class="slide-prices-container" style="margin:0.5rem auto;text-align:center">
+									<div class="min_price">
+										<span class="input-group-addon">ISK</span>
+										<input type="text" placeholder="Min price" min=0 autocomplete="off" max="199999999" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='20000000');" id="min_price" class="price-range-field" />
+									</div>
+									<div class="max_price">
+										<span class="input-group-addon">ISK</span>
+										<input type="text" placeholder="Max price" min=0 autocomplete="off" max="200000000" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='90000000');" id="max_price" class="price-range-field" />
+									</div>
 								</div>
 							</div>
 						</div>
+						<br>
 						<div class="form-row">
-							<div class="form-group col-6">
-								<button id="clearFormButton" class="btn btn-secondary">Clear</button>
+							<div class="size-range-block">
+								<div id="size-range" class="size-filter-range" name="rangeInput"></div>
+								<div class="slide-sizes-container" style="margin:0.5rem auto;text-align:center">
+									<div class="min_size">
+										<span class="input-group-addon">SQM</span>
+										<input type="text" placeholder="Min size" min=0 autocomplete="off" max="499" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='40');" id="min_size" class="size-range-field" />
+									</div>
+									<div class="max_size">
+										<span class="input-group-addon">SQM</span>
+										<input type="text" placeholder="Max size" min=0 autocomplete="off" max="500" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='250');" id="max_size" class="size-range-field" />
+									</div>
+								</div>
 							</div>
-							<div class="form-group col-6">
+						</div>
+						<br>
+						<div class="form-row">
+							<div class="form-group col-12" style="text-align: right">
+								<button id="clearFormButton" class="btn btn-secondary">Clear</button>
 								<button id="submitFormButton" type="submit" class="btn btn-success">Search</button>
 							</div>
 						</div>
@@ -279,7 +298,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save</button>
+				<!-- <button type="button" class="btn btn-primary">Save</button> -->
 			</div>
 			</div>
 		</div>
