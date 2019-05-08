@@ -179,3 +179,16 @@ input[type="checkbox"]
     color: white;
     text-align: center; 
 } */
+
+@media screen and (max-width:992px) {
+    .login-nav {
+        padding-top:0.8rem;
+        padding-left:0 !important;
+        border-top: solid 1px rgba(255,255,255,.5);
+        width:6rem;
+    }
+    .sellers-nav {
+        padding-bottom: 0.8rem;
+        border-right:0 !important;
+    }
+}
