@@ -49,7 +49,8 @@
     font-weight:bold;
 }
 .single-apartment {
-    width: 31%;
+   /*width: 31%;*/
+    width:23%;
     margin-bottom: 1rem;
     margin-right: 1rem;
 }
