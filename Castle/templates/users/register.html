@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block mainbody %}
+
+    <div class="row m-3">
+        <div class="col-sm-5 col-centered login-column red-background border-shadow">
+            <div class="card border-shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <strong class="username-label">Username </strong>
+                            <input type="text" class="user_input" id="search_address" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <strong class="password-label">Password </strong>
+                            <input type="text" class="user_input" id="search_address" placeholder="Password">
+                        </div>
+                        <div class="forgot-password-label">
+                            <a href="/users/forgot_pass">Forgot password</a>
+                        </div>
+                        <div class="form-row text-center">
+                            <div class="form-group col-6">
+                                <button class="btn red-button">Register</button>
+                            </div>
+                            <div class="form-group col-6">
+                                <button type="submit" class="btn green-button">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
