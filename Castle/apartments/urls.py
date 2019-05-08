@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path("", views.apartment_list, name="apartment_list"),
-    url(r'(?P<pk>\d+)/$', views.single_apartment, name="single_apartment"),
+    url(r'(?P<pk>\d+)/$', views.apartment_info, name="apartment_info"),
 ]

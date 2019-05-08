@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block mainbody %}
+
+    <div class="gray-background border-shadow">
+        <img src="{{ apartment.main_pic }}" alt="apartment pic">
+    </div>
+    <h5>{{ apartment.address }} {{ apartment.zip_code }}</h5>
+    <p>{{ apartment.price }}</p>
+    <p>{{ apartment.size }} sqm</p>
+    <p>Rooms: {{ apartment.rooms }}</p>
+
+{% endblock %}
+

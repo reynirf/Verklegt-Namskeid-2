@@ -9,9 +9,9 @@ def home(request):
 def apartment_list(request, context={'apartments': Apartment.objects.all().order_by('address')}):
     return render(request, "apartments/apartment_list.html", context)
 
-def single_apartment(request, pk):
+def apartment_info(request, pk):
     apartment = Apartment.objects.get(pk=pk)
-    return render(request, 'apartments/single_apartment.html', {
+    return render(request, 'apartments/apartment_info.html', {
         'apartment': apartment
     })
 
