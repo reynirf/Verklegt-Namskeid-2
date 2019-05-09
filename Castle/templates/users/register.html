@@ -7,7 +7,8 @@
             <div class="card border-shadow">
                 <div style="padding-left:5%; padding-top:3%;" class="card-body">
                     <h5 style="color:#5F1C1C; margin-bottom:5%;">Register new user</h5>
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" method="POST">
+                        {% csrf_token %}
                 <div class="form-group">
                     <label for="firstName" class="col-sm-12 control-label">Name</label>
                     <div class="col-sm-9">
@@ -66,22 +67,14 @@
                     <div class="col-sm-9 col-sm-offset-12">
                     </div>
                 </div>
-                <button type="reset" onclick="showDiv()"class="red-button" >Cancel</button>
+                        <div class="g-recaptcha" data-sitekey="6LfyraIUAAAAAA1tDGYMKxPIa1ksf3xiPN5IHoHP"></div>
+                <button type="reset" class="red-button" >Cancel</button>
                 <button type="submit" class="green-button">Register</button>
-                        <button id="hgh" style="display:none;"class="btn btn-primary" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  Generating HGH pills for Reynir...
-</button>
+
             </form> <!-- /form -->
                 </div>
             </div>
         </div>
     </div>
-    <script>
-function showDiv() {
-    if(document.getElementById('hgh').style.display="none"){
-        document.getElementById('hgh').style.display="block"
-    }
-}
-</script>
+
 {% endblock %}

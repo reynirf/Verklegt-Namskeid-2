@@ -141,6 +141,24 @@ input[type="checkbox"]
 .max_price, .max_size {
     float:right;
 }
+#order_by {
+    width:50%
+}
+
+@media screen and (max-width:750px) {
+    #order_by {
+        width:70%
+    }
+}
+@media screen and (max-width:650px) {
+    #order_by_text {
+        display:none !important
+    }
+    #order_by {
+        width:100%
+    }
+}
+
 
 .min_size, .max_size, .min_price, .max_price {
     display:table !important;

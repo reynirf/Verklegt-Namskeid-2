@@ -7,12 +7,25 @@ from .models import Apartment
 def home(request):
     return render(request, "apartments/home.html")
 
-def apartment_list(request, context={'apartments': Apartment.objects.all().order_by('address')}):
+def apartment_list(request):
+    all_apartments = Apartment.objects.all()
+    context = {'apartments': all_apartments.order_by('address')}
+    # if 'order_by' in request.GET:
+    #     order_by = request.GET['order_by']
+    #     print('order_by:', order_by)
+    #     if order_by == 'Name A-Z':
+    #         pass
+    #     elif order_by == 'Name Z-A':
+    #         context = {'apartments': all_apartments.order_by('-address')}
+    #     elif order_by == 'Price from highest':
+    #         context = {'apartments': all_apartments.order_by('price')}
+    #     elif order_by == 'Price from lowest':
+    #         context = {'apartments': all_apartments.order_by('-price')}
+
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
-        print(search_filter)
-        apartments = list(Apartment.objects.filter(address__icontains=search_filter).values())
-        print(apartments)
+        #apartments = list(Apartment.objects.filter(address__icontains=search_filter).values())
+        apartments = list(all_apartments.filter(address__icontains=search_filter).values())
         return JsonResponse({ 'data': apartments })
     return render(request, "apartments/apartment_list.html", context)
 
