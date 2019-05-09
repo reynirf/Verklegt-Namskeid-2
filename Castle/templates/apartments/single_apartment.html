@@ -1,10 +1,13 @@
+{% load pipes %}
+
+
 <div data-address="{{ apartment.address }}" data-price="{{ apartment.price }}" class="col-md-4 col-lg-3 col-12 col-sm-6 single-apartment" style="padding:1rem">
     <div class="gray-background border-shadow">
        <div class="card bg-custom border-shadow text-white" style="text-align:left">
            <a href="{{ apartment.id }}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
             <div class="card-body">
                 <h5 class="card-title"><a href="{{ apartment.id }}">{{ apartment.address }} {{ apartment.zip_code }}</a></h5>
-                <p>{{ apartment.price }} ISK</p>
+                <p>{{ apartment.price | dotSeperator }} ISK</p>
                 <div class="d-flex justify-content-between">
                     <div>
                         <p>{{ apartment.size }} sqm</p>

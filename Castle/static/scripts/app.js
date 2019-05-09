@@ -241,7 +241,7 @@ $(document).ready(function(){
 									   <a href="${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
 										<div class="card-body">
 											<h5 class="card-title"><a href="${ apartment.id }}">${ apartment.address } ${ apartment.zip_code }</a></h5>
-											<p>${ apartment.price } ISK</p>
+											<p>${ Number(apartment.price).dotSeperator() } ISK</p>
 											<div class="d-flex justify-content-between">
 												<div>
 													<p>${ apartment.size } sqm</p>
@@ -260,7 +260,6 @@ $(document).ready(function(){
 				if (newHTML.length === 0) {
 					$('.apartments-list').html('<h2 style="text-align:center;width: 100%;">No apartments found with those search queries</h2>')
 				}
-				//$('#search_address').val('')
 				$("#order_by").val('a-z')
 			},
 			error: function(xhr, status, error) {

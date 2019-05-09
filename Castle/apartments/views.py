@@ -32,7 +32,7 @@ def apartment_list(request):
         json = True
 
     if json:
-        return JsonResponse({'data': list(apartments.values()) })
+        return JsonResponse({'data': list(apartments.order_by('address').values()) })
     return render(request, "apartments/apartment_list.html", context)
 
 def apartment_info(request, pk):
