@@ -9,6 +9,7 @@
                     <h5 style="color:#5F1C1C; margin-bottom:5%;">Register new user</h5>
                     <form class="form-horizontal" role="form" method="POST">
                         {% csrf_token %}
+                        {{ form }}
                 <div class="form-group">
                     <label for="firstName" class="col-sm-12 control-label">Name</label>
                     <div class="col-sm-9">
