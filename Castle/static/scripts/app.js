@@ -1,5 +1,5 @@
 var zipCodes = []
-
+var apartments = []
 
 
 function allowNumbersOnly(e) {
@@ -218,6 +218,44 @@ $(document).ready(function(){
 		$('.item .zip_option input').prop('checked', false)
 		zipCodes = []
 		$('#howManyZips').text('Zip codes')
+	})
+
+
+	$('#submitFormButton').on('click', (e) => {
+		e.preventDefault()
+		var searchText = $('#search_address').val()
+		$.ajax({
+			url: '/apartments?search_filter=' + searchText,
+			type: 'GET',
+			success: function(res) {
+				console.log('res:', res)
+				var newHTML = res.data.map(apartment => {
+					return `<div class="single-apartment gray-background border-shadow">
+							   <div class="card bg-custom border-shadow text-white" style="text-align:left">
+								   <a href="${apartment.id}"><img class="card-img-top" src="${apartment.main_pic}" alt="apartment pic"></a>
+									<div class="card-body">
+										<h5 class="card-title"><a href="${apartment.id}">${apartment.address} ${ apartment.zip_code }</a></h5>
+										<p>${apartment.price} ISK</p>
+										<div class="d-flex justify-content-between">
+											<div>
+												<p>${apartment.size} sqm</p>
+											</div>
+											<div>
+												<p>Rooms: ${apartment.rooms}</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>`
+				})
+				$('.apartments-list').html(newHTML.join(''))
+				$('#search_address').val('')
+				
+			},
+			error: function(xhr, status, error) {
+				console.log(error)
+			}
+		})
 	})
 
 });
