@@ -1,9 +1,9 @@
 <div class="single-apartment gray-background border-shadow">
    <div class="card bg-custom border-shadow text-white" style="text-align:left">
-    <img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic">
+       <a href="{{ apartment.id }}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
         <div class="card-body">
             <h5 class="card-title"><a href="{{ apartment.id }}">{{ apartment.address }} {{ apartment.zip_code }}</a></h5>
-            <p>{{ apartment.price }}</p>
+            <p>{{ apartment.price }} ISK</p>
             <div class="d-flex justify-content-between">
                 <div>
                     <p>{{ apartment.size }} sqm</p>

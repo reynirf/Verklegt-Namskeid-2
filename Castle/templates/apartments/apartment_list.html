@@ -71,9 +71,9 @@
             <div class="col-6">
                 <p>Apartments found: {{ apartments|length }}</p>
             </div>
-            <div class="col-6">
-                <label for="order_by">Order by</label>
-                <select id="order_by" class="form-control">
+            <div class="col-6" style="text-align:right">
+                <p for="order_by" style="display:inline-block">Order by</p>
+                <select name="order_by" id="order_by" class="form-control">
                     <option selected>Name a..z</option>
                     <option>Name z..a</option>
                     <option>Price highest</option>

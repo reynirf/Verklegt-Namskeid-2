@@ -193,3 +193,13 @@ input[type="checkbox"]
         border-right:0 !important;
     }
 }
+
+.card-title a:hover, .card-title a {
+    color:white
+}
+
+#order_by {
+    text-align: right;
+    display: inline-block;
+    margin: 0.4rem;
+}
