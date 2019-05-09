@@ -74,10 +74,10 @@
             <div class="col-6" style="text-align:right">
                 <p for="order_by" style="display:inline-block">Order by</p>
                 <select name="order_by" id="order_by" class="form-control">
-                    <option selected>Name a..z</option>
-                    <option>Name z..a</option>
-                    <option>Price highest</option>
-                    <option>Price lowest</option>
+                    <option selected>Name A-Z</option>
+                    <option>Name Z-A</option>
+                    <option>Price from lowest</option>
+                    <option>Price from highest</option>
                 </select>
             </div>
         </div>
@@ -85,7 +85,7 @@
 
     {% include 'apartments/zip_codes.html' %}
 
-    <div class="ml-3" style="text-align:center">
+    <div class="ml-3 apartments-list" style="text-align:center">
     {% for apartment in apartments %}
         {% include 'apartments/single_apartment.html' with apartment=apartment %}
     {% endfor %}
