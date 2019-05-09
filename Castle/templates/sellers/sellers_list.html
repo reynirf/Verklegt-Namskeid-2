@@ -2,8 +2,10 @@
 
 {% block mainbody %}
 
-    {% for seller in sellers %}
-        {% include 'sellers/single_seller.html' with seller=seller %}
-    {% endfor %}
+    <div class="w-100 p-3">
+        {% for seller in sellers %}
+            {% include 'sellers/single_seller.html' with seller=seller %}
+        {% endfor %}
+    </div>
 
 {% endblock %}

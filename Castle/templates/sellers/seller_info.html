@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block mainbody %}
+
+    <div class="w-100 p-3">
+        <div class="w-100 gray-background border-shadow">
+            <div class="card white-background border-shadow">
+                <div class="card-body row p-0">
+                    <div class="col-5">
+                        <img src="{{ seller.logo }}" class="img-thumbnail simple-border" alt="seller logo">
+                    </div>
+                    <div class="col-7">
+                        <h5>{{ seller.user.name }}</h5>
+                        <p>E-mail: {{ seller.user.email }}</p>
+                        <p>Phone: {{ seller.user.phone }}</p>
+                        <p>Address: {{ seller.address }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>Description:</p>
+        <p>{{ seller.description }}</p>
+        <button class="btn green-button">Contact</button>
+    </div>
+
+{% endblock %}
