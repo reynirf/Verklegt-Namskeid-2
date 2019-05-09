@@ -11,25 +11,31 @@ def home(request):
     return render(request, "apartments/home.html", context)
 
 def apartment_list(request):
-    all_apartments = Apartment.objects.all()
-    context = {'apartments': all_apartments.order_by('address')}
-    # if 'order_by' in request.GET:
-    #     order_by = request.GET['order_by']
-    #     print('order_by:', order_by)
-    #     if order_by == 'Name A-Z':
-    #         pass
-    #     elif order_by == 'Name Z-A':
-    #         context = {'apartments': all_apartments.order_by('-address')}
-    #     elif order_by == 'Price from highest':
-    #         context = {'apartments': all_apartments.order_by('price')}
-    #     elif order_by == 'Price from lowest':
-    #         context = {'apartments': all_apartments.order_by('-price')}
+    apartments = Apartment.objects.all()
+    context = {'apartments': apartments.order_by('address')}
+    json = False
 
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
-        #apartments = list(Apartment.objects.filter(address__icontains=search_filter).values())
-        apartments = list(all_apartments.filter(address__icontains=search_filter).values())
-        return JsonResponse({ 'data': apartments })
+        apartments = apartments.filter(address__icontains=search_filter)
+        json = True
+
+    if 'min_price' in request.GET and 'max_price' in request.GET:
+        price_min = request.GET['min_price']
+        price_max = request.GET['max_price']
+        apartments = apartments.filter(price__gte=price_min)
+        apartments = apartments.filter(price__lte=price_max)
+        json = True
+
+    if 'min_size' in request.GET and 'max_size' in request.GET:
+        min_size = request.GET['min_size']
+        max_size = request.GET['max_size']
+        apartments = apartments.filter(size__gte=min_size)
+        apartments = apartments.filter(size__lte=max_size)
+        json = True
+
+    if json:
+        return JsonResponse({'data': list(apartments.order_by('address').values()) })
     return render(request, "apartments/apartment_list.html", context)
 
 def apartment_info(request, pk):

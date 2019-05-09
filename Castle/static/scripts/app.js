@@ -224,9 +224,12 @@ $(document).ready(function(){
 	$('#submitFormButton').on('click', (e) => {
 		e.preventDefault()
 		var searchText = $('#search_address').val()
-		var orderBy = $('#order_by').val()
+		var minPrice = $("#min_price").val().numberize()
+		var maxPrice = $("#max_price").val().numberize()
+		var minSize = $('#min_size').val()
+		var maxSize = $('#max_size').val()
 		$.ajax({
-			url: '/apartments?search_filter=' + searchText,
+			url: '/apartments?search_filter=' + searchText + '&min_price=' + minPrice + '&max_price=' + maxPrice + '&min_size=' + minSize + '&max_size=' + maxSize,
 			type: 'GET',
 			success: function(res) {
 				console.log('res:', res)
@@ -238,7 +241,7 @@ $(document).ready(function(){
 									   <a href="${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
 										<div class="card-body">
 											<h5 class="card-title"><a href="${ apartment.id }}">${ apartment.address } ${ apartment.zip_code }</a></h5>
-											<p>${ apartment.price } ISK</p>
+											<p>${ Number(apartment.price).dotSeperator() } ISK</p>
 											<div class="d-flex justify-content-between">
 												<div>
 													<p>${ apartment.size } sqm</p>
@@ -253,7 +256,10 @@ $(document).ready(function(){
 						</div>`
 				})
 				$('.apartments-list').html(newHTML.join(''))
-				//$('#search_address').val('')
+				$('#apartmentsFound').text('Apartments found: ' + newHTML.length)
+				if (newHTML.length === 0) {
+					$('.apartments-list').html('<h2 style="text-align:center;width: 100%;">No apartments found with those search queries</h2>')
+				}
 				$("#order_by").val('a-z')
 			},
 			error: function(xhr, status, error) {
@@ -265,6 +271,7 @@ $(document).ready(function(){
 	$('#order_by').on('change', function() {
   		let selected = this.value
 		let apartments = $('.single-apartment')
+		if (apartments.length === 0) return;
 		switch(selected) {
 			case 'a-z':
 				apartments = apartments.sort(function(a, b) {
