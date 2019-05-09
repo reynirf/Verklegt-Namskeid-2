@@ -243,5 +243,32 @@ input[type="checkbox"]
 }
 */
 .apartments-list {
-    margin:0
+    margin:0;
+}
+
+
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottou    huirem: 6rem;
+  min-height: 100%;
 }

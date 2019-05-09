@@ -31,14 +31,14 @@
                     <a class="nav-link" href="{% url 'sellers_list' %}">Sellers</a>
                 </li>
                 {% if users.is_authenticated %}
-                    <li class ="nav-item login-nav" style="padding-left: :0,8rem">
+                    <li class ="nav-item login-nav" style="padding-left: 0.8rem">
                         <a class ="nav-link" href="{% url 'My Profile' %}"> My Profile </a></li>
-                    <li class ="nav-item">
+                    <li class ="nav-item login-nav">
                         <a class="nav-link" href="{% url 'Logout' %}"> Logout </a></li>
                 {% else %}
-                    <li class ="nav-item login-nav" style="padding-left: 0,8rem">
+                    <li class ="nav-item login-nav" style="padding-left: 0.8rem">
                         <a class="nav-link" href="{% url 'login' %}"> Log in </a></li>
-                    <li class="nav-item login-nav" style="padding-left: 0,8rem">
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'register' %}"> Register </a></li>
                 {% endif %}
 
