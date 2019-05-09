@@ -2,7 +2,7 @@
 
 {% block mainbody %}
 	<div class="row m-3">
-		<div class="col-sm-6 red-background border-shadow">
+		<div class="col-6 red-background border-shadow">
 			<div class="card border-shadow">
 				<div class="card-body">
 					<h5 class="card-title">Search engine</h5>
@@ -70,7 +70,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-6 gray-background border-shadow">
+		<div class="col-6 gray-background border-shadow">
 			<div class="card border-shadow bg-custom text-white">
 				<div class="card-body">
 					<h5 class="card-title">Featured apartment</h5>
@@ -79,32 +79,27 @@
 			</div>
 		</div>
 	</div>
-	<div class="card-deck m-3">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">New apartment</h5>
-				<p class="card-text">Info on new apartment</p>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">New apartment</h5>
-				<p class="card-text">Info on new apartment</p>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">New apartment</h5>
-				<p class="card-text">Info on new apartment</p>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">New apartment</h5>
-				<p class="card-text">Info on new apartment</p>
-			</div>
-		</div>
-	</div>
+
+    <div class="newest_apartments gray-background border-shadow mx-3 mb-3">
+        <h5>Newest apartments</h5>
+        {% for apartment in newest %}
+            <div class="card new_apartment bg-custom border-shadow text-white" style="text-align:left">
+                <a href="apartments/{{ apartment.id }}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="apartments/{{ apartment.id }}">{{ apartment.address }} {{ apartment.zip_code }}</a></h5>
+                    <p>{{ apartment.price }} ISK</p>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p>{{ apartment.size }} sqm</p>
+                        </div>
+                        <div>
+                            <p>Rooms: {{ apartment.rooms }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
     {% include 'apartments/zip_codes.html' %}
 

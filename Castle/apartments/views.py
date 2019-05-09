@@ -5,7 +5,10 @@ from .models import Apartment
 # Create your views here.
 
 def home(request):
-    return render(request, "apartments/home.html")
+    context = {
+        'newest': Apartment.objects.all().order_by('date_added')[:10]
+    }
+    return render(request, "apartments/home.html", context)
 
 def apartment_list(request):
     all_apartments = Apartment.objects.all()
