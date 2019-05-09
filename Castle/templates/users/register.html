@@ -11,43 +11,49 @@
                 <div class="form-group">
                     <label for="firstName" class="col-sm-12 control-label">Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="firstName" class="form-control" autofocus>
+                        <input type="text" placeholder="Name" class="form-control" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="lastName" class="col-sm-12 control-label">Username</label>
                     <div class="col-sm-9">
-                        <input type="text" id="lastName" class="form-control" autofocus>
+                        <input type="text" placeholder="Username" class="form-control" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-12 control-label">Phone</label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" class="form-control" name= "email">
+                        <input type="email" placeholder="Phone" class="form-control" name= "email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-12 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="password" id="password" class="form-control">
+                        <input type="password" placeholder="Email" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-12 control-label">Password</label>
                     <div class="col-sm-9">
-                        <input type="password" id="password" class="form-control">
+                        <input type="password" placeholder="Password" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="birthDate" class="col-sm-12 control-label">Repeat password</label>
                     <div class="col-sm-9">
-                        <input type="password" id="password" class="form-control">
+                        <input type="password" placeholder="Repeat password" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber" class="col-sm-12 control-label">Security question</label>
                     <div class="col-sm-9">
-                        <input type="phoneNumber" id="phoneNumber" class="form-control">
+                        <select>
+                            <option value="What was your first cat's name?">What was your first cat's name?</option>
+                            <option value="What's the name of your first dog?">What's the name of your first dog?</option>
+                            <option value="Reynir notar HGH?">Reynir notar HGH?</option>
+                            <option value="What's your favorite car make?">What's your favorite car make?</option>
+                            <option value="Whats your cars licence plate number?">What's your cars licence plate number?</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -60,11 +66,22 @@
                     <div class="col-sm-9 col-sm-offset-12">
                     </div>
                 </div>
-                <button type="reset" class="red-button" >Cancel</button>
+                <button type="reset" onclick="showDiv()"class="red-button" >Cancel</button>
                 <button type="submit" class="green-button">Register</button>
+                        <button id="hgh" style="display:none;"class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Generating HGH pills for Reynir...
+</button>
             </form> <!-- /form -->
                 </div>
             </div>
         </div>
     </div>
+    <script>
+function showDiv() {
+    if(document.getElementById('hgh').style.display="none"){
+        document.getElementById('hgh').style.display="block"
+    }
+}
+</script>
 {% endblock %}
