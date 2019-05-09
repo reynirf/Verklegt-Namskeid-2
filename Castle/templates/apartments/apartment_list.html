@@ -68,16 +68,16 @@
     </div>
     <div class="m-3 simple-border">
         <div class="row mx-2">
-            <div class="col-6">
-                <p>Apartments found: {{ apartments|length }}</p>
+            <div class="col-6" style="line-height:3">
+                <p style="margin:0">Apartments found: {{ apartments|length }}</p>
             </div>
             <div class="col-6" style="text-align:right">
-                <p for="order_by" style="display:inline-block">Order by</p>
+                <p id="order_by_text" for="order_by" style="display:inline-block;">Order by</p>
                 <select name="order_by" id="order_by" class="form-control">
-                    <option selected>Name A-Z</option>
-                    <option>Name Z-A</option>
-                    <option>Price from lowest</option>
-                    <option>Price from highest</option>
+                    <option value="a-z" selected>Name A-Z</option>
+                    <option value="z-a">Name Z-A</option>
+                    <option value="price_lowest">Price from lowest</option>
+                    <option value="price_highest">Price from highest</option>
                 </select>
             </div>
         </div>

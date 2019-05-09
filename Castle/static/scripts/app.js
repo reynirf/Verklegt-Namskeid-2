@@ -224,6 +224,7 @@ $(document).ready(function(){
 	$('#submitFormButton').on('click', (e) => {
 		e.preventDefault()
 		var searchText = $('#search_address').val()
+		var orderBy = $('#order_by').val()
 		$.ajax({
 			url: '/apartments?search_filter=' + searchText,
 			type: 'GET',
@@ -231,7 +232,7 @@ $(document).ready(function(){
 				console.log('res:', res)
 				var newHTML = res.data.map(apartment => {
 					return `
-						<div class="col-md-4 col-lg-3 col-12 col-sm-6 single-apartment" style="padding:1rem">
+						<div data-address="${apartment.address}" data-price="${apartment.price}" class="col-md-4 col-lg-3 col-12 col-sm-6 single-apartment" style="padding:1rem">
 								<div class="gray-background border-shadow">
 								   <div class="card bg-custom border-shadow text-white" style="text-align:left">
 									   <a href="${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
@@ -249,13 +250,11 @@ $(document).ready(function(){
 										</div>
 									</div>
 								</div>
-						</div>
-					´
-`
+						</div>`
 				})
 				$('.apartments-list').html(newHTML.join(''))
-				$('#search_address').val('')
-				
+				//$('#search_address').val('')
+				$("#order_by").val('a-z')
 			},
 			error: function(xhr, status, error) {
 				console.log(error)
@@ -263,4 +262,40 @@ $(document).ready(function(){
 		})
 	})
 
+	$('#order_by').on('change', function() {
+  		let selected = this.value
+		let apartments = $('.single-apartment')
+		switch(selected) {
+			case 'a-z':
+				apartments = apartments.sort(function(a, b) {
+					if(a.getAttribute('data-address') < b.getAttribute('data-address')) { return -1; }
+			 		if(a.getAttribute('data-address') > b.getAttribute('data-address')) { return 1; }
+			 		return 0;
+				})
+				$('.apartments-list').html(apartments)
+			break;
+			case 'z-a':
+				apartments = apartments.sort(function(a, b) {
+					if(b.getAttribute('data-address') < a.getAttribute('data-address')) { return -1; }
+			 		if(b.getAttribute('data-address') > a.getAttribute('data-address')) { return 1; }
+			 		return 0;
+				})
+				$('.apartments-list').html(apartments)
+			break;
+			case 'price_lowest':
+				apartments = apartments.sort(function(a, b) {
+					return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'))
+				})
+				$('.apartments-list').html(apartments)
+				console.log(apartments)
+			break;
+			case 'price_highest':
+				apartments = apartments.sort(function(a, b) {
+					return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price'))
+				})
+				$('.apartments-list').html(apartments)
+				console.log(apartments)
+			break;
+		}
+	});
 });
