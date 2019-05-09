@@ -85,7 +85,7 @@
 
     {% include 'apartments/zip_codes.html' %}
 
-    <div class="ml-3 apartments-list" style="text-align:center">
+    <div class="row apartments-list">
     {% for apartment in apartments %}
         {% include 'apartments/single_apartment.html' with apartment=apartment %}
     {% endfor %}
