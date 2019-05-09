@@ -11,3 +11,7 @@ class Apartment(models.Model):
     main_pic = models.CharField(max_length=999)
     date_added = models.DateField()
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+
+class Apartment_images(models.Model):
+    image = models.CharField(max_length=999)
+    apartment = models.ForeignKey(Apartment, on_delete=models.CASCADE)
