@@ -1,9 +1,12 @@
 from django.db import models
 from sellers.models import Seller
 
+class Zipcode(models.Model):
+    town = models.CharField(max_length=30)
+
 class Apartment(models.Model):
     address = models.CharField(max_length=255)
-    zip_code = models.IntegerField()
+    zip_code = models.ForeignKey(Zipcode, on_delete=models.DO_NOTHING)
     rooms = models.IntegerField()
     size = models.IntegerField()
     price = models.IntegerField()
