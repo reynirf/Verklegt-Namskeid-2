@@ -16,12 +16,20 @@ def home(request):
 def apartment_list(request):
     apartments = Apartment.objects.all()
     context = {'apartments': apartments.order_by('address')}
+    search = dict()
     json = False
+    home = False
+
+    if 'from_home' in request.GET:
+        from_home = request.GET['from_home']
+        if from_home == 'True' or from_home == 'true' or from_home == '1':
+            home = True
 
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
         apartments = apartments.filter(address__icontains=search_filter)
         json = True
+        search['address'] = search_filter
 
     if 'min_price' in request.GET and 'max_price' in request.GET:
         price_min = request.GET['min_price']
@@ -29,6 +37,8 @@ def apartment_list(request):
         apartments = apartments.filter(price__gte=price_min)
         apartments = apartments.filter(price__lte=price_max)
         json = True
+        search['min_price'] = price_min
+        search['max_price'] = price_max
 
     if 'min_size' in request.GET and 'max_size' in request.GET:
         min_size = request.GET['min_size']
@@ -36,9 +46,13 @@ def apartment_list(request):
         apartments = apartments.filter(size__gte=min_size)
         apartments = apartments.filter(size__lte=max_size)
         json = True
+        search['min_size'] = min_size
+        search['max_size'] = max_size
 
-    if json:
-        return JsonResponse({'data': list(apartments.order_by('address').values()) })
+    if json and home:
+        return render(request, "apartments/apartment_list.html", {'apartments': apartments, 'search_details': search})
+    elif json:
+        return JsonResponse({'data': list(apartments.order_by('address').values())})
     return render(request, "apartments/apartment_list.html", context)
 
 def apartment_info(request, pk):

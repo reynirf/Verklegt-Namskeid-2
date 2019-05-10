@@ -268,6 +268,18 @@ $(document).ready(function(){
 		})
 	})
 
+
+	$('#submitFormHomeButton').on('click', (e) => {
+		e.preventDefault()
+		var searchText = $('#search_address').val()
+		var minPrice = $("#min_price").val().numberize()
+		var maxPrice = $("#max_price").val().numberize()
+		var minSize = $('#min_size').val()
+		var maxSize = $('#max_size').val()
+		window.location.href = '/apartments?from_home=True&search_filter=' + searchText + '&min_price=' + minPrice + '&max_price=' + maxPrice + '&min_size=' + minSize + '&max_size=' + maxSize
+
+	})
+
 	$('#order_by').on('change', function() {
   		let selected = this.value
 		let apartments = $('.single-apartment')
