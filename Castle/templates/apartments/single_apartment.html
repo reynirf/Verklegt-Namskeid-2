@@ -6,7 +6,8 @@
        <div class="card bg-custom border-shadow text-white" style="text-align:left">
            <a href="{{ apartment.id }}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
             <div class="card-body">
-                <h5 class="card-title"><a href="{{ apartment.id }}">{{ apartment.address }} {{ apartment.zip_code }}</a></h5>
+                <h5 class="card-title"><a href="{{ apartment.id }}">{{ apartment.address }}</a></h5>
+                <h6 class="card-subtitle">{{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h6>
                 <p>{{ apartment.price | dotSeperator }} ISK</p>
                 <div class="d-flex justify-content-between">
                     <div>
