@@ -1,12 +1,15 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Apartment
+from .models import Apartment, Apartment_featured
+from datetime import date
 
 # Create your views here.
 
 def home(request):
+    today = date.today()
     context = {
-        'newest': Apartment.objects.all().order_by('date_added')[:10]
+        'newest': Apartment.objects.all().order_by('date_added')[:10],
+        'featured': Apartment_featured.objects.filter(start_date__lte=today, end_date__gte=today)
     }
     return render(request, "apartments/home.html", context)
 

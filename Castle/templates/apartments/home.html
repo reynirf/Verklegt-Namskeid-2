@@ -70,15 +70,19 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-6 gray-background border-shadow">
-			<div class="card border-shadow bg-custom text-white">
-				<div class="card-body">
-					<h5 class="card-title">Featured apartment</h5>
-					<p class="card-text">Add apartment info here</p>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="col-6 gray-background border-shadow">
+            <div class="card featured_apartments border-shadow bg-custom text-white">
+                {% for apartment in featured %}
+{#                    <img src="{{ apartment.apartment.main_pic }}" class="card-img-top" alt="apartment pic">#}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ apartment.apartment.address }}</h5>
+                        <p class="card-text">{{ apartment.apartment.price }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 
     <div class="newest_apartments gray-background border-shadow mx-3 mb-3">
         <h5>Newest apartments</h5>

@@ -306,6 +306,13 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.featured_apartments').slick({
+		slidesToShow: 1,
+		fade: true,
+		autoplay: true,
+		autoplaySpeed: 5000,
+	});
+
 	$('.newest_apartments').slick({
 		dots: true,
 		infinite: true,
