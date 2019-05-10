@@ -1,10 +1,10 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Apartment, Apartment_featured
+from .models import Apartment, Apartment_featured, Zipcode
 from datetime import date
+from django.core import serializers
 
 # Create your views here.
-
 def home(request):
     today = date.today()
     context = {
@@ -14,11 +14,17 @@ def home(request):
     return render(request, "apartments/home.html", context)
 
 def apartment_list(request):
-    apartments = Apartment.objects.all()
+    apartments = Apartment.objects.select_related().all()
     context = {'apartments': apartments.order_by('address')}
     search = dict()
     json = False
     home = False
+    search['address'] = ''
+    search['min_price'] = 20000000
+    search['max_price'] = 90000000
+    search['min_size'] = 40
+    search['max_size'] = 250
+    search['rooms'] = 'false'
 
     if 'from_home' in request.GET:
         from_home = request.GET['from_home']
@@ -49,10 +55,30 @@ def apartment_list(request):
         search['min_size'] = min_size
         search['max_size'] = max_size
 
+    if 'rooms' in request.GET:
+        amount_rooms = request.GET['rooms']
+        print(amount_rooms)
+        print(type(amount_rooms))
+        if amount_rooms == 'false':
+            pass
+        elif amount_rooms == '6':
+            print('e')
+            apartments = apartments.filter(rooms__gte=6)
+        elif amount_rooms.isdigit():
+            print('TEST')
+            apartments = apartments.filter(rooms__exact=int(amount_rooms))
+
     if json and home:
-        return render(request, "apartments/apartment_list.html", {'apartments': apartments, 'search_details': search})
+        return render(request, "apartments/apartment_list.html", {'apartments': apartments, 'details': search})
     elif json:
+
+        #apartments = serializers.serialize('json', apartments, use_natural_foreign_keys = True, use_natural_primary_keys = True)
+        #print(apartments)
         return JsonResponse({'data': list(apartments.order_by('address').values())})
+        #return HttpResponse(apartments, content_type='application/json')
+
+
+    context = {'apartments': apartments.order_by('address'), 'details': search}
     return render(request, "apartments/apartment_list.html", context)
 
 def apartment_info(request, pk):

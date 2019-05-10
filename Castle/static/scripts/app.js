@@ -102,6 +102,9 @@ $(document).ready(function(){
 		$('#submitFormButton').prop('disabled', false)
 		$('#search_rooms').val('Rooms')
 		$('#search_address').val('')
+		$('.item .zip_option input').prop('checked', false)
+		zipCodes = []
+		$('#howManyZips').text('Zip codes')
 		e.preventDefault()
 	})
 	
@@ -228,8 +231,14 @@ $(document).ready(function(){
 		var maxPrice = $("#max_price").val().numberize()
 		var minSize = $('#min_size').val()
 		var maxSize = $('#max_size').val()
+		var rooms = $('#search_rooms').val()
+		if(rooms == 'Rooms') {
+			rooms = false
+		} else if (rooms == '6+') {
+			rooms = '6'
+		}
 		$.ajax({
-			url: '/apartments?search_filter=' + searchText + '&min_price=' + minPrice + '&max_price=' + maxPrice + '&min_size=' + minSize + '&max_size=' + maxSize,
+			url: '/apartments?search_filter=' + searchText + '&min_price=' + minPrice + '&max_price=' + maxPrice + '&min_size=' + minSize + '&max_size=' + maxSize + '&rooms=' + rooms,
 			type: 'GET',
 			success: function(res) {
 				console.log('res:', res)
@@ -240,7 +249,8 @@ $(document).ready(function(){
 								   <div class="card bg-custom border-shadow text-white" style="text-align:left">
 									   <a href="${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
 										<div class="card-body">
-											<h5 class="card-title"><a href="${ apartment.id }}">${ apartment.address } ${ apartment.zip_code }</a></h5>
+											<h5 class="card-title"><a href="${ apartment.id }">${ apartment.address }</a></h5>
+               								 <h6 class="card-subtitle">${ apartment.zip_code.id } ${ apartment.zip_code.town }</h6>
 											<p>${ Number(apartment.price).dotSeperator() } ISK</p>
 											<div class="d-flex justify-content-between">
 												<div>
@@ -306,18 +316,34 @@ $(document).ready(function(){
 					return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'))
 				})
 				$('.apartments-list').html(apartments)
-				console.log(apartments)
 			break;
 			case 'price_highest':
 				apartments = apartments.sort(function(a, b) {
 					return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price'))
 				})
 				$('.apartments-list').html(apartments)
-				console.log(apartments)
 			break;
 		}
 	});
 
+	$(function () {
+		if(window.location.pathname === '/apartments/') {
+			min_price_django = $('#min_price_django')
+			max_price_django = $('#max_price_django')
+			min_size_django = $('#min_size_django')
+			max_size_django = $('#max_size_django')
+			$('#min_price').val(Number(min_price_django.val().numberize()).dotSeperator())
+			$('#max_price').val(Number(max_price_django.val().numberize()).dotSeperator())
+			$('#min_size').val(Number(min_size_django.val().numberize()).dotSeperator())
+			$('#max_size').val(Number(max_size_django.val().numberize()).dotSeperator())
+			$("#slider-range").slider({
+				values: [min_price_django.val().numberize(), max_price_django.val().numberize()]
+			});
+			$("#size-range+").slider({
+				values: [min_size_django.val().numberize(), max_size_django.val().numberize()]
+			});
+		}
+	})
 	$('.featured_apartments').slick({
 		slidesToShow: 1,
 		fade: true,
@@ -356,5 +382,23 @@ $(document).ready(function(){
 				}
 			}
 		]
+	});
+
+	$('.apartment_info_main_pic').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		fade: true,
+		asNavFor: '.apartment_info_small'
+	});
+	$('.apartment_info_small').slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		vertical: true,
+		infinite: true,
+		asNavFor: '.apartment_info_main_pic',
+		focus_on_select: true
+		// dots: true,
+		// centerMode: true,
+		// focusOnSelect: true
 	});
 });
