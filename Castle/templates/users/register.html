@@ -11,15 +11,15 @@
                         {% csrf_token %}
 
                 <div class="form-group">
-                    <label for="firstName" class="col-sm-12 control-label">Name</label>
+                    <label for="name" class="col-sm-12 control-label">Name</label>
                     <div class="col-sm-9">
                         <input type="text" name="name" placeholder="Name" class="form-control" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="lastName" class="col-sm-12 control-label">Username</label>
+                    <label for="username" class="col-sm-12 control-label">Username</label>
                     <div class="col-sm-9">
-                        <input type="text" name="user_name" placeholder="Username" class="form-control" autofocus>
+                        <input type="text" name="username" placeholder="Username" class="form-control" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
@@ -40,16 +40,16 @@
                         <input type="password" name="password" placeholder="Password" class="form-control">
                     </div>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="birthDate" class="col-sm-12 control-label">Repeat password</label>
                     <div class="col-sm-9">
                         <input type="password" placeholder="Repeat password" class="form-control">
                     </div>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <label for="phoneNumber" class="col-sm-12 control-label">Security question</label>
                     <div class="col-sm-9">
-                        <select>
+                        <select name="security_question">
                             <option value="What was your first cat's name?">What was your first cat's name?</option>
                             <option value="What's the name of your first dog?">What's the name of your first dog?</option>
                             <option value="Reynir notar HGH?">Reynir notar HGH?</option>
@@ -61,15 +61,15 @@
                 <div class="form-group">
                         <label for="Height" class="col-sm-12 control-label">Answer</label>
                     <div class="col-sm-9">
-                        <input style="margin-bottom:5%;"type="text" class="form-control">
+                        <input name="security_answer" style="margin-bottom:5%;"type="text" class="form-control">
                     </div>
                 </div><!-- /.form-group -->
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-12">
                     </div>
                 </div>
-                        <div class="g-recaptcha" data-sitekey="6LfyraIUAAAAAA1tDGYMKxPIa1ksf3xiPN5IHoHP"></div>
-                <button type="reset" class="red-button" >Cancel</button>
+                        <!--<div class="g-recaptcha" data-sitekey="6LfyraIUAAAAAA1tDGYMKxPIa1ksf3xiPN5IHoHP"></div>
+                <button type="reset" class="red-button" >Cancel</button>-->
                 <button type="submit" class="green-button">Register</button>
 
             </form> <!-- /form -->
