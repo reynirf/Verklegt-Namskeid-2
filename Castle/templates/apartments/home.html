@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load pipes %}
 
 {% block mainbody %}
 	<div class="row m-3">
@@ -71,38 +72,60 @@
 			</div>
 		</div>
         <div class="col-6 gray-background border-shadow">
-            <div class="card featured_apartments border-shadow bg-custom text-white">
+            <div class="featured_apartments">
                 {% for apartment in featured %}
-{#                    <img src="{{ apartment.apartment.main_pic }}" class="card-img-top" alt="apartment pic">#}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ apartment.apartment.address }}</h5>
-                        <p class="card-text">{{ apartment.apartment.price }}</p>
+                    <div class="card border-shadow bg-custom text-white">
+                        <a href="{% url 'apartment_info' apartment.apartment.id %}">
+                            <img src="{{ apartment.apartment.main_pic }}" class="card-img-top" alt="apartment pic">
+                        </a>
+                        <div class="card-body single-apartment">
+                            <h5 class="card-title"><a href="{% url 'apartment_info' apartment.apartment.id %}">{{ apartment.apartment.address }}</a></h5>
+                            <h6 class="card-subtitle">{{ apartment.apartment.zip_code.id }} {{ apartment.apartment.zip_code.town }}</h6>
+                            <h6 class="card-text">{{ apartment.apartment.price | dotSeperator}} ISK</h6>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <p>{{ apartment.apartment.size }} sqm</p>
+                                </div>
+                                <div>
+                                    <p>Rooms: {{ apartment.apartment.rooms }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </div>
 
-
-    <div class="newest_apartments gray-background border-shadow mx-3 mb-3">
-        <h5>Newest apartments</h5>
-        {% for apartment in newest %}
-            <div class="card new_apartment bg-custom border-shadow text-white" style="text-align:left">
-                <a href="apartments/{{ apartment.id }}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
-                <div class="card-body">
-                    <h5 class="card-title"><a href="apartments/{{ apartment.id }}">{{ apartment.address }} {{ apartment.zip_code.id }}</a></h5>
-                    <p>{{ apartment.price }} ISK</p>
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <p>{{ apartment.size }} sqm</p>
+    <div class="w-100 px-3 pb-3">
+        <div class="gray-background border-shadow w-100">
+            <div class="row">
+                <div class="col-2"><h4 class="prev_arrow"><</h4></div>
+                <div class="col-8"><h5>Newest apartments</h5></div>
+                <div class="col-2"><h4 class="next_arrow text-right">></h4></div>
+            </div>
+            <div class="container px-0 m-0">
+                <div class="newest_apartments">
+                    {% for apartment in newest %}
+                        <div class="card new_apartment bg-custom border-shadow text-white" style="text-align:left">
+                            <a href="apartments/{{ apartment.id }}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="apartments/{{ apartment.id }}">{{ apartment.address }} {{ apartment.zip_code.id }}</a></h5>
+                                <p>{{ apartment.price }} ISK</p>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p>{{ apartment.size }} sqm</p>
+                                    </div>
+                                    <div>
+                                        <p>Rooms: {{ apartment.rooms }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p>Rooms: {{ apartment.rooms }}</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
 
     {% include 'apartments/zip_codes.html' %}

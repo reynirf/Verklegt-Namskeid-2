@@ -348,15 +348,19 @@ $(document).ready(function(){
 		slidesToShow: 1,
 		fade: true,
 		autoplay: true,
+		arrows: false,
 		autoplaySpeed: 5000,
+		pauseOnHover: true
 	});
 
 	$('.newest_apartments').slick({
-		dots: true,
 		infinite: true,
 		speed: 300,
 		slidesToShow: 4,
 		slidesToScroll: 4,
+		arrows: true,
+		prevArrow: $('.prev_arrow'),
+		nextArrow: $('.next_arrow'),
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -364,7 +368,6 @@ $(document).ready(function(){
 					slidesToShow: 3,
 					slidesToScroll: 3,
 					infinite: true,
-					dots: true
 				}
 			},
 			{
