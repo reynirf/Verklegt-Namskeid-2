@@ -357,4 +357,22 @@ $(document).ready(function(){
 			}
 		]
 	});
+
+	$('.apartment_info_main_pic').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		fade: true,
+		asNavFor: '.apartment_info_small'
+	});
+	$('.apartment_info_small').slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		vertical: true,
+		infinite: true,
+		asNavFor: '.apartment_info_main_pic',
+		focus_on_select: true
+		// dots: true,
+		// centerMode: true,
+		// focusOnSelect: true
+	});
 });
