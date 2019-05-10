@@ -54,6 +54,16 @@
 #order_by {
     width: 8rem;
 }
+.single-apartment {
+    padding: 0.5rem;
+}
+.single-apartment p, .card-title, h6 {
+    margin-bottom: 0;
+}
+.single-apartment .card-subtitle {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
 .login-column {
     float:none;
     margin:0 auto;

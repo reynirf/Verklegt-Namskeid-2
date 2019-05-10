@@ -5,10 +5,10 @@
     <div class="gray-background border-shadow">
        <div class="card bg-custom border-shadow text-white" style="text-align:left">
            <a href="{{ apartment.id }}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
-            <div class="card-body">
+            <div class="card-body single-apartment">
                 <h5 class="card-title"><a href="{{ apartment.id }}">{{ apartment.address }}</a></h5>
                 <h6 class="card-subtitle">{{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h6>
-                <p>{{ apartment.price | dotSeperator }} ISK</p>
+                <h6>{{ apartment.price | dotSeperator }} ISK</h6>
                 <div class="d-flex justify-content-between">
                     <div>
                         <p>{{ apartment.size }} sqm</p>
