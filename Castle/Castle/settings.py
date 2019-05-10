@@ -29,6 +29,8 @@ ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LfyraIUAAAAABPvVItctwl8nzTO0d0-Car59OhF'
 
+
+
 # Application definition
 
 INSTALLED_APPS = [

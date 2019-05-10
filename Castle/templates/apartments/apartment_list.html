@@ -8,7 +8,7 @@
                 <form>
                     <div class="row form-group">
                         <div class="col-8">
-                            <input autocomplete="off" type="text" class="form-control" id="search_address" placeholder="Name/address">
+                            <input value="{{ details.address }}" autocomplete="off" type="text" class="form-control" id="search_address" placeholder="Name/address">
                         </div>
                         <div class="col-2">
                             <select id="search_zip" class="form-control">
@@ -81,6 +81,13 @@
                 </select>
             </div>
         </div>
+    </div>
+
+    <div class="values" style="display:none">
+        <input id="min_price_django" type="text" value="{{ details.min_price }}">
+        <input id="max_price_django" type="text" value="{{ details.max_price }}">
+        <input id="min_size_django" type="text" value="{{ details.min_size }}">
+        <input id="max_size_django" type="text" value="{{ details.max_size }}">
     </div>
 
     {% include 'apartments/zip_codes.html' %}
