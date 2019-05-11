@@ -3,7 +3,8 @@
 
 {% block mainbody %}
 	<div class="row m-3">
-		<div class="col-6 red-background border-shadow">
+        <div class="col-6 pl-0 pr-2">
+            <div class="col-12 red-background border-shadow">
 			<div class="card border-shadow">
 				<div class="card-body">
 					<h5 class="card-title">Search engine</h5>
@@ -71,7 +72,9 @@
 				</div>
 			</div>
 		</div>
-        <div class="col-6 gray-background border-shadow">
+        </div>
+        <div class="col-6 pr-0 pl-2">
+            <div class="col-12 gray-background border-shadow">
             <div class="featured_apartments">
                 {% for apartment in featured %}
                     <div class="card border-shadow bg-custom text-white">
@@ -95,6 +98,9 @@
                 {% endfor %}
             </div>
         </div>
+        </div>
+
+
     </div>
 
     <div class="w-100 px-3 pb-3">
@@ -107,11 +113,14 @@
             <div class="container px-0 m-0">
                 <div class="newest_apartments">
                     {% for apartment in newest %}
-                        <div class="card new_apartment bg-custom border-shadow text-white" style="text-align:left">
-                            <a href="apartments/{{ apartment.id }}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="apartments/{{ apartment.id }}">{{ apartment.address }} {{ apartment.zip_code.id }}</a></h5>
-                                <p>{{ apartment.price }} ISK</p>
+                        <div class="card new_apartment bg-custom border-shadow text-white mr-3" style="text-align:left">
+                            <a href="apartments/{{ apartment.id }}">
+                                <img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic">
+                            </a>
+                            <div class="card-body single-apartment">
+                                <h5 class="card-title"><a href="apartments/{{ apartment.id }}">{{ apartment.address }}</a></h5>
+                                <h6 class="card-subtitle">{{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h6>
+                                <h6>{{ apartment.price | dotSeperator }} ISK</h6>
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <p>{{ apartment.size }} sqm</p>

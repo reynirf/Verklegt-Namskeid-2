@@ -33,7 +33,7 @@
         </div>
         <p>Size: {{ apartment.size }} sqm</p>
         <p>Rooms: {{ apartment.rooms }}</p>
-        <hr>
+        <hr class="bg-custom">
         <p>{{ apartment.description }}</p>
         <h6>Seller: <a href="{% url 'seller_info' apartment.seller.id %}">{{ apartment.seller.user.name }}</a></h6>
     </div>

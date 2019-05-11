@@ -391,17 +391,15 @@ $(document).ready(function(){
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		fade: true,
-		asNavFor: '.apartment_info_small'
+		// asNavFor: $('.apartment_info_small')
 	});
 	$('.apartment_info_small').slick({
-		slidesToShow: 4,
+		rows: 4,
+		slidesPerRow: 2,
 		slidesToScroll: 1,
-		vertical: true,
+		// vertical: true,
 		infinite: true,
-		asNavFor: '.apartment_info_main_pic',
-		focus_on_select: true
-		// dots: true,
-		// centerMode: true,
-		// focusOnSelect: true
+		asNavFor: $('.apartment_info_main_pic'),
+		focusOnSelect: true
 	});
 });

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d37e011-c968-4c7b-82a4-5ce1adbfb449" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/apartments/apartment_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/apartment_info.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/apartments/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/home.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,26 +86,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/apartments/single_apartment.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="18" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_info.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+            <state relative-caret-position="170">
+              <caret line="10" column="65" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/scripts/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="352" column="26" selection-start-line="352" selection-start-column="26" selection-end-line="352" selection-end-column="26" />
+            <state relative-caret-position="246">
+              <caret line="401" column="48" lean-forward="true" selection-start-line="401" selection-start-column="48" selection-end-line="401" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#h2#0;n#!!top" expanded="true" />
               </folding>
@@ -117,9 +116,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="86" column="77" lean-forward="true" selection-start-line="86" selection-start-column="77" selection-end-line="86" selection-end-column="77" />
+            <state relative-caret-position="187">
+              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
               <folding>
+                <element signature="e#124#3281#0#HTML" />
+                <element signature="e#1213#1257#0#HTML" expanded="true" />
+                <element signature="e#2190#2234#0#HTML" expanded="true" />
+                <element signature="e#3013#3038#0#HTML" expanded="true" />
+                <element signature="e#3338#4789#0#HTML" />
                 <element signature="e#4379#4402#0#HTML" expanded="true" />
               </folding>
             </state>
@@ -129,7 +133,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
+            <state relative-caret-position="901">
               <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
             </state>
           </provider>
@@ -166,17 +170,17 @@
         <option value="$PROJECT_DIR$/apartments/views.py" />
         <option value="$PROJECT_DIR$/apartments/urls.py" />
         <option value="$PROJECT_DIR$/sellers/urls.py" />
-        <option value="$PROJECT_DIR$/templates/apartments/apartment_info.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/apartments/home.html" />
         <option value="$PROJECT_DIR$/static/scripts/app.js" />
+        <option value="$PROJECT_DIR$/templates/apartments/apartment_info.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="667" />
+    <option name="x" value="553" />
     <option name="y" value="47" />
-    <option name="width" value="1254" />
+    <option name="width" value="1368" />
     <option name="height" value="980" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -299,12 +303,12 @@
       <workItem from="1556985805231" duration="51000" />
       <workItem from="1556997669060" duration="25000" />
       <workItem from="1557016948135" duration="90384000" />
-      <workItem from="1557438165817" duration="34026000" />
+      <workItem from="1557438165817" duration="39594000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149614000" />
+    <option name="totallyTimeSpent" value="155182000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -316,10 +320,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="534" y="38" width="1003" height="784" extended-state="0" />
+    <frame x="443" y="38" width="1094" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24126984" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24126984" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -333,7 +337,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32924962" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32924962" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50178254" side_tool="true" weight="0.27258804" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49821746" visible="true" weight="0.27258804" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49821746" visible="true" weight="0.27258804" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32924962" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32924962" />
       <window_info anchor="bottom" id="manage.py@Castle" order="14" weight="0.39356816" />
@@ -628,30 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/single_apartment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="86" column="77" lean-forward="true" selection-start-line="86" selection-start-column="77" selection-end-line="86" selection-end-column="77" />
-          <folding>
-            <element signature="e#4379#4402#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -659,20 +639,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_info.html">
+    <entry file="file://$PROJECT_DIR$/templates/apartments/single_apartment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+        <state relative-caret-position="170">
+          <caret line="10" column="65" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+          <folding>
+            <element signature="e#124#3281#0#HTML" />
+            <element signature="e#1213#1257#0#HTML" expanded="true" />
+            <element signature="e#2190#2234#0#HTML" expanded="true" />
+            <element signature="e#3013#3038#0#HTML" expanded="true" />
+            <element signature="e#3338#4789#0#HTML" />
+            <element signature="e#4379#4402#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="352" column="26" selection-start-line="352" selection-start-column="26" selection-end-line="352" selection-end-column="26" />
+        <state relative-caret-position="246">
+          <caret line="401" column="48" lean-forward="true" selection-start-line="401" selection-start-column="48" selection-end-line="401" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#h2#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
         </state>
       </provider>
     </entry>
