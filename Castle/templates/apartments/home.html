@@ -77,24 +77,7 @@
             <div class="col-12 gray-background border-shadow">
             <div class="featured_apartments">
                 {% for apartment in featured %}
-                    <div class="card border-shadow bg-custom text-white">
-                        <a href="{% url 'apartment_info' apartment.apartment.id %}">
-                            <img src="{{ apartment.apartment.main_pic }}" class="card-img-top" alt="apartment pic">
-                        </a>
-                        <div class="card-body single-apartment">
-                            <h5 class="card-title"><a href="{% url 'apartment_info' apartment.apartment.id %}">{{ apartment.apartment.address }}</a></h5>
-                            <h6 class="card-subtitle">{{ apartment.apartment.zip_code.id }} {{ apartment.apartment.zip_code.town }}</h6>
-                            <h6 class="card-text">{{ apartment.apartment.price | dotSeperator}} ISK</h6>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <p>{{ apartment.apartment.size }} sqm</p>
-                                </div>
-                                <div>
-                                    <p>Rooms: {{ apartment.apartment.rooms }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'apartments/single_apartment.html' with apartment=apartment.apartment %}
                 {% endfor %}
             </div>
         </div>
@@ -113,24 +96,7 @@
             <div class="container px-0 m-0">
                 <div class="newest_apartments">
                     {% for apartment in newest %}
-                        <div class="card new_apartment bg-custom border-shadow text-white mr-3" style="text-align:left">
-                            <a href="apartments/{{ apartment.id }}">
-                                <img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic">
-                            </a>
-                            <div class="card-body single-apartment">
-                                <h5 class="card-title"><a href="apartments/{{ apartment.id }}">{{ apartment.address }}</a></h5>
-                                <h6 class="card-subtitle">{{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h6>
-                                <h6>{{ apartment.price | dotSeperator }} ISK</h6>
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <p>{{ apartment.size }} sqm</p>
-                                    </div>
-                                    <div>
-                                        <p>Rooms: {{ apartment.rooms }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% include 'apartments/single_apartment.html' with apartment=apartment %}
                     {% endfor %}
                 </div>
             </div>

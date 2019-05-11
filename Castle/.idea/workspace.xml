@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d37e011-c968-4c7b-82a4-5ce1adbfb449" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/static/scripts/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/apartments/apartment_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/apartment_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/apartments/apartment_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/apartment_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/apartments/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/apartments/single_apartment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/single_apartment.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +72,18 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="98" column="86" lean-forward="true" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="86" />
+              <folding>
+                <element signature="e#2857#2901#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apartments/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -86,17 +98,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/apartments/single_apartment.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="65" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="65" />
+            <state relative-caret-position="289">
+              <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_info.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+            <state relative-caret-position="425">
+              <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -104,8 +116,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/scripts/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="401" column="48" lean-forward="true" selection-start-line="401" selection-start-column="48" selection-end-line="401" selection-end-column="48" />
+            <state relative-caret-position="614">
+              <caret line="398" column="26" lean-forward="true" selection-start-line="398" selection-start-column="26" selection-end-line="398" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#h2#0;n#!!top" expanded="true" />
               </folding>
@@ -113,18 +125,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+            <state relative-caret-position="34">
+              <caret line="117" column="94" selection-start-line="117" selection-start-column="94" selection-end-line="117" selection-end-column="94" />
               <folding>
                 <element signature="e#124#3281#0#HTML" />
                 <element signature="e#1213#1257#0#HTML" expanded="true" />
                 <element signature="e#2190#2234#0#HTML" expanded="true" />
                 <element signature="e#3013#3038#0#HTML" expanded="true" />
-                <element signature="e#3338#4789#0#HTML" />
-                <element signature="e#4379#4402#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,8 +143,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+            <state relative-caret-position="17">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -156,7 +166,6 @@
         <option value="$PROJECT_DIR$/templates/users/login_register.html" />
         <option value="$PROJECT_DIR$/templates/users/forgot_pass.html" />
         <option value="$PROJECT_DIR$/templates/apartments/zip_codes.html" />
-        <option value="$PROJECT_DIR$/templates/apartments/apartment_list.html" />
         <option value="$PROJECT_DIR$/templates/sellers/sellers_list.html" />
         <option value="$PROJECT_DIR$/sellers/views.py" />
         <option value="$PROJECT_DIR$/templates/sellers/single_seller.html" />
@@ -166,21 +175,22 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/276efa4f-d6e5-4942-94d6-07a1c36c56dd/console.sql" />
         <option value="276efa4f-d6e5-4942-94d6-07a1c36c56dd/database/rdmzryoe/schema/public/table/apartments_zipcode.sql" />
         <option value="$PROJECT_DIR$/apartments/models.py" />
-        <option value="$PROJECT_DIR$/templates/apartments/single_apartment.html" />
         <option value="$PROJECT_DIR$/apartments/views.py" />
         <option value="$PROJECT_DIR$/apartments/urls.py" />
         <option value="$PROJECT_DIR$/sellers/urls.py" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/apartments/home.html" />
         <option value="$PROJECT_DIR$/static/scripts/app.js" />
         <option value="$PROJECT_DIR$/templates/apartments/apartment_info.html" />
+        <option value="$PROJECT_DIR$/templates/apartments/apartment_list.html" />
+        <option value="$PROJECT_DIR$/templates/apartments/single_apartment.html" />
+        <option value="$PROJECT_DIR$/templates/apartments/home.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="553" />
+    <option name="x" value="120" />
     <option name="y" value="47" />
-    <option name="width" value="1368" />
+    <option name="width" value="1803" />
     <option name="height" value="980" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -303,12 +313,12 @@
       <workItem from="1556985805231" duration="51000" />
       <workItem from="1556997669060" duration="25000" />
       <workItem from="1557016948135" duration="90384000" />
-      <workItem from="1557438165817" duration="39594000" />
+      <workItem from="1557438165817" duration="42024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155182000" />
+    <option name="totallyTimeSpent" value="157612000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -320,10 +330,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="443" y="38" width="1094" height="784" extended-state="0" />
+    <frame x="96" y="38" width="1442" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24126984" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1683526" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -581,13 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="98" column="10" lean-forward="true" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sellers/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -639,32 +642,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/single_apartment.html">
+    <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="65" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="65" />
+        <state relative-caret-position="425">
+          <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
+    <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+        <state relative-caret-position="226">
+          <caret line="98" column="86" lean-forward="true" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="86" />
           <folding>
-            <element signature="e#124#3281#0#HTML" />
-            <element signature="e#1213#1257#0#HTML" expanded="true" />
-            <element signature="e#2190#2234#0#HTML" expanded="true" />
-            <element signature="e#3013#3038#0#HTML" expanded="true" />
-            <element signature="e#3338#4789#0#HTML" />
-            <element signature="e#4379#4402#0#HTML" expanded="true" />
+            <element signature="e#2857#2901#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="401" column="48" lean-forward="true" selection-start-line="401" selection-start-column="48" selection-end-line="401" selection-end-column="48" />
+        <state relative-caret-position="614">
+          <caret line="398" column="26" lean-forward="true" selection-start-line="398" selection-start-column="26" selection-end-line="398" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#h2#0;n#!!top" expanded="true" />
           </folding>
@@ -673,15 +671,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+        <state relative-caret-position="17">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/apartments/apartment_info.html">
+    <entry file="file://$PROJECT_DIR$/templates/apartments/single_apartment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+        <state relative-caret-position="289">
+          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/apartments/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="117" column="94" selection-start-line="117" selection-start-column="94" selection-end-line="117" selection-end-column="94" />
+          <folding>
+            <element signature="e#124#3281#0#HTML" />
+            <element signature="e#1213#1257#0#HTML" expanded="true" />
+            <element signature="e#2190#2234#0#HTML" expanded="true" />
+            <element signature="e#3013#3038#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
