@@ -31,11 +31,11 @@
                 <li class="nav-item sellers-nav" style="border-right: 1px solid rgba(255,255,255,.5);padding-right:0.8rem">
                     <a class="nav-link" href="{% url 'sellers_list' %}">Sellers</a>
                 </li>
-                {% if users.is_authenticated %}
+                {% if request.user.is_authenticated %}
                     <li class ="nav-item login-nav" style="padding-left: 0.8rem">
-                        <a class ="nav-link" href="{% url 'My Profile' %}"> My Profile </a></li>
+                        <a class ="nav-link" href="{% url 'profile' %}"> My Profile </a></li>
                     <li class ="nav-item login-nav">
-                        <a class="nav-link" href="{% url 'Logout' %}"> Logout </a></li>
+                        <a class="nav-link" href=""> Logout </a></li>
                 {% else %}
                     <li class ="nav-item login-nav" style="padding-left: 0.8rem">
                         <a class="nav-link" href="{% url 'login' %}"> Log in </a></li>

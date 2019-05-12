@@ -1,27 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django import forms
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-class User(models.Model):
-    username = models.CharField(max_length=25)
+class User_info(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    phone = models.IntegerField()
+    phone = models.IntegerField(null=True)
     email = models.CharField(max_length=100)
-    password = models.CharField(max_length=16)
     security_question = models.CharField(max_length=255)
     security_answer = models.CharField(max_length=255)
 
-class NewUserForm(forms.ModelForm):
-    username = forms.CharField(max_length=25)
-    name = forms.CharField(max_length=255)
-    phone = forms.IntegerField()
-    email = forms.CharField(max_length=100)
-    password = forms.CharField(max_length=16)
-    security_question = forms.CharField(max_length=255)
-    security_answer = forms.CharField(max_length=255)
-    class Meta:
-        model = User
-        fields = ('username', 'name', 'phone', 'email', 'password', 'security_question', 'security_answer',)
+@receiver(post_save, sender=User)
+def update_user_info(sender, instance, created, **kwargs):
+    if created:
+        User_info.objects.create(user=instance)
+    instance.user_info.save()
 
 class Buyer(models.Model):
     profile_pic = models.CharField(max_length=999, blank=True)
