@@ -285,3 +285,16 @@ body {
   padding-bottom: 6rem;
   min-height: 100%;
 }
+
+.modal-dialog, .modal-content {
+    height: 80%;
+}
+
+.modal-body {
+    max-height: calc(100% - 120px);
+    overflow-y: scroll;
+}
+
+.zip-option input[type="checkbox"] {
+    vertical-align: unset;
+}

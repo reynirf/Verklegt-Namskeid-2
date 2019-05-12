@@ -14,7 +14,7 @@ def home(request):
     return render(request, "apartments/home.html", context)
 
 def apartment_list(request):
-    apartments = Apartment.objects.select_related().all()
+    apartments = Apartment.objects.select_related().all().order_by('address')
     context = {'apartments': apartments.order_by('address')}
     search = dict()
     json = False
@@ -24,7 +24,8 @@ def apartment_list(request):
     search['max_price'] = 90000000
     search['min_size'] = 40
     search['max_size'] = 250
-    search['rooms'] = 'false'
+    search['rooms'] = 'Rooms'
+    search['zipcodes'] = ''
 
     if 'from_home' in request.GET:
         from_home = request.GET['from_home']
@@ -46,7 +47,7 @@ def apartment_list(request):
         search['min_price'] = price_min
         search['max_price'] = price_max
 
-    if 'min_size' in request.GET and 'max_size' in request.GET:
+    if 'min_size' in request.GET and 'ma_size' in request.GET:
         min_size = request.GET['min_size']
         max_size = request.GET['max_size']
         apartments = apartments.filter(size__gte=min_size)
@@ -57,25 +58,30 @@ def apartment_list(request):
 
     if 'rooms' in request.GET:
         amount_rooms = request.GET['rooms']
-        print(amount_rooms)
-        print(type(amount_rooms))
-        if amount_rooms == 'false':
+        if amount_rooms == 'Rooms':
             pass
         elif amount_rooms == '6':
-            print('e')
             apartments = apartments.filter(rooms__gte=6)
         elif amount_rooms.isdigit():
-            print('TEST')
             apartments = apartments.filter(rooms__exact=int(amount_rooms))
+        search['rooms'] = amount_rooms
+
+    if 'zipcodes' in request.GET:
+        zipcodes = request.GET['zipcodes']
+        print(zipcodes)
+        if zipcodes != '':
+            zipcodes_list = zipcodes.split(',')
+            zipcodes_list = list(map(int, zipcodes_list))
+            apartments = apartments.filter(zip_code__in=zipcodes_list)
+            search['zipcodes'] = zipcodes
+
 
     if json and home:
         return render(request, "apartments/apartment_list.html", {'apartments': apartments, 'details': search})
     elif json:
 
-        #apartments = serializers.serialize('json', apartments, use_natural_foreign_keys = True, use_natural_primary_keys = True)
-        #print(apartments)
-        return JsonResponse({'data': list(apartments.order_by('address').values())})
-        #return HttpResponse(apartments, content_type='application/json')
+        apartments = serializers.serialize('json', apartments, use_natural_foreign_keys = True, use_natural_primary_keys = True)
+        return HttpResponse(apartments, content_type='application/json')
 
 
     context = {'apartments': apartments.order_by('address'), 'details': search}

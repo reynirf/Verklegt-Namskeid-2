@@ -35,7 +35,7 @@ $(document).ready(function(){
 
 	$('.zip_option').on('click', (e) => {
 		zipCodes = $('.zip_option input:checked')
-		$('#howManyZips').text(zipCodes.length + ' zip code/s chosen')
+		$('#howManyZips').text(zipCodes.length + ' zip code/s')
 	})
 
 	// $('#price-range-submit').hide();
@@ -213,7 +213,7 @@ $(document).ready(function(){
 	$('a[id^="choose_all_"').on('click', (e) => {
 		$('.'+$(e.target).data('area')+ ' input').prop('checked', true);
 		zipCodes = $('.zip_option input:checked')
-		$('#howManyZips').text(zipCodes.length + ' zip code/s chosen')
+		$('#howManyZips').text(zipCodes.length + ' zip code/s')
 	})
 
 	//clear all checkboxes
@@ -232,38 +232,45 @@ $(document).ready(function(){
 		var minSize = $('#min_size').val()
 		var maxSize = $('#max_size').val()
 		var rooms = $('#search_rooms').val()
-		if(rooms == 'Rooms') {
-			rooms = false
-		} else if (rooms == '6+') {
+		if(rooms == '6+') {
 			rooms = '6'
 		}
+		var checked = $('.zip_option input:checked')
+		zipcodes = $.map(checked, (input) => {
+			return input.value
+		})
 		$.ajax({
-			url: '/apartments?search_filter=' + searchText + '&min_price=' + minPrice + '&max_price=' + maxPrice + '&min_size=' + minSize + '&max_size=' + maxSize + '&rooms=' + rooms,
+			url: '/apartments?search_filter=' + searchText + '&min_price=' + minPrice + '&max_price=' + maxPrice + '&min_size=' + minSize + '&max_size=' + maxSize + '&rooms=' + rooms + '&zipcodes=' + zipcodes.join(','),
 			type: 'GET',
 			success: function(res) {
-				console.log('res:', res)
+				res = res.map(item => {
+					item = item.fields
+					return item
+				})
+				res = {'data': res}
 				var newHTML = res.data.map(apartment => {
 					return `
-						<div data-address="${apartment.address}" data-price="${apartment.price}" class="col-md-4 col-lg-3 col-12 col-sm-6 single-apartment" style="padding:1rem">
-								<div class="gray-background border-shadow">
-								   <div class="card bg-custom border-shadow text-white" style="text-align:left">
-									   <a href="${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
-										<div class="card-body">
-											<h5 class="card-title"><a href="${ apartment.id }">${ apartment.address }</a></h5>
-               								 <h6 class="card-subtitle">${ apartment.zip_code.id } ${ apartment.zip_code.town }</h6>
-											<p>${ Number(apartment.price).dotSeperator() } ISK</p>
-											<div class="d-flex justify-content-between">
-												<div>
-													<p>${ apartment.size } sqm</p>
-												</div>
-												<div>
-													<p>Rooms: ${ apartment.rooms }</p>
-												</div>
+						<div data-address="${ apartment.address }" data-price="${ apartment.price }" class="col-md-4 col-lg-3 col-12 col-sm-6 single-apartment" style="padding:1rem">
+            				<div class="gray-background border-shadow">
+								<div class="card bg-custom border-shadow text-white">
+									<a href="${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
+									<div class="card-body single-apartment">
+										<h5 class="card-title"><a href="/${apartment.id}">${ apartment.address }</a></h5>
+										<h6 class="card-subtitle">${ apartment.zip_code.id || apartment.zip_code[1]} ${ apartment.zip_code.town || apartment.zip_code[0]}</h6>
+										<h6>${ Number(apartment.price).dotSeperator() } ISK</h6>
+										<div class="d-flex justify-content-between">
+											<div>
+												<p>${ apartment.size } sqm</p>
+											</div>
+											<div>
+												<p>Rooms: ${ apartment.rooms }</p>
 											</div>
 										</div>
 									</div>
 								</div>
-						</div>`
+							</div>
+						</div>
+					`
 				})
 				$('.apartments-list').html(newHTML.join(''))
 				$('#apartmentsFound').text('Apartments found: ' + newHTML.length)
@@ -273,7 +280,7 @@ $(document).ready(function(){
 				$("#order_by").val('a-z')
 			},
 			error: function(xhr, status, error) {
-				console.log(error)
+				console.error(xhr, status, error)
 			}
 		})
 	})
@@ -286,7 +293,15 @@ $(document).ready(function(){
 		var maxPrice = $("#max_price").val().numberize()
 		var minSize = $('#min_size').val()
 		var maxSize = $('#max_size').val()
-		window.location.href = '/apartments?from_home=True&search_filter=' + searchText + '&min_price=' + minPrice + '&max_price=' + maxPrice + '&min_size=' + minSize + '&max_size=' + maxSize
+		var rooms = $('#search_rooms').val()
+		if(rooms == '6+') {
+			rooms = '6'
+		}
+		var checked = $('.zip_option input:checked')
+		zipcodes = $.map(checked, (input) => {
+			return input.value
+		})
+		window.location.href = '/apartments?from_home=True&search_filter=' + searchText + '&min_price=' + minPrice + '&max_price=' + maxPrice + '&min_size=' + minSize + '&max_size=' + maxSize + '&rooms=' + rooms + '&zipcodes=' + zipcodes.join(',')
 
 	})
 
@@ -328,10 +343,10 @@ $(document).ready(function(){
 
 	$(function () {
 		if(window.location.pathname === '/apartments/') {
-			min_price_django = $('#min_price_django')
-			max_price_django = $('#max_price_django')
-			min_size_django = $('#min_size_django')
-			max_size_django = $('#max_size_django')
+			let min_price_django = $('#min_price_django')
+			let max_price_django = $('#max_price_django')
+			let min_size_django = $('#min_size_django')
+			let max_size_django = $('#max_size_django')
 			$('#min_price').val(Number(min_price_django.val().numberize()).dotSeperator())
 			$('#max_price').val(Number(max_price_django.val().numberize()).dotSeperator())
 			$('#min_size').val(Number(min_size_django.val().numberize()).dotSeperator())
@@ -339,9 +354,19 @@ $(document).ready(function(){
 			$("#slider-range").slider({
 				values: [min_price_django.val().numberize(), max_price_django.val().numberize()]
 			});
-			$("#size-range+").slider({
+			$("#size-range").slider({
 				values: [min_size_django.val().numberize(), max_size_django.val().numberize()]
 			});
+			$('#search_rooms').val($('#rooms_django').val())
+			let zipcodes = $('#zipcodes_django').val()
+			zipcodes = zipcodes.split(',')
+			var options = $('.zip_option input')
+			$.each(options, (key, input) => {
+				if (zipcodes.indexOf(input.value) > -1) {
+					input.checked = true
+				}
+			})
+			$('#howManyZips').text(zipcodes.length + ' zip code/s')
 		}
 	})
 	$('.featured_apartments').slick({
