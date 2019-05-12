@@ -7,7 +7,7 @@ class Seller(models.Model):
     address = models.CharField(max_length=255)
     zip_code = models.IntegerField()
     logo = models.CharField(max_length=999)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Sales(models.Model):
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)

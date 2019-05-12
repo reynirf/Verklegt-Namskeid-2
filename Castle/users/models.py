@@ -22,5 +22,5 @@ class Buyer(models.Model):
     credit_card = models.CharField(max_length=16, blank=True)
     cc_expires = models.CharField(max_length=5, blank=True)
     cc_cvc = models.IntegerField(blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
