@@ -35,7 +35,7 @@
                     <li class ="nav-item login-nav" style="padding-left: 0.8rem">
                         <a class ="nav-link" href="{% url 'profile' %}"> My Profile </a></li>
                     <li class ="nav-item login-nav">
-                        <a class="nav-link" href=""> Logout </a></li>
+                        <a class="nav-link" href="{% url 'logout' %}"> Logout </a></li>
                 {% else %}
                     <li class ="nav-item login-nav" style="padding-left: 0.8rem">
                         <a class="nav-link" href="{% url 'login' %}"> Log in </a></li>
