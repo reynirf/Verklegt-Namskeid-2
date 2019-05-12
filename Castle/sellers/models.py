@@ -3,10 +3,10 @@ from users.models import User
 from users.models import Buyer
 
 class Seller(models.Model):
-    description = models.CharField(max_length=999)
-    address = models.CharField(max_length=255)
-    zip_code = models.IntegerField()
-    logo = models.CharField(max_length=999)
+    description = models.CharField(max_length=999, null=True)
+    address = models.CharField(max_length=255, null=True)
+    zip_code = models.IntegerField(null=True)
+    logo = models.CharField(max_length=999, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Sales(models.Model):
