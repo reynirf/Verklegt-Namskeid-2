@@ -14,6 +14,7 @@ from .forms import NewUserForm
 
 import urllib
 import json
+import ssl
 
 from .models import User_info, Buyer
 from .forms import NewUserForm, Edit_buyer
@@ -35,7 +36,8 @@ def register(request):
             }
             data = urllib.parse.urlencode(values).encode('utf-8')
             req = urllib.request.Request(url, data)
-            response = urllib.request.urlopen(req)
+            sslcontext = ssl._create_unverified_context()
+            response = urllib.request.urlopen(req, context=sslcontext)
             result = json.load(response)
             ''' End reCAPTCHA validation '''
 
