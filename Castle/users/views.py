@@ -15,6 +15,8 @@ from .forms import NewUserForm
 import urllib
 import json
 
+from .models import User_info, Buyer
+from .forms import NewUserForm, Edit_buyer
 from django.contrib.auth import authenticate
 
 # Create your views here.
@@ -83,3 +85,17 @@ def profile(request):
                    'buyer': Buyer.objects.filter(user=request.user.id).first(),
                    'history': Search_history.objects.filter(user=request.user.id).order_by('-search_date')[:12]}
         return render(request, "users/buyer_profile.html", context)
+
+@login_required
+def edit_user(request):
+
+    if request.method == "POST":
+        form = Edit_buyer(request.POST, instance=request.user)
+        if form.is_valid():
+            print(form)
+            form.save()
+            return redirect('/users/profile')
+    else:
+        form = Edit_buyer(instance=request.user)
+        args = {'form': form}
+        return render(request, "users/edit_user.html", args)
