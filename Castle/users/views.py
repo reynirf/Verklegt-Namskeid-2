@@ -7,6 +7,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.db.models import Count
 
 
 from sellers.models import Seller
@@ -82,7 +83,7 @@ def profile(request):
         context = {'user': request.user,
                    'info': request.user.user_info,
                    'buyer': Buyer.objects.filter(user=request.user.id).first(),
-                   'history': Search_history.objects.filter(user=request.user.id).order_by('-search_date')[:12]}
+                   'history': Search_history.objects.filter(user=request.user.id).order_by('-search_date')}
         return render(request, "users/buyer_profile.html", context)
 
 @login_required
