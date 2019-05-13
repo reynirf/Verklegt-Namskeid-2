@@ -366,7 +366,9 @@ $(document).ready(function(){
 					input.checked = true
 				}
 			})
-			$('#howManyZips').text(zipcodes.length + ' zip code/s')
+			if (zipcodes.length > 0 && zipcodes[0] !== "") {
+				$('#howManyZips').text(zipcodes.length + ' zip code/s')
+			}
 		}
 	})
 	$('.featured_apartments').slick({
