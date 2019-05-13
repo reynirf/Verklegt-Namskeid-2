@@ -2,7 +2,20 @@
 
 {% block mainbody %}
 
-    <h1>Profile for buyer {{ user.username }}</h1>
-    <h5>Name: {{ info.name }}</h5>
+    <div class="m-3 red-background border-shadow">
+        <div class="card border-shadow bg-white">
+            <div class="card-body">
+                <div class="col-md-4 col-lg-4 col-12" style="float:left;text-align:center">
+                    <img class="profile-picture" style="width: 100%;" src="https://banner2.kisspng.com/20180325/wae/kisspng-business-google-account-organization-service-avatar-5ab752c6a54db0.2719189215219637186771.jpg">
+                </div>
+                <div class="profile-info col-md-8 col-lg-8 col-12" style="float:right;text-align:center">
+                    <h1>{{ info.name}}</h1>
+                    <h5>Phone: {{ info.phone }}</h5>
+                    <h5>E-mail: {{ info.email }}</h5>
+                    <button id="editButton" type="submit" class="btn green-button">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

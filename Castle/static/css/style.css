@@ -239,6 +239,18 @@ input[type="checkbox"]
         width:100%;
     }
 }
+@media screen and (max-width: 767px) {
+    .profile-picture {
+        max-width:50%;
+    }
+}
+@media screen and (min-width: 767px) {
+    .profile-info  {
+        text-align: left !important;
+    }
+}
+
+
 /*
 @media screen and (max-width: 750px) {
     .single-apartment {
