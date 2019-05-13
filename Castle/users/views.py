@@ -72,10 +72,7 @@ def create_user_info(sender, instance, created, **kwargs):
     instance.user_info.save()
 
 def forgot_pass(request):
-    return render(request, "users/forgot_pass.html")
-
-def register_success(request):
-    return render(request, "users/register_success.html")
+    return render(request, "users/reset_password.html")
 
 @login_required
 def profile(request):

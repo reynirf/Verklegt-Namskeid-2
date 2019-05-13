@@ -5,6 +5,7 @@
         <div class="col-sm-5 col-centered login-column red-background border-shadow">
             <div class="card border-shadow">
                 <div class="card-body">
+                    <h5 style="color:#5F1C1C; margin-bottom:2%;">Login</h5>
                     <form class="form" method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -18,12 +19,14 @@
 {#                    <label for="password" class="col-sm-12 control-label">Password</label>#}
 {#                    <div class="col-sm-9">#}
 {#                        <input name="password" type="password" class="form-control" autofocus>#}
-                        <a href="/users/forgot_pass">Forgot password</a>
+                        <a href="/users/password_reset">Forgot password?</a>
 {#                    </div>#}
 {#                </div>#}
-                <div class="form-group">
-                    <button style="margin-left:15px;margin-top:4%;"type="submit" class="btn green-button">Login</button>
-                </div>
+
+                        <div style="margin-top:0.4rem">
+                            <button type="submit" class="green-button">Login</button>
+                        </div>
+
                           {% if form.errors %}
                             {% for field in form %}
                                 {% for error in field.errors %}
