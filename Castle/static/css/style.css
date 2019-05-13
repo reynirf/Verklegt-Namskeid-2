@@ -45,6 +45,13 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
+.gray-button {
+    background: #d9d6d6;
+    color: #5E1D1D;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
 #slider-range, #size-range {
     width:100%;
     background: #5e1d1d;

@@ -11,4 +11,4 @@ class NewUserForm(UserCreationForm):
     security_answer = forms.CharField(max_length=255)
     class Meta:
         model = User
-        fields = ('username', 'name', 'phone', 'email', 'seller', 'password1', 'password2', 'security_question', 'security_answer',)
+        fields = ('username', 'name', 'phone', 'email', 'seller', 'password1', 'password2')
