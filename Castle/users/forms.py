@@ -19,7 +19,7 @@ class NewUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'name', 'phone', 'email', 'seller', 'password1', 'password2')
-        fields = ('username', 'name', 'phone', 'email', 'seller', 'password1', 'password2', 'security_question', 'security_answer',)
+
 class Edit_buyer(UserChangeForm):
 
     class Meta:
