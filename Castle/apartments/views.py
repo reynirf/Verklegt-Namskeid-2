@@ -105,7 +105,8 @@ def buy_contact(request, pk):
         contact = ContactInfoForm(data=request.POST)
         if contact.is_valid():
             return render(request, 'apartments/buy_payment.html', {
-                'apartment': get_object_or_404(Apartment, pk=pk)
+                'apartment': get_object_or_404(Apartment, pk=pk),
+                'form': PaymentInfoForm()
             })
     return render(request, 'apartments/buy_contact.html', {
         'apartment': get_object_or_404(Apartment, pk=pk),
