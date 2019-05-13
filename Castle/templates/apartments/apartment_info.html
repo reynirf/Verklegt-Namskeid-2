@@ -36,6 +36,9 @@
         <hr class="bg-custom">
         <p>{{ apartment.description }}</p>
         <h6>Seller: <a href="{% url 'seller_info' apartment.seller.id %}">{{ apartment.seller.user.name }}</a></h6>
+        <a href="{% url 'buy_contact' apartment.id %}">
+            <button type="button" class="btn green-button float-right" style="width: fit-content">Buy this apartment</button>
+        </a>
     </div>
 
 

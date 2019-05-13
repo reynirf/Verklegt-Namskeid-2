@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
+from apartments.forms import ContactInfoForm
 from users.models import Search_history
 from .models import Apartment, Apartment_featured, Zipcode
 from datetime import date
@@ -77,14 +79,12 @@ def apartment_list(request):
             apartments = apartments.filter(zip_code__in=zipcodes_list)
             search['zipcodes'] = zipcodes
 
-
     if json and home:
         return render(request, "apartments/apartment_list.html", {'apartments': apartments, 'details': search})
     elif json:
 
         apartments = serializers.serialize('json', apartments, use_natural_foreign_keys = True, use_natural_primary_keys = True)
         return HttpResponse(apartments, content_type='application/json')
-
 
     context = {'apartments': apartments.order_by('address'), 'details': search}
     return render(request, "apartments/apartment_list.html", context)
@@ -97,4 +97,31 @@ def apartment_info(request, pk):
             search.save()
     return render(request, 'apartments/apartment_info.html', {
         'apartment': apartment
+    })
+
+@login_required
+def buy_contact(request, pk):
+    if request.method == 'POST':
+        contact = ContactInfoForm(data=request.POST)
+        if contact.is_valid():
+            return render(request, 'apartments/buy_payment.html', {
+                'apartment': get_object_or_404(Apartment, pk=pk)
+            })
+    return render(request, 'apartments/buy_contact.html', {
+        'apartment': get_object_or_404(Apartment, pk=pk)
+    })
+
+@login_required
+def buy_payment(request, pk):
+    # if request.method == 'POST':
+    #     contact = ContactInfoForm(data=request.POST)
+    #     if contact.is_valid():
+    return render(request, 'apartments/buy_payment.html', {
+        'apartment': get_object_or_404(Apartment, pk=pk)
+    })
+
+@login_required
+def buy_review(request, pk):
+    return render(request, 'apartments/buy_review.html', {
+        'apartment': get_object_or_404(Apartment, pk=pk)
     })

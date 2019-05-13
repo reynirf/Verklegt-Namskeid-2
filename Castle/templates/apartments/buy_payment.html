@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block mainbody %}
+
+    <div class="m-3">
+        <div class="w-100 gray-background border-shadow">
+            <div class="card border-shadow">
+                <div class="card-body row">
+                    <div class="col-4"><button class="btn red-button w-100">Contact information</button></div>
+                    <div class="col-4"><button class="btn green-button w-100">Payment</button></div>
+                    <div class="col-4"><button class="btn gray-button w-100">Review</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-3">
+        <div class="w-100 red-background border-shadow mb-3">
+            <div class="card border-shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Add your payment information</h5>
+                    <p>add form here</p>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn red-button">Cancel</button>
+        <a href="{% url 'buy_review' apartment.id %}" class="float-right">
+            <button type="submit" class="btn green-button float-right">Continue</button>
+        </a>
+    </div>
+
+{% endblock %}
