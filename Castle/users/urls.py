@@ -1,6 +1,8 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import  path
 from . import views
+from django.conf import  settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("register", views.register, name="register"),
@@ -8,5 +10,7 @@ urlpatterns = [
     path("logout", LogoutView.as_view(next_page='homepage'), name="logout"),
     path("forgot_pass", views.forgot_pass, name="forgot_pass"),
     path("register_success", views.register_success, name="register_success"),
-    path("profile", views.profile, name="profile")
+    path("profile", views.profile, name="profile"),
+    path("edit_user", views.edit_user, name="edit_user")
+
 ]
