@@ -10,9 +10,9 @@
                         <img src="{{ seller.logo }}" class="img-thumbnail simple-border" alt="seller logo">
                     </div>
                     <div class="col-7">
-                        <h5>{{ seller.user.name }}</h5>
-                        <p>E-mail: {{ seller.user.email }}</p>
-                        <p>Phone: {{ seller.user.phone }}</p>
+                        <h5>{{ seller.user.user_info.name }}</h5>
+                        <p>E-mail: {{ seller.user.user_info.email }}</p>
+                        <p>Phone: {{ seller.user.user_info.phone }}</p>
                         <p>Address: {{ seller.address }}</p>
                     </div>
                 </div>

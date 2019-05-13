@@ -5,9 +5,9 @@
                 <img src="{{ seller.logo }}" class="img-thumbnail simple-border" style="width:100%" alt="seller logo">
             </div>
             <div class="col-4">
-                <h5><a href="{{ seller.id }}">{{ seller.user.name }}</a></h5>
-                <p>E-mail: {{ seller.user.email }}</p>
-                <p>Phone: {{ seller.user.phone }}</p>
+                <h5><a href="{{ seller.id }}">{{ seller.user.user_info.name }}</a></h5>
+                <p>E-mail: {{ seller.user.user_info.email }}</p>
+                <p>Phone: {{ seller.user.user_info.phone }}</p>
                 <p>Address: {{ seller.address }}</p>
             </div>
             <div class="col-5">
