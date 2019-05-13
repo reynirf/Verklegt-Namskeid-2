@@ -31,7 +31,7 @@ class Edit_buyer(UserChangeForm):
     def __init__(self, *args, **kwargs):
         super(Edit_buyer, self).__init__(*args, **kwargs)
 
-        for fieldname in ['name', 'phone', 'email']:
+        for fieldname in ['name', 'phone', 'email', 'password']:
             self.fields[fieldname].help_text = None
 
     def clean_email(self):
