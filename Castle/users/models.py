@@ -6,7 +6,7 @@ class User_info(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     phone: int = models.IntegerField(null=True)
-    email = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, unique=True)
     seller = models.BooleanField(default=False)
 
 class Buyer(models.Model):
