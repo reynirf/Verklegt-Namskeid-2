@@ -87,12 +87,11 @@ def profile(request):
 def edit_user(request):
 
     if request.method == "POST":
-        form = Edit_buyer(request.POST, instance=request.user)
+        form = Edit_buyer(request.POST, instance=request.user.user_info)
         if form.is_valid():
-            print(form)
             form.save()
             return redirect('/users/profile')
     else:
-        form = Edit_buyer(instance=request.user)
+        form = Edit_buyer(instance=request.user.user_info)
         args = {'form': form}
         return render(request, "users/edit_user.html", args)
