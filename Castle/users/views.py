@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 from sellers.models import Seller
-from .models import User_info, Buyer
+from .models import User_info, Buyer, Search_history
 from .forms import NewUserForm
 
 
@@ -87,5 +87,6 @@ def profile(request):
     else:
         context = {'user': request.user,
                    'info': request.user.user_info,
-                   'buyer': Buyer.objects.filter(user=request.user.id).first()}
+                   'buyer': Buyer.objects.filter(user=request.user.id).first(),
+                   'history': Search_history.objects.filter(user=request.user.id).order_by('-search_date')[:12]}
         return render(request, "users/buyer_profile.html", context)

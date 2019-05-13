@@ -38,11 +38,11 @@
                 <div class="col-2"><h4 class="next_arrow text-right">></h4></div>
             </div>
             <div class="search-history-container container px-0 m-0">
-                {#                <div class="newest_apartments">#}
-                {#                    {% for apartment in newest %}#}
-                {#                        {% include 'apartments/single_apartment.html' with apartment=apartment %}#}
-                {#                    {% endfor %}#}
-                {#                </div>#}
+                <div class="newest_apartments">
+                    {% for search in history %}
+                        {% include 'apartments/single_apartment.html' with apartment=search.apartment %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
