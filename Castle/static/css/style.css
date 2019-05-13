@@ -306,6 +306,6 @@ body {
 .zip-option input[type="checkbox"] {
     vertical-align: unset;
 }
-.new_aparts-container {
+.new_aparts-container, .search-history-container {
     margin:auto !important;
 }
