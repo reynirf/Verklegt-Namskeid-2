@@ -314,3 +314,14 @@ body {
 .new_aparts-container, .search-history-container {
     margin:auto !important;
 }
+
+.alert-danger {
+    margin-top:1rem
+}
+
+.errorlist {
+    display:none
+}
+.change_password ul {
+    display: none;
+}
