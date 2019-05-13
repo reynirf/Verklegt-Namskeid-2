@@ -21,14 +21,12 @@
                     <form class="form" method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
+                        <button type="submit" class="btn red-button">Cancel</button>
+                        <button type="submit" class="btn green-button float-right">Continue</button>
                     </form>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn red-button">Cancel</button>
-{#        <a href="{% url 'buy_payment' apartment.id %}" class="">#}
-        <button type="submit" class="btn green-button float-right">Continue</button>
-{#        </a>#}
     </div>
 
 {% endblock %}

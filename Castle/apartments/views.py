@@ -108,7 +108,8 @@ def buy_contact(request, pk):
                 'apartment': get_object_or_404(Apartment, pk=pk)
             })
     return render(request, 'apartments/buy_contact.html', {
-        'apartment': get_object_or_404(Apartment, pk=pk)
+        'apartment': get_object_or_404(Apartment, pk=pk),
+        'form': ContactInfoForm()
     })
 
 @login_required
