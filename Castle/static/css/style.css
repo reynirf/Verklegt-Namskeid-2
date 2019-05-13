@@ -58,7 +58,8 @@
     padding: 0.5rem;
 }
 .single-apartment p, .card-title, h6 {
-    margin-bottom: 0;
+    /*margin-bottom: 0;*/
+    margin-bottom:0.3rem;
 }
 .single-apartment .card-subtitle {
     margin-top: 0.25rem;
@@ -297,4 +298,7 @@ body {
 
 .zip-option input[type="checkbox"] {
     vertical-align: unset;
+}
+.new_aparts-container {
+    margin:auto !important;
 }
