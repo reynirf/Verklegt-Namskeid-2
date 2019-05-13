@@ -67,10 +67,7 @@ def register(request):
 def create_user_info(sender, instance, created, **kwargs):
     if created:
         User_info.objects.create(user=instance)
-    instance.user_info.save()
-
-def forgot_pass(request):
-    return render(request, "users/reset_password.html")
+        instance.user_info.save()
 
 @login_required
 def profile(request):
