@@ -1,5 +1,7 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+
+from users.models import Search_history
 from .models import Apartment, Apartment_featured, Zipcode
 from datetime import date
 from django.core import serializers
@@ -88,7 +90,11 @@ def apartment_list(request):
     return render(request, "apartments/apartment_list.html", context)
 
 def apartment_info(request, pk):
+    apartment = get_object_or_404(Apartment, pk=pk)
+    if request.user.is_authenticated:
+        if not request.user.user_info.seller:
+            search = Search_history(user=request.user, apartment=apartment)
+            search.save()
     return render(request, 'apartments/apartment_info.html', {
-        'apartment': get_object_or_404(Apartment, pk=pk)
+        'apartment': apartment
     })
-

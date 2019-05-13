@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class User_info(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
@@ -17,3 +18,7 @@ class Buyer(models.Model):
     cc_cvc = models.IntegerField(null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
+class Search_history(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    apartment = models.ForeignKey('apartments.Apartment', on_delete=models.CASCADE)
+    search_date = models.DateTimeField(auto_now=True)

@@ -2,8 +2,29 @@
 
 {% block mainbody %}
 
-    <h1>Profile for seller {{ user.username }}</h1>
-    <h5>Name: {{ info.name }}</h5>
-    <p>Description: {{ seller.description }}</p>
+    <div class="w-100 p-3">
+        <div class="w-100 gray-background border-shadow">
+            <div class="card white-background border-shadow">
+                <div class="card-body row p-0">
+                    <div class="col-4">
+                        <p>Address: {{ seller.address }}</p>
+                        <p>Phone: {{ info.phone }}</p>
+                        <p>E-mail: {{ info.email }}</p>
+                    </div>
+                    <div class="col-8">
+                        <h5>{{ info.name }}</h5>
+                        <p>Description:</p>
+                        <p>{{ seller.description }}</p>
+                        <button id="edit_seller" type="submit" class="btn green-button">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row w-100 p-3">
+        <div class="col-4"><button id="seller_apartments" type="submit" class="btn green-button w-100">See my apartments</button></div>
+        <div class="col-4"><button id="sale_stats" type="submit" class="btn green-button w-100">See sales statistics</button></div>
+        <div class="col-4"><button id="new_apartment" type="submit" class="btn green-button w-100">Add new apartment</button></div>
+    </div>
 
 {% endblock %}

@@ -2,7 +2,43 @@
 
 {% block mainbody %}
 
-    <h1>Profile for buyer {{ user.username }}</h1>
-    <h5>Name: {{ info.name }}</h5>
+    <div class="red-background border-shadow m-3">
+        <div class="card border-shadow">
+            <div class="card-body">
+                <h3 class="card-title">{{ user.username }}</h3>
+                <h5>Name: {{ info.name }}</h5>
+                <h5>Phone: {{ info.phone }}</h5>
+                <h5>E-mail: {{ info.email }}</h5>
+                <button id="edit_buyer" type="submit" class="btn green-button">Edit</button>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 px-3">
+        <div class="w-100 gray-background border-shadow">
+            <div class="card border-shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Creditcard: </h5>
+                    <button id="change_cc" type="submit" class="btn green-button">Change</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 p-3">
+        <div class="w-100 gray-background border-shadow">
+            <div class="row">
+                <div class="col-2"><h4 class="prev_arrow"><</h4></div>
+                <div class="col-8"><h5>Search history</h5></div>
+                <div class="col-2"><h4 class="next_arrow text-right">></h4></div>
+            </div>
+            <div class="container px-0 m-0">
+                {#                <div class="newest_apartments">#}
+                {#                    {% for apartment in newest %}#}
+                {#                        {% include 'apartments/single_apartment.html' with apartment=apartment %}#}
+                {#                    {% endfor %}#}
+                {#                </div>#}
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}
