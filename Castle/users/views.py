@@ -14,6 +14,7 @@ from .forms import NewUserForm
 
 import urllib
 import json
+import ssl
 
 from .models import User_info, Buyer
 from .forms import NewUserForm, Edit_buyer
@@ -35,26 +36,23 @@ def register(request):
             }
             data = urllib.parse.urlencode(values).encode('utf-8')
             req = urllib.request.Request(url, data)
-            response = urllib.request.urlopen(req)
+            sslcontext = ssl._create_unverified_context()
+            response = urllib.request.urlopen(req, context=sslcontext)
             result = json.load(response)
             ''' End reCAPTCHA validation '''
 
             if result['success']:
                 user = form.save()
-                print(form)
-                print('user created')
                 user.refresh_from_db()
                 user.user_info.email = form.cleaned_data.get('email')
                 user.user_info.name = form.cleaned_data.get('name')
                 user.user_info.phone = str(form.cleaned_data.get('phone'))
                 user.user_info.seller = form.cleaned_data.get('seller')
-                print(user.user_info.seller)
                 user.save()
                 if user.user_info.seller == True:
                     Seller.objects.create(user=user)
                 else:
                     Buyer.objects.create(user=user)
-                print('user info saved')
                 return redirect("login")
             else:
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
@@ -65,9 +63,11 @@ def register(request):
 
 @receiver(post_save, sender=User)
 def create_user_info(sender, instance, created, **kwargs):
+    print('instance:', instance)
+    print('created:', created)
     if created:
         User_info.objects.create(user=instance)
-        instance.user_info.save()
+    instance.user_info.save()
 
 @login_required
 def profile(request):

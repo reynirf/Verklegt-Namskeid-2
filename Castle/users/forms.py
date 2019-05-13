@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.db import models
 from .models import User_info
 
@@ -11,6 +12,12 @@ class NewUserForm(UserCreationForm):
 
         for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("A user has already registered an account with this email")
+        return email
 
     name = forms.CharField(max_length=255, required=True)
     phone = forms.IntegerField(required=True)
