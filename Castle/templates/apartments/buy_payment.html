@@ -18,14 +18,17 @@
             <div class="card border-shadow">
                 <div class="card-body">
                     <h5 class="card-title">Add your payment information</h5>
-                    <p>add form here</p>
+                    <form class="form" method="POST">
+                        {% csrf_token %}
+                        <table class="w-75 m-3">
+                            {{ form }}
+                        </table>
+                        <button type="submit" class="btn red-button">Cancel</button>
+                        <button type="submit" class="btn green-button float-right">Continue</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn red-button">Cancel</button>
-        <a href="{% url 'buy_review' apartment.id %}" class="float-right">
-            <button type="submit" class="btn green-button float-right">Continue</button>
-        </a>
     </div>
 
 {% endblock %}

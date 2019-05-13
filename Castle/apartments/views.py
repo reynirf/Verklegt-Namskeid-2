@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from apartments.forms import ContactInfoForm
+from apartments.forms import ContactInfoForm, PaymentInfoForm
 from users.models import Search_history
 from .models import Apartment, Apartment_featured, Zipcode
 from datetime import date
@@ -118,7 +118,8 @@ def buy_payment(request, pk):
     #     contact = ContactInfoForm(data=request.POST)
     #     if contact.is_valid():
     return render(request, 'apartments/buy_payment.html', {
-        'apartment': get_object_or_404(Apartment, pk=pk)
+        'apartment': get_object_or_404(Apartment, pk=pk),
+        'form': PaymentInfoForm()
     })
 
 @login_required
