@@ -58,7 +58,8 @@
     padding: 0.5rem;
 }
 .single-apartment p, .card-title, h6 {
-    margin-bottom: 0;
+    /*margin-bottom: 0;*/
+    margin-bottom:0.3rem;
 }
 .single-apartment .card-subtitle {
     margin-top: 0.25rem;
@@ -232,18 +233,25 @@ input[type="checkbox"]
     margin: 0.4rem;
 }
 
-/*
-@media screen and (max-width: 1350px) {
-    .single-apartment {
-        width:30%
+
+@media screen and (max-width: 1140px) {
+    .max_price, .min_price, .max_size, .min_size {
+        width:100%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .profile-picture {
+        max-width:50%;
+    }
+}
+@media screen and (min-width: 767px) {
+    .profile-info  {
+        text-align: left !important;
     }
 }
 
-@media screen and (max-width: 960px) {
-    .single-apartment {
-        width:43%
-    }
-}
+
+/*
 @media screen and (max-width: 750px) {
     .single-apartment {
         width:100%
@@ -297,4 +305,7 @@ body {
 
 .zip-option input[type="checkbox"] {
     vertical-align: unset;
+}
+.new_aparts-container {
+    margin:auto !important;
 }
