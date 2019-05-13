@@ -314,3 +314,7 @@ body {
 .new_aparts-container, .search-history-container {
     margin:auto !important;
 }
+
+.alert-danger {
+    margin-top:1rem
+}
