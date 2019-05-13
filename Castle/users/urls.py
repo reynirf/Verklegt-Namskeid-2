@@ -2,7 +2,7 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, 
 from django.urls import path
 from django.conf.urls import url
 from . import views
-from django.conf import  settings
+from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -19,3 +19,5 @@ urlpatterns = [
     url(r'^reset/done/$', PasswordResetCompleteView.as_view(template_name='users/reset_password_complete.html'), name='password_reset_complete'),
     url(r'^change-password/$', views.change_password, name="change_password"),
 ]
+#if settings.DEBUG:
+#    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

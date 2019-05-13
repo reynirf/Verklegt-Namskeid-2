@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.db.models import Count
+from django.core.files.storage import FileSystemStorage
 
 
 from sellers.models import Seller
@@ -113,3 +114,15 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
         args = {'form': form}
         return render(request, 'users/change_password.html', args)
+
+@login_required
+def upload_image(request):
+    context = {}
+    if request.method == "POST":
+        uploaded_file = request.FILES['document']
+        print(uploaded_file.name)
+        print(uploaded_file.size)
+        fs = FileSystemStorage()
+        name = fs.save(uploaded_file.name, uploaded_file)
+        context['url'] = fs.url(name)
+    return render(request, 'users/edit_user.html', context)

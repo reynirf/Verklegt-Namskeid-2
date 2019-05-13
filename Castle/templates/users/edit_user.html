@@ -13,6 +13,15 @@
     </form>
     <br>
 <a href = "/users/change-password"> <button> Change my password</button></a>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="document">
+    <button type="submit">Upload picture</button>
+</form>
+{% if url %}
+    <p>Uploaded file: <a href="{{ url }}">{{ url }}</a> </p>
+{% endif %}
 </div>
 
 {% endblock %}
