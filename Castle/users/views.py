@@ -26,7 +26,7 @@ def register(request):
         if form.is_valid():
             ''' Begin reCAPTCHA validation '''
             recaptcha_response = request.POST.get('g-recaptcha-response')
-            url = 'https://www.google.com/recaptcha/api/siteverify'
+            url = 'http://www.google.com/recaptcha/api/siteverify'
             values = {
                 'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
                 'response': recaptcha_response
@@ -47,8 +47,6 @@ def register(request):
                 user.user_info.phone = str(form.cleaned_data.get('phone'))
                 user.user_info.seller = form.cleaned_data.get('seller')
                 print(user.user_info.seller)
-                user.user_info.security_question = form.cleaned_data.get('security_question')
-                user.user_info.security_answer = form.cleaned_data.get('security_answer')
                 user.save()
                 if user.user_info.seller == True:
                     Seller.objects.create(user=user)
@@ -58,8 +56,6 @@ def register(request):
                 return redirect("login")
             else:
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-                print('test')
-                #return redirect("register")
         print(form.errors)
     return render(request, "users/register.html", {
         'form': form
