@@ -26,7 +26,7 @@ def register(request):
         if form.is_valid():
             ''' Begin reCAPTCHA validation '''
             recaptcha_response = request.POST.get('g-recaptcha-response')
-            url = 'http://www.google.com/recaptcha/api/siteverify'
+            url = 'https://www.google.com/recaptcha/api/siteverify'
             values = {
                 'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
                 'response': recaptcha_response
