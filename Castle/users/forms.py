@@ -28,8 +28,19 @@ class NewUserForm(UserCreationForm):
         fields = ('username', 'name', 'phone', 'email', 'seller', 'password1', 'password2')
 
 class Edit_buyer(UserChangeForm):
+    def __init__(self, *args, **kwargs):
+        super(Edit_buyer, self).__init__(*args, **kwargs)
+
+        for fieldname in ['name', 'phone', 'email']:
+            self.fields[fieldname].help_text = None
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("A user has already registered an account with this email")
+        return email
 
     class Meta:
-
         model = User_info
-        fields = ('name', 'email', 'phone', 'password')
+        fields = ('name', 'phone', 'email', 'password')
+
