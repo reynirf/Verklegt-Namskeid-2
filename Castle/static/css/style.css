@@ -233,18 +233,13 @@ input[type="checkbox"]
     margin: 0.4rem;
 }
 
-/*
-@media screen and (max-width: 1350px) {
-    .single-apartment {
-        width:30%
-    }
-}
 
-@media screen and (max-width: 960px) {
-    .single-apartment {
-        width:43%
+@media screen and (max-width: 1140px) {
+    .max_price, .min_price, .max_size, .min_size {
+        width:100%;
     }
 }
+/*
 @media screen and (max-width: 750px) {
     .single-apartment {
         width:100%
