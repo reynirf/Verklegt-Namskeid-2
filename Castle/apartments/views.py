@@ -7,6 +7,7 @@ from users.models import Search_history
 from .models import Apartment, Apartment_featured, Zipcode
 from datetime import date
 from django.core import serializers
+import datetime
 
 # Create your views here.
 def home(request):
@@ -93,8 +94,18 @@ def apartment_info(request, pk):
     apartment = get_object_or_404(Apartment, pk=pk)
     if request.user.is_authenticated:
         if not request.user.user_info.seller:
-            search = Search_history(user=request.user, apartment=apartment)
-            search.save()
+            try:
+                search_apt = Search_history.objects.get(apartment=pk, user=request.user.id)
+                print(search_apt.search_date)
+                search_apt.search_date = str(datetime.datetime.now())
+                search_apt.save()
+            except Search_history.DoesNotExist:
+                search = Search_history(user=request.user, apartment=apartment)
+                search.save()
+            except Search_history.MultipleObjectsReturned:
+                # what then?
+                pass
+
     return render(request, 'apartments/apartment_info.html', {
         'apartment': apartment
     })

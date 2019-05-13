@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib import messages
+from django.db.models import Count
 
 
 from sellers.models import Seller
@@ -80,7 +81,7 @@ def profile(request):
         context = {'user': request.user,
                    'info': request.user.user_info,
                    'buyer': Buyer.objects.filter(user=request.user.id).first(),
-                   'history': Search_history.objects.filter(user=request.user.id).order_by('-search_date')[:12]}
+                   'history': Search_history.objects.filter(user=request.user.id).order_by('-search_date')}
         return render(request, "users/buyer_profile.html", context)
 
 @login_required
