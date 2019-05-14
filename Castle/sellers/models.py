@@ -13,5 +13,5 @@ class Sales(models.Model):
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     apartment = models.ForeignKey('apartments.Apartment', on_delete=models.CASCADE)
     buyer = models.ForeignKey(Buyer, on_delete=models.DO_NOTHING)
-    date_sold = models.DateField()
+    date_sold = models.DateTimeField(auto_now=True)
     price = models.IntegerField()
