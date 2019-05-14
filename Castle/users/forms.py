@@ -63,6 +63,7 @@ class Edit_image(UserChangeForm):
         super(Edit_image, self).__init__(*args, **kwargs)
         for fieldname in ['profile_pic']:
             self.fields[fieldname].help_text = None
+            self.fields[fieldname].widget.attrs['placeholder'] = 'https://website.com/image.png'
 
     def clean_profile_pic(self):
         profile_pic = self.cleaned_data['profile_pic']
@@ -78,6 +79,28 @@ class Edit_image(UserChangeForm):
         model = Buyer
         fields = ('profile_pic',)
 
+class Edit_logo(UserChangeForm):
+    password = None
+    def __init__(self, *args, **kwargs):
+        super(Edit_logo, self).__init__(*args, **kwargs)
+        for fieldname in ['logo']:
+            self.fields[fieldname].help_text = None
+            self.fields[fieldname].widget.attrs['placeholder'] = 'https://website.com/image.png'
+
+    def clean_profile_pic(self):
+        logo = self.cleaned_data['logo']
+        if not self.validateImage(logo):
+            raise ValidationError("Image is not valid / URL is broken")
+        return logo
+
+    def validateImage(self, url):
+        req = requests.head(url)
+        return req.status_code == requests.codes.ok
+
+    class Meta:
+        model = Seller
+        fields = ('logo',)
+
 class add_apartment(UserCreationForm):
 
     name = forms.CharField(max_length=255, required=True)
@@ -88,6 +111,7 @@ class Edit_seller(UserChangeForm):
     #    super(Edit_buyer, self).__init__(*args, **kwargs)
     #    for fieldname in ['description', 'address', 'zip_code']:
     #        self.fields[fieldname].help_text = None
+
 
     #def clean_email(self):
     #    email = self.cleaned_data['email']

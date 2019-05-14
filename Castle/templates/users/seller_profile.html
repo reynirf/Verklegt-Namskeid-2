@@ -7,8 +7,8 @@
             <div class="card-body">
                 <div class="col-md-4 col-lg-4 col-12" id="editProfilePicture" style="float:left;text-align:center">
                     <div class="avatar-container">
-                        {% if user.buyer.profile_pic %}
-                           <img class="profile-picture" style="width: 100%;" alt="User avatar" src="{{ user.buyer.profile_pic }}">
+                        {% if user.seller.logo%}
+                           <img class="profile-picture" style="width: 100%;" alt="User avatar" src="{{ user.seller.logo}}">
                          <div class="middle">
                             <div class="text" onclick="window.location.href='/users/change_image'">Edit <i class="fas fa-pencil-alt"></i></div>
                         </div>

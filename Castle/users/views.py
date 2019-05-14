@@ -22,7 +22,7 @@ import json
 import ssl
 
 from .models import User_info, Buyer
-from .forms import NewUserForm, Edit_buyer, Edit_image, Edit_seller
+from .forms import NewUserForm, Edit_buyer, Edit_image, Edit_seller, Edit_logo
 from django.contrib.auth import authenticate
 
 # Create your views here.
@@ -127,15 +127,25 @@ def change_password(request):
 
 @login_required
 def change_image(request):
-    form = Edit_image(instance=request.user.buyer)
-    if request.method == "POST":
-        form = Edit_image(data=request.POST, instance=request.user.buyer)
-        if form.is_valid():
-            form.save()
-            #update_session_auth_hash(request, form.user)
-            return redirect('/users/profile')
-    args = {'form': form}
-    return render(request, 'users/change_image.html', args)
+    if request.user.user_info.seller:
+        form = Edit_logo(instance=request.user.seller)
+        if request.method == "POST":
+            form = Edit_logo(data=request.POST, instance=request.user.seller)
+            if form.is_valid():
+                form.save()
+                return redirect('/users/profile')
+        args = {'form': form}
+        return render(request, 'users/change_image.html', args)
+    else:
+        form = Edit_image(instance=request.user.buyer)
+        if request.method == "POST":
+            form = Edit_image(data=request.POST, instance=request.user.buyer)
+            if form.is_valid():
+                form.save()
+                #update_session_auth_hash(request, form.user)
+                return redirect('/users/profile')
+        args = {'form': form}
+        return render(request, 'users/change_image.html', args)
 #SELLER_REQUIRED?
 @login_required
 def add_apartment(request):

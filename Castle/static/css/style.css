@@ -399,6 +399,10 @@ body {
 .sub-container {
     height:100%;
 }
-input[name="profile_pic"] {
+input[name="profile_pic"], input[name='logo'] {
+    width:100%
+}
+
+#id_description{
     width:100%
 }
