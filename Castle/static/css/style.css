@@ -251,14 +251,25 @@ input[type="checkbox"]
         width:100%;
     }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 863px) {
     .profile-picture {
         max-width:50%;
     }
+    #editButton, #changePassword {
+        width:100%;
+    }
 }
-@media screen and (min-width: 767px) {
+@media screen and (max-width: 863px) and (min-width: 768px) {
+    .profile-info {
+        text-align: left !important;
+    }
+}
+@media screen and (min-width: 864px) {
     .profile-info  {
         text-align: left !important;
+    }
+    #editButton, #changePassword {
+        width:30%;
     }
 }
 

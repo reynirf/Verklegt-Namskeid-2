@@ -89,31 +89,26 @@ def profile(request):
 
 @login_required
 def edit_user(request):
-
+    form = Edit_buyer(instance=request.user.user_info)
     if request.method == "POST":
         form = Edit_buyer(request.POST, instance=request.user.user_info)
         if form.is_valid():
             form.save()
             return redirect('/users/profile')
-    else:
-        form = Edit_buyer(instance=request.user.user_info)
-        args = {'form': form}
-        return render(request, "users/edit_user.html", args)
+    args = {'form': form}
+    return render(request, "users/edit_user.html", args)
 
 @login_required
 def change_password(request):
+    form = PasswordChangeForm(user=request.user)
     if request.method == "POST":
         form = PasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
             return redirect('/users/profile')
-        else:
-            return redirect('/users/change-password')
-    else:
-        form = PasswordChangeForm(user=request.user)
-        args = {'form': form}
-        return render(request, 'users/change_password.html', args)
+    args = {'form': form}
+    return render(request, 'users/change_password.html', args)
 
 @login_required
 def upload_image(request):
