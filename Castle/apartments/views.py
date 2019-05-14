@@ -3,8 +3,9 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from apartments.forms import ContactInfoForm, PaymentInfoForm
+from sellers.models import Sales
 from users.models import Search_history
-from .models import Apartment, Apartment_featured, Zipcode
+from .models import Apartment, Apartment_featured, Zipcode, Apartment_images
 from datetime import date
 from django.core import serializers
 import datetime
@@ -13,13 +14,13 @@ import datetime
 def home(request):
     today = date.today()
     context = {
-        'newest': Apartment.objects.all().order_by('date_added')[:10],
+        'newest': Apartment.objects.filter(sold=False).order_by('date_added')[:12],
         'featured': Apartment_featured.objects.filter(start_date__lte=today, end_date__gte=today)
     }
     return render(request, "apartments/home.html", context)
 
 def apartment_list(request):
-    apartments = Apartment.objects.select_related().all().order_by('address')
+    apartments = Apartment.objects.select_related().all().filter(sold=False).order_by('address')
     context = {'apartments': apartments.order_by('address')}
     search = dict()
     json = False
@@ -137,6 +138,22 @@ def buy_payment(request, pk):
 @login_required
 def buy_review(request, pk):
     if request.method == 'POST':
+        # save sale to database
+        apartment = get_object_or_404(Apartment, pk=pk)
+        sale = Sales(
+            buyer=request.user.buyer,
+            apartment=apartment,
+            seller=apartment.seller,
+            price=apartment.price)
+        sale.save()
+        # change apartment status to sold
+        apartment.sold = True
+        apartment.save(update_fields=['sold'])
+        # remove extra images
+        Apartment_images.objects.filter(apartment=apartment).delete()
+        # remove from featured apartments and search history
+        Apartment_featured.objects.filter(apartment=apartment).delete()
+        Search_history.objects.filter(apartment=apartment).delete()
         return redirect('buy_success', pk)
     return render(request, 'apartments/buy_review.html', {
         'pk': pk,

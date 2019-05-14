@@ -16,6 +16,7 @@ class Apartment(models.Model):
     description = models.CharField(max_length=999)
     main_pic = models.CharField(max_length=999)
     date_added = models.DateField()
+    sold = models.BooleanField(default=False)
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
 
     def natural_key(self):

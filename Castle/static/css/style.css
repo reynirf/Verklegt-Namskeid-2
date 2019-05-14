@@ -399,3 +399,6 @@ body {
 .sub-container {
     height:100%;
 }
+input[name="profile_pic"] {
+    width:100%
+}
