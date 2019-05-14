@@ -18,8 +18,8 @@
                         <div class="col-4"><img class="w-100 simple-border" src="{{ apartment.main_pic }}" alt="apartment pic" /></div>
                         <div class="col-8">
                             <h5>{{ apartment.address }} {{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h5>
-                            <p>Size: {{ apartment.size }}</p>
-                            <p>Rooms: {{ apartment.rooms }}</p>
+                            <p><strong>Size:</strong> {{ apartment.size }}</p>
+                            <p><strong>Rooms:</strong> {{ apartment.rooms }}</p>
                             <h5 class="align-bottom">Price: {{ apartment.price | dotSeperator }} ISK</h5>
                         </div>
                     </div>

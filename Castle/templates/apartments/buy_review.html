@@ -33,25 +33,25 @@
                         <div class="col-4"><img class="w-100 simple-border" src="{{ apartment.main_pic }}" alt="apartment pic" /></div>
                         <div class="col-8">
                             <h5>{{ apartment.address }} {{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h5>
-                            <p>Size: {{ apartment.size }}</p>
-                            <p>Rooms: {{ apartment.rooms }}</p>
-                            <h5 class="align-bottom">Price: {{ apartment.price | dotSeperator }} ISK</h5>
+                            <p><strong>Size:</strong> {{ apartment.size }}</p>
+                            <p><strong>Rooms:</strong> {{ apartment.rooms }}</p>
+                            <h5 class="align-bottom"><strong>Price:</strong> {{ apartment.price | dotSeperator }} ISK</h5>
                         </div>
                     </div>
                     <hr class="bg-custom">
                     <div class="row">
                         <div class="col-sm-6 col-xs-12">
-                            <p>Name: {{ contact.name }}</p>
-                            <p>SSN: {{ contact.ssn }}</p>
-                            <p>Address: {{ contact.address }} {{ contact.zipcode }} {{ contact.city }}</p>
-                            <p>Country: {{ contact.country }}</p>
+                            <p><strong>Name:</strong> {{ contact.name }}</p>
+                            <p><strong>SSN:</strong> {{ contact.ssn }}</p>
+                            <p><strong>Address:</strong> {{ contact.address }} {{ contact.zipcode }} {{ contact.city }}</p>
+                            <p><strong>Country:</strong> {{ contact.country }}</p>
                             <br class="xs-only">
                         </div>
                         <div class="col-sm-6 col-xs-12">
-                            <p>Cardholder: {{ payment.cardholder }}</p>
-                            <p>Cardnumber: {{ payment.cardnumber }}</p>
-                            <p>Expires: {{ payment.expires }}</p>
-                            <p>CVC: {{ payment.cvc }}</p>
+                            <p><strong>Cardholder:</strong> {{ payment.cardholder }}</p>
+                            <p><strong>Cardnumber:</strong> {{ payment.cardnumber }}</p>
+                            <p><strong>Expires:</strong> {{ payment.expires }}</p>
+                            <p><strong>CVC:</strong> {{ payment.cvc }}</p>
                         </div>
                     </div>
                     <hr class="bg-custom">
