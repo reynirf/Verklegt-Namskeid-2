@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %}Edit my profile{% endblock %}
 {% block mainbody %}
 
     <div class="row m-3">
@@ -10,6 +10,9 @@
                     <form method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
+                        {% if form2 %}
+                            {{ form2.as_p }}
+                        {% endif %}
                           <div style="margin-top:0.4rem">
                             <button type="submit" class="green-button">Update</button>
                         </div>

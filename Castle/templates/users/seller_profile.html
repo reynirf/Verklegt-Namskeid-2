@@ -1,37 +1,54 @@
 {% extends 'base.html' %}
-
+{% block title %}My Profile{% endblock %}
 {% block mainbody %}
 
-    <div class="w-100 p-3">
-        <div class="w-100 gray-background border-shadow">
-            <div class="card white-background border-shadow">
-                <div class="card-body row p-0">
-                    <div class="col-4">
-                        <p>Address: {{ seller.address }}</p>
-                        <p>Phone: {{ info.phone }}</p>
-                        <p>E-mail: {{ info.email }}</p>
-                    </div>
-                    <div class="col-8">
-                        <h5>{{ info.name }}</h5>
-                        <p>Description:</p>
-                        <p>{{ seller.description }}</p>
-                        <a href="/users/edit_seller"><button id="edit_seller" type="submit" class="btn green-button">Edit</button></a>
-                        <a href="/users/change_password"><button id="changePassword" type="submit" class="btn green-button">Change password</button></a>
-
-                        <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <input type="file" name="document">
-                            <button type="submit">Upload picture</button>
-                        </form>
-                        {% if url %}
-                            <p>Uploaded file: <a href="{{ url }}">{{ url }}</a> </p>
+     <div class="m-3 red-background border-shadow">
+        <div class="card border-shadow bg-white">
+            <div class="card-body">
+                <div class="col-md-4 col-lg-4 col-12" id="editProfilePicture" style="float:left;text-align:center">
+                    <div class="avatar-container">
+                        {% if user.buyer.profile_pic %}
+                           <img class="profile-picture" style="width: 100%;" alt="User avatar" src="{{ user.buyer.profile_pic }}">
+                         <div class="middle">
+                            <div class="text" onclick="window.location.href='/users/change_image'">Edit <i class="fas fa-pencil-alt"></i></div>
+                        </div>
+                        {% else %}
+                           <img class="profile-picture" style="width: 100%;" src="/static/images/userimagenotfound.jpg">
+                         <div class="middle">
+                            <div class="text" onclick="window.location.href='/users/change_image'">Edit <i class="fas fa-pencil-alt"></i></div>
+                        </div>
                         {% endif %}
+                    </div>
+                </div>
+                <a class="profile-info col-md-8 col-lg-8 col-12" style="float:right;text-align:center">
+                    <h3>{{ user.username }}</h3>
+                    <h5>Name: {{ info.name}}</h5>
+                    <h5>Phone: {{ info.phone }}</h5>
+                    <h5>E-mail: {{ info.email }}</h5>
+                    {% if user.seller.address and user.seller.zip_code %}
+                        <h5>Address: {{ user.seller.address }}, {{ user.seller.zip_code }}</h5>
+                    {% elif user.seller.address %}
+                        <h5>Address: {{ user.seller.address }}</h5>
+                    {% else %}
+                        <h5>Address: not set</h5>
+                    {% endif %}
 
+                    {% if user.seller.description %}
+                        <p>{{ user.seller.description }}</p>
+                    {% endif %}
+                    <br>
+                    <div>
+                        <a href="/users/edit_user"><button id="editButton" type="submit" class="btn green-button">Edit profile</button></a>
+                    </div>
+                    <br>
+                    <div>
+                        <a href="/users/change_password"><button id="changePassword" type="submit" class="btn green-button">Change password</button></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="row w-100 p-3">
         <div class="col-4"><button id="seller_apartments" type="submit" class="btn green-button w-100">See my apartments</button></div>
         <div class="col-4"><button id="sale_stats" type="submit" class="btn green-button w-100">See sales statistics</button></div>
