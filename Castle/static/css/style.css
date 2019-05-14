@@ -66,14 +66,14 @@
 #order_by {
     width: 8rem;
 }
-.single-apartment {
+.single-apartment-card {
     padding: 0.5rem;
 }
-.single-apartment p, .card-title, h6 {
+.single-apartment-card p, .card-title, h6 {
     /*margin-bottom: 0;*/
     margin-bottom:0.3rem;
 }
-.single-apartment .card-subtitle {
+.single-apartment-card .card-subtitle {
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
 }
@@ -273,19 +273,6 @@ input[type="checkbox"]
     }
 }
 
-
-/*
-@media screen and (max-width: 750px) {
-    .single-apartment {
-        width:100%
-    }
-}
-.single-apartment {
-    width:23%;
-    margin-bottom: 1rem;
-    margin-right: 1rem;
-}
-*/
 .apartments-list {
     margin:0;
 }

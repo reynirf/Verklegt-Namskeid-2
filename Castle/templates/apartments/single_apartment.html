@@ -2,7 +2,7 @@
 
 <div class="card bg-custom border-shadow text-white">
     <a href="{% url 'apartment_info' apartment.id %}"><img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic"></a>
-    <div class="card-body single-apartment">
+    <div class="card-body single-apartment-card">
         <h5 class="card-title"><a href="{% url 'apartment_info' apartment.id %}">{{ apartment.address }}</a></h5>
         <h6 class="card-subtitle">{{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h6>
         <h6>{{ apartment.price | dotSeperator }} ISK</h6>
