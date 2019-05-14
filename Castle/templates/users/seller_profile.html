@@ -22,11 +22,11 @@
                 </div>
                 <a class="profile-info col-md-8 col-lg-8 col-12" style="float:right;text-align:center">
                     <h3>{{ user.username }}</h3>
-                    <h5>Name: {{ info.name}}</h5>
-                    <h5>Phone: {{ info.phone }}</h5>
-                    <h5>E-mail: {{ info.email }}</h5>
+                    <h5>Name: <span style="font-weight:normal">{{ info.name }}</span></h5>
+                    <h5>Phone: <span style="font-weight:normal">{{ info.phone }}</span></h5>
+                    <h5>E-mail: <span style="font-weight:normal">{{ info.email }}</span></h5>
                     {% if user.seller.address and user.seller.zip_code %}
-                        <h5>Address: {{ user.seller.address }}, {{ user.seller.zip_code }}</h5>
+                        <h5>Address: <span style="font-weight:normal">{{ user.seller.address }}, {{ user.seller.zip_code }}</span></h5>
                     {% elif user.seller.address %}
                         <h5>Address: {{ user.seller.address }}</h5>
                     {% else %}
@@ -34,6 +34,7 @@
                     {% endif %}
 
                     {% if user.seller.description %}
+                        <hr class="bg-custom">
                         <p>{{ user.seller.description }}</p>
                     {% endif %}
                     <br>

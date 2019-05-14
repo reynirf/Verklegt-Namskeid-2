@@ -3,7 +3,7 @@ from users.models import User
 from users.models import Buyer
 
 class Seller(models.Model):
-    description = models.TextField(max_length=1500, null=True)
+    description = models.TextField(max_length=1000, null=True)
     address = models.CharField(max_length=255, null=True)
     zip_code = models.IntegerField(null=True)
     logo = models.CharField(max_length=999, null=True)
