@@ -113,30 +113,45 @@ def apartment_info(request, pk):
 
 @login_required
 def buy_contact(request, pk):
+    if request.user.user_info.seller:
+        return redirect('homepage')
     if request.method == 'POST':
         contact = ContactInfoForm(data=request.POST)
         if contact.is_valid():
             request.session['contact'] = contact.cleaned_data
             return redirect('buy_payment', pk)
+    try:
+        form = ContactInfoForm(data=request.session['contact'])
+    except KeyError:
+        form = ContactInfoForm()
     return render(request, 'apartments/buy_contact.html', {
         'pk': pk,
-        'form': ContactInfoForm()
+        'form': form
     })
 
 @login_required
 def buy_payment(request, pk):
+    if request.user.user_info.seller:
+        return redirect('homepage')
     if request.method == 'POST':
         payment = PaymentInfoForm(data=request.POST)
         if payment.is_valid():
             request.session['payment'] = payment.cleaned_data
             return redirect('buy_review', pk)
+    print(request.session['payment'])
+    try:
+        form = PaymentInfoForm(data=request.session['payment'])
+    except KeyError:
+        form = PaymentInfoForm()
     return render(request, 'apartments/buy_payment.html', {
         'pk': pk,
-        'form': PaymentInfoForm()
+        'form': PaymentInfoForm(data=request.session['payment'])
     })
 
 @login_required
 def buy_review(request, pk):
+    if request.user.user_info.seller:
+        return redirect('homepage')
     if request.method == 'POST':
         # save sale to database
         apartment = get_object_or_404(Apartment, pk=pk)
@@ -155,6 +170,15 @@ def buy_review(request, pk):
         Apartment_featured.objects.filter(apartment=apartment).delete()
         Search_history.objects.filter(apartment=apartment).delete()
         return redirect('buy_success', pk)
+    try:
+        contact = request.session['contact']
+    except KeyError:
+        return redirect('homepage')
+    try:
+        payment = request.session['payment']
+    except KeyError:
+        return redirect('homepage')
+
     return render(request, 'apartments/buy_review.html', {
         'pk': pk,
         'apartment': get_object_or_404(Apartment, pk=pk),
@@ -164,6 +188,8 @@ def buy_review(request, pk):
 
 @login_required
 def buy_success(request, pk):
+    if request.user.user_info.seller:
+        return redirect('homepage')
     return render(request, 'apartments/buy_success.html', {
         'apartment': get_object_or_404(Apartment, pk=pk)
     })

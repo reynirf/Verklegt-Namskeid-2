@@ -50,7 +50,7 @@
                         <div class="col-sm-6 col-xs-12">
                             <p><strong>Cardholder:</strong> {{ payment.cardholder }}</p>
                             <p><strong>Cardnumber:</strong> {{ payment.cardnumber }}</p>
-                            <p><strong>Expires:</strong> {{ payment.expires }}</p>
+                            <p><strong>Expires:</strong> {{ payment.expires_month }} / {{ payment.expires_year }}</p>
                             <p><strong>CVC:</strong> {{ payment.cvc }}</p>
                         </div>
                     </div>
@@ -65,8 +65,6 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn red-button">Cancel</button>
-        <button type="submit" class="btn green-button float-right" style="width: fit-content">Buy this apartment</button>
     </div>
 
 {% endblock %}
