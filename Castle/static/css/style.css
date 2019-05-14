@@ -358,3 +358,31 @@ body {
 .avatar-container:hover .middle {
     opacity: 1;
 }
+
+.featured_apartments .slick-list {
+    height: 100%;
+}
+
+.featured_apartments .slick-track {
+    height: 100%;
+}
+
+.featured_apartments .single-apartment-card {
+    position: absolute;
+    bottom:0;
+    width:100%;
+    background: rgba(94,29,29,0.5)
+}
+
+@media screen and (min-width:1140px) and (max-width: 1300px) {
+    .featured_apartments .slick-list .slick-track .card {
+        background:rgba(94,29,29,0.4);
+    }
+}
+
+.search-engine-container {
+    height: 100%;
+}
+.sub-container {
+    height:100%;
+}

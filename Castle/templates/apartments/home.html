@@ -4,8 +4,8 @@
 {% block mainbody %}
 	<div class="row m-3">
         <div class="col-md-6 col-lg-6 col-12 pl-0 pr-2">
-            <div class="col-12 red-background border-shadow">
-			<div class="card border-shadow">
+            <div class="col-12 sub-container red-background border-shadow">
+			<div class="card search-engine-container border-shadow">
 				<div class="card-body">
 					<h5 class="card-title">Search engine</h5>
 					<form>
@@ -74,8 +74,8 @@
 		</div>
         </div>
         <div class="col-md-6 col-lg-6 col-12 col-sm-12 pl-0 pr-2">
-            <div class="col-12 gray-background border-shadow" style="height: 99%;">
-            <div class="featured_apartments">
+            <div class="col-12 gray-background border-shadow" style="height: 100%;">
+            <div class="featured_apartments" style="height:100%">
                 {% for apartment in featured %}
                     {% include 'apartments/single_apartment.html' with apartment=apartment.apartment %}
                 {% endfor %}
