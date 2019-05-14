@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block mainbody %}
+
+    <div class="row m-3">
+        <div class="col-sm-5 col-centered login-column red-background border-shadow">
+            <div class="card border-shadow">
+                <div class="card-body">
+                    <h5 style="color:#5F1C1C; margin-bottom:2%;">Edit profile</h5>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                          <div style="margin-top:0.4rem">
+                            <button type="submit" class="green-button">Update</button>
+                        </div>
+                    </form>
+
+                     {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">
+                                    {{ error|escape }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ error|escape }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
