@@ -9,6 +9,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.db.models import Count
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseRedirect
+from .forms import UploadFileForm
 
 
 from sellers.models import Seller
@@ -112,12 +114,18 @@ def change_password(request):
 
 @login_required
 def upload_image(request):
-    context = {}
+    #context = {}
     if request.method == "POST":
-        uploaded_file = request.FILES['document']
-        print(uploaded_file.name)
-        print(uploaded_file.size)
-        fs = FileSystemStorage()
-        name = fs.save(uploaded_file.name, uploaded_file)
-        context['url'] = fs.url(name)
-    return render(request, 'users/edit_user.html', context)
+        #uploaded_file = request.FILES['document']
+        #fs = FileSystemStorage()
+        #name = fs.save(uploaded_file.name, uploaded_file)
+        #context['url'] = fs.url(name)
+        form = Buyer(request.POST, request.FILES)
+        if form.is_valid():
+            instance = Buyer(file_field=request.FILES['file'])
+            instance.save()
+            return HttpResponseRedirect('/users/profile')
+    else:
+        form = Buyer()
+    return render(request, 'edit_user.html', {'form': form})
+    #return render(request, 'users/edit_user.html', context)

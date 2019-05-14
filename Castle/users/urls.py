@@ -11,6 +11,7 @@ urlpatterns = [
     path("logout", LogoutView.as_view(next_page='homepage'), name="logout"),
     path("profile", views.profile, name="profile"),
     path("edit_user", views.edit_user, name="edit_user"),
+    path("edit_seller", views.edit_user, name="edit_seller"),
 
     url(r'^password_reset/$', PasswordResetView.as_view(template_name='users/reset_password.html'), name='password_reset'),
     url(r'^password_reset/done/$', PasswordResetDoneView.as_view(template_name='users/reset_password_done.html'), name='password_reset_done'),

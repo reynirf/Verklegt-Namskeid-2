@@ -53,3 +53,6 @@ class Edit_buyer(UserChangeForm):
         model = User_info
         fields = ('name', 'phone', 'email')
 
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
