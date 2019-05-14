@@ -1,4 +1,4 @@
-<div class="w-100 gray-background border-shadow">
+<div class="w-100 gray-background border-shadow" style="margin:0rem 0rem 1rem 0rem">
     <div class="card white-background border-shadow">
         <div class="card-body row p-0">
             <div class="col-3">
@@ -13,6 +13,7 @@
                 <p><strong>E-mail:</strong> {{ seller.user.user_info.email }}</p>
                 <p><strong>Phone:</strong> {{ seller.user.user_info.phone }}</p>
                 <p><strong>Address:</strong> {{ seller.address }}</p>
+                <a href="mailto:{{ seller.user.user_info.email }}"<button class="btn green-button">Contact</button></a>
             </div>
             {% if seller.description %}
                 <div class="col-5">
