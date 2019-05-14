@@ -122,3 +122,12 @@ def change_image(request):
             return redirect('/users/profile')
     args = {'form': form}
     return render(request, 'users/change_image.html', args)
+#SELLER_REQUIRED?
+@login_required
+def add_apartment(request):
+    form = add_apartment()
+    if request.method == 'POST':
+        form = add_apartment(data=request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, "users/buyer_profile.html")

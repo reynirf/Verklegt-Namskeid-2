@@ -74,3 +74,7 @@ class Edit_image(UserChangeForm):
     class Meta:
         model = Buyer
         fields = ('profile_pic',)
+
+class add_apartment(UserCreationForm):
+
+    name = forms.CharField(max_length=255, required=True)
