@@ -19,6 +19,10 @@
     background-color: white;
     padding: 1rem;
 }
+.green-background {
+    background-color: #257E29;
+    padding: 1rem;
+}
 .red-background {
     background-color: #5E1D1D;
     padding: 1rem;
@@ -331,4 +335,14 @@ body {
 }
 .change_password ul {
     display: none;
+}
+
+.xs-only {
+    display: block;
+}
+
+@media screen and (min-width: 576px) {
+    .xs-only {
+        display: none;
+    }
 }

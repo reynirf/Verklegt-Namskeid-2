@@ -23,7 +23,9 @@
                         <table class="w-75 m-3">
                             {{ form }}
                         </table>
-                        <button type="submit" class="btn red-button">Cancel</button>
+                        <a href="{% url 'homepage' %}">
+                        <button type="button" class="btn red-button">Cancel</button>
+                        </a>
                         <button type="submit" class="btn green-button float-right">Continue</button>
                     </form>
                 </div>

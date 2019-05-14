@@ -6,7 +6,11 @@
         <div class="w-100 gray-background border-shadow">
             <div class="card border-shadow">
                 <div class="card-body row">
-                    <div class="col-4"><button class="btn red-button w-100">Contact information</button></div>
+                    <div class="col-4">
+                        <a href="{% url 'buy_contact' pk %}">
+                            <button class="btn red-button w-100">Contact information</button>
+                        </a>
+                    </div>
                     <div class="col-4"><button class="btn green-button w-100">Payment</button></div>
                     <div class="col-4"><button class="btn gray-button w-100">Review</button></div>
                 </div>
@@ -23,7 +27,9 @@
                         <table class="w-75 m-3">
                             {{ form }}
                         </table>
-                        <button type="submit" class="btn red-button">Cancel</button>
+                        <a href="{% url 'homepage' %}">
+                        <button type="button" class="btn red-button">Cancel</button>
+                        </a>
                         <button type="submit" class="btn green-button float-right">Continue</button>
                     </form>
                 </div>

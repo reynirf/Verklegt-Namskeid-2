@@ -104,27 +104,38 @@ def buy_contact(request, pk):
     if request.method == 'POST':
         contact = ContactInfoForm(data=request.POST)
         if contact.is_valid():
-            return render(request, 'apartments/buy_payment.html', {
-                'apartment': get_object_or_404(Apartment, pk=pk),
-                'form': PaymentInfoForm()
-            })
+            request.session['contact'] = contact.cleaned_data
+            return redirect('buy_payment', pk)
     return render(request, 'apartments/buy_contact.html', {
-        'apartment': get_object_or_404(Apartment, pk=pk),
+        'pk': pk,
         'form': ContactInfoForm()
     })
 
 @login_required
 def buy_payment(request, pk):
-    # if request.method == 'POST':
-    #     contact = ContactInfoForm(data=request.POST)
-    #     if contact.is_valid():
+    if request.method == 'POST':
+        payment = PaymentInfoForm(data=request.POST)
+        if payment.is_valid():
+            request.session['payment'] = payment.cleaned_data
+            return redirect('buy_review', pk)
     return render(request, 'apartments/buy_payment.html', {
-        'apartment': get_object_or_404(Apartment, pk=pk),
+        'pk': pk,
         'form': PaymentInfoForm()
     })
 
 @login_required
 def buy_review(request, pk):
+    if request.method == 'POST':
+        return redirect('buy_success', pk)
     return render(request, 'apartments/buy_review.html', {
+        'pk': pk,
+        'apartment': get_object_or_404(Apartment, pk=pk),
+        'contact': request.session['contact'],
+        'payment': request.session['payment']
+    })
+
+@login_required
+def buy_success(request, pk):
+    return render(request, 'apartments/buy_success.html', {
         'apartment': get_object_or_404(Apartment, pk=pk)
     })
