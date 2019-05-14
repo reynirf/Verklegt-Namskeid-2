@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block mainbody %}
+
+    <div class="row m-3">
+        <div class="col-sm-10 col-centered login-column red-background border-shadow">
+            <div class="card border-shadow">
+                <div class="card-body">
+                    <h5 style="color:#5F1C1C; margin-bottom:2%;">Register new user</h5>
+                    <form class="form" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                        <div style="margin:0.5rem 0rem" class="g-recaptcha" data-sitekey="6LfyraIUAAAAAA1tDGYMKxPIa1ksf3xiPN5IHoHP"></div>
+
+                        <button type="submit" class="green-button">Register</button>
+
+                        {% if messages %} {# For Google Captcha #}
+                            {% for message in messages %}
+                                <div class="alert alert-danger">
+                                    {{ message|safe }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ error|escape }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {{ error|escape }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </form> <!-- /form -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

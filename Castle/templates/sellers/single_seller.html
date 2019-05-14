@@ -1,19 +1,26 @@
-<div class="w-100 gray-background border-shadow">
+<div class="w-100 gray-background border-shadow" style="margin:0rem 0rem 1rem 0rem">
     <div class="card white-background border-shadow">
         <div class="card-body row p-0">
             <div class="col-3">
-                <img src="{{ seller.logo }}" class="img-thumbnail simple-border" style="width:100%" alt="seller logo">
+                {% if seller.logo %}
+                    <img src="{{ seller.logo }}" class="img-thumbnail simple-border" style="width:100%" alt="seller logo">
+                {% else %}
+                    <img src="/static/images/userimagenotfound.jpg" class="img-thumbnail simple-border" style="width:100%" alt="seller logo">
+                {% endif %}
             </div>
             <div class="col-4">
                 <h5><a href="{{ seller.id }}">{{ seller.user.user_info.name }}</a></h5>
-                <p>E-mail: {{ seller.user.user_info.email }}</p>
-                <p>Phone: {{ seller.user.user_info.phone }}</p>
-                <p>Address: {{ seller.address }}</p>
+                <p><strong>E-mail:</strong> {{ seller.user.user_info.email }}</p>
+                <p><strong>Phone:</strong> {{ seller.user.user_info.phone }}</p>
+                <p><strong>Address:</strong> {{ seller.address }}</p>
+                <a href="mailto:{{ seller.user.user_info.email }}"<button class="btn green-button">Contact</button></a>
             </div>
-            <div class="col-5">
-                <p>Description:</p>
-                <p>{{ seller.description }}</p>
-            </div>
+            {% if seller.description %}
+                <div class="col-5">
+                    <p><strong>Description:</strong></p>
+                    <p>{{ seller.description }}</p>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
