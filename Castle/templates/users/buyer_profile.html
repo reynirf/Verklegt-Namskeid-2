@@ -26,6 +26,15 @@
         </div>
     </div>
 
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="document">
+        <button type="submit">Upload picture</button>
+    </form>
+    {% if url %}
+        <p>Uploaded file: <a href="{{ url }}">{{ url }}</a> </p>
+    {% endif %}
+
     <div class="w-100 p-3">
         <div class="w-100 gray-background border-shadow">
              <div class="row" style="margin:auto !important">
