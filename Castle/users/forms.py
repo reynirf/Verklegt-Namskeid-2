@@ -2,9 +2,11 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from .models import Buyer, User_info
+from sellers.models import Seller
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 import requests
+
 
 class NewUserForm(UserCreationForm):
 
@@ -32,27 +34,28 @@ class Edit_buyer(UserChangeForm):
     password = None
     def __init__(self, *args, **kwargs):
         super(Edit_buyer, self).__init__(*args, **kwargs)
-        for fieldname in ['name', 'phone', 'email']:
+        for fieldname in ['name', 'phone']:
             self.fields[fieldname].help_text = None
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if User.objects.filter(email=email).exists():
-            raise ValidationError("A user has already registered an account with this email")
-        if not self.validateEmail(email):
-            raise ValidationError("Email is not valid")
-        return email
-
-    def validateEmail(self, email):
-        try:
-            validate_email(email)
-            return True
-        except ValidationError:
-            return False
+    # def clean_email(self):
+    #     email = self.cleaned_data['email']
+    #     print(User.objects.filter(email=email).exists())
+    #     if User.objects.filter(email=email).exists():
+    #         raise ValidationError("A user has already registered an account with this email")
+    #     if not self.validateEmail(email):
+    #         raise ValidationError("Email is not valid")
+    #     return email
+    #
+    # def validateEmail(self, email):
+    #     try:
+    #         validate_email(email)
+    #         return True
+    #     except ValidationError:
+    #         return False
 
     class Meta:
         model = User_info
-        fields = ('name', 'phone', 'email')
+        fields = ('name', 'phone')
 
 class Edit_image(UserChangeForm):
     password = None
@@ -74,3 +77,29 @@ class Edit_image(UserChangeForm):
     class Meta:
         model = Buyer
         fields = ('profile_pic',)
+
+class Edit_seller(UserChangeForm):
+    password = None
+    #def __init__(self, *args, **kwargs):
+    #    super(Edit_buyer, self).__init__(*args, **kwargs)
+    #    for fieldname in ['description', 'address', 'zip_code']:
+    #        self.fields[fieldname].help_text = None
+
+    #def clean_email(self):
+    #    email = self.cleaned_data['email']
+    #    if User.objects.filter(email=email).exists():
+    #        raise ValidationError("A user has already registered an account with this email")
+    #    if not self.validateEmail(email):
+    #        raise ValidationError("Email is not valid")
+    #    return email
+
+    #def validateEmail(self, email):
+    #    try:
+    #        validate_email(email)
+    #        return True
+    #    except ValidationError:
+    #        return False
+
+    class Meta:
+        model = Seller
+        fields = ('description', 'address', 'zip_code')
