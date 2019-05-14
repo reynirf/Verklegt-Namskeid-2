@@ -11,10 +11,8 @@ class User_info(models.Model):
 
 class Buyer(models.Model):
     profile_pic = models.CharField(max_length=999, null=True)
-    credit_card = models.CharField(max_length=16, null=True)
-    cc_expires = models.CharField(max_length=5, null=True)
-    cc_cvc = models.IntegerField(null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='profile_pic', blank=True)  # kannski sleppa blank? skoða seinna
 
 class Search_history(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

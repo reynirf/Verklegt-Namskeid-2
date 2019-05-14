@@ -254,7 +254,7 @@ $(document).ready(function(){
             				<div class="gray-background border-shadow">
 								<div class="card bg-custom border-shadow text-white">
 									<a href="${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
-									<div class="card-body single-apartment">
+									<div class="card-body single-apartment-card">
 										<h5 class="card-title"><a href="/${apartment.id}">${ apartment.address }</a></h5>
 										<h6 class="card-subtitle">${ apartment.zip_code.id || apartment.zip_code[1]} ${ apartment.zip_code.town || apartment.zip_code[0]}</h6>
 										<h6>${ Number(apartment.price).dotSeperator() } ISK</h6>
@@ -429,4 +429,13 @@ $(document).ready(function(){
 		asNavFor: $('.apartment_info_main_pic'),
 		focusOnSelect: true
 	});
+
+
+	$('#uploadImage').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget)
+	  var currentImg = button.data('current_img')
+
+	  var modal = $(this)
+	  modal.find('.modal-body input').val(currentImg)
+	})
 });

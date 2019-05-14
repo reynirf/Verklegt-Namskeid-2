@@ -15,7 +15,18 @@
                         <h5>{{ info.name }}</h5>
                         <p>Description:</p>
                         <p>{{ seller.description }}</p>
-                        <button id="edit_seller" type="submit" class="btn green-button">Edit</button>
+                        <a href="/users/edit_seller"><button id="edit_seller" type="submit" class="btn green-button">Edit</button></a>
+                        <a href="/users/change_password"><button id="changePassword" type="submit" class="btn green-button">Change password</button></a>
+
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="file" name="document">
+                            <button type="submit">Upload picture</button>
+                        </form>
+                        {% if url %}
+                            <p>Uploaded file: <a href="{{ url }}">{{ url }}</a> </p>
+                        {% endif %}
+
                     </div>
                 </div>
             </div>

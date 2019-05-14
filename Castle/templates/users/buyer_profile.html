@@ -5,26 +5,34 @@
     <div class="m-3 red-background border-shadow">
         <div class="card border-shadow bg-white">
             <div class="card-body">
-                <div class="col-md-4 col-lg-4 col-12" style="float:left;text-align:center">
-                    <img class="profile-picture" style="width: 100%;" src="https://banner2.kisspng.com/20180325/wae/kisspng-business-google-account-organization-service-avatar-5ab752c6a54db0.2719189215219637186771.jpg">
+                <div class="col-md-4 col-lg-4 col-12" id="editProfilePicture" style="float:left;text-align:center">
+                    <div class="avatar-container">
+                        {% if user.buyer.profile_pic %}
+                           <img class="profile-picture" style="width: 100%;" alt="User avatar" src="{{ user.buyer.profile_pic }}">
+                         <div class="middle">
+                            <div class="text" onclick="window.location.href='/users/change_image'">Edit <i class="fas fa-pencil-alt"></i></div>
+                        </div>
+                        {% else %}
+                           <img class="profile-picture" style="width: 100%;" src="/static/images/userimagenotfound.jpg">
+                         <div class="middle">
+                            <div class="text" onclick="window.location.href='/users/change_image'">Edit <i class="fas fa-pencil-alt"></i></div>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
                 <a class="profile-info col-md-8 col-lg-8 col-12" style="float:right;text-align:center">
                     <h3>{{ user.username }}</h3>
                     <h5>Name: {{ info.name}}</h5>
                     <h5>Phone: {{ info.phone }}</h5>
                     <h5>E-mail: {{ info.email }}</h5>
-                    <a href="/users/edit_user"><button id="editButton" type="submit" class="btn green-button">Edit</button></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="w-100 px-3">
-        <div class="w-100 gray-background border-shadow">
-            <div class="card border-shadow">
-                <div class="card-body">
-                    <h5 class="card-title">Creditcard: </h5>
-                    <button id="change_cc" type="submit" class="btn green-button">Change</button>
+                    <br>
+                    <div>
+                        <a href="/users/edit_user"><button id="editButton" type="submit" class="btn green-button">Edit profile</button></a>
+                    </div>
+                    <br>
+                    <div>
+                        <a href="/users/change_password"><button id="changePassword" type="submit" class="btn green-button">Change password</button></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,5 +54,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

@@ -70,14 +70,14 @@
 #order_by {
     width: 8rem;
 }
-.single-apartment {
+.single-apartment-card {
     padding: 0.5rem;
 }
-.single-apartment p, .card-title, h6 {
+.single-apartment-card p, .card-title, h6 {
     /*margin-bottom: 0;*/
     margin-bottom:0.3rem;
 }
-.single-apartment .card-subtitle {
+.single-apartment-card .card-subtitle {
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
 }
@@ -255,30 +255,28 @@ input[type="checkbox"]
         width:100%;
     }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 863px) {
     .profile-picture {
         max-width:50%;
     }
+    #editButton, #changePassword {
+        width:100%;
+    }
 }
-@media screen and (min-width: 767px) {
-    .profile-info  {
+@media screen and (max-width: 863px) and (min-width: 768px) {
+    .profile-info {
         text-align: left !important;
     }
 }
-
-
-/*
-@media screen and (max-width: 750px) {
-    .single-apartment {
-        width:100%
+@media screen and (min-width: 864px) {
+    .profile-info  {
+        text-align: left !important;
+    }
+    #editButton, #changePassword {
+        width:30%;
     }
 }
-.single-apartment {
-    width:23%;
-    margin-bottom: 1rem;
-    margin-right: 1rem;
-}
-*/
+
 .apartments-list {
     margin:0;
 }
@@ -336,7 +334,6 @@ body {
 .change_password ul {
     display: none;
 }
-
 .xs-only {
     display: block;
 }
@@ -345,4 +342,60 @@ body {
     .xs-only {
         display: none;
     }
+}
+.profile-picture {
+    border:solid 1px #5e1d1d;
+    border-radius:100%
+}
+
+.middle {
+    bottom: 50%;
+    opacity: 0;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 0.4rem 0rem;
+    cursor: pointer;
+    border-radius: 10%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 6rem;
+}
+
+.avatar-container:hover .profile-picture {
+    opacity: 0.4;
+    filter:brightness(0.6)
+}
+.avatar-container:hover .middle {
+    opacity: 1;
+}
+
+.featured_apartments .slick-list {
+    height: 100%;
+}
+
+.featured_apartments .slick-track {
+    height: 100%;
+}
+
+.featured_apartments .single-apartment-card {
+    position: absolute;
+    bottom:0;
+    width:100%;
+    background: rgba(94,29,29,0.5)
+}
+
+@media screen and (min-width:1140px) and (max-width: 1300px) {
+    .featured_apartments .slick-list .slick-track .card {
+        background:rgba(94,29,29,0.4);
+    }
+}
+
+.search-engine-container {
+    height: 100%;
+}
+.sub-container {
+    height:100%;
 }

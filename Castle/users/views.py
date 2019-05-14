@@ -5,6 +5,11 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.db.models import Count
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseRedirect
 
 
 from sellers.models import Seller
@@ -17,7 +22,7 @@ import json
 import ssl
 
 from .models import User_info, Buyer
-from .forms import NewUserForm, Edit_buyer
+from .forms import NewUserForm, Edit_buyer, Edit_image
 from django.contrib.auth import authenticate
 
 # Create your views here.
@@ -80,18 +85,40 @@ def profile(request):
         context = {'user': request.user,
                    'info': request.user.user_info,
                    'buyer': Buyer.objects.filter(user=request.user.id).first(),
-                   'history': Search_history.objects.filter(user=request.user.id).order_by('-search_date')[:12]}
+                   'history': Search_history.objects.filter(user=request.user.id).order_by('-search_date')}
         return render(request, "users/buyer_profile.html", context)
 
 @login_required
 def edit_user(request):
-
+    form = Edit_buyer(instance=request.user.user_info)
     if request.method == "POST":
         form = Edit_buyer(request.POST, instance=request.user.user_info)
         if form.is_valid():
             form.save()
             return redirect('/users/profile')
-    else:
-        form = Edit_buyer(instance=request.user.user_info)
-        args = {'form': form}
-        return render(request, "users/edit_user.html", args)
+    args = {'form': form}
+    return render(request, "users/edit_user.html", args)
+
+@login_required
+def change_password(request):
+    form = PasswordChangeForm(user=request.user)
+    if request.method == "POST":
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('/users/profile')
+    args = {'form': form}
+    return render(request, 'users/change_password.html', args)
+
+@login_required
+def change_image(request):
+    form = Edit_image(instance=request.user.buyer)
+    if request.method == "POST":
+        form = Edit_image(data=request.POST, instance=request.user.buyer)
+        if form.is_valid():
+            form.save()
+            #update_session_auth_hash(request, form.user)
+            return redirect('/users/profile')
+    args = {'form': form}
+    return render(request, 'users/change_image.html', args)
