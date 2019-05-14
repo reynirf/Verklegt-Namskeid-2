@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load pipes %}
+
+{% block mainbody %}
+
+    <div class="m-3">
+        <div class="w-100 green-background border-shadow text-white">
+            <h3>Congratulations, you have bought an apartment!</h3>
+        </div>
+    </div>
+    <div class="m-3">
+        <div class="w-100 gray-background border-shadow mb-3">
+            <div class="card border-shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Your new apartment</h5>
+                    <br>
+                    <div class="row">
+                        <div class="col-4"><img class="w-100 simple-border" src="{{ apartment.main_pic }}" alt="apartment pic" /></div>
+                        <div class="col-8">
+                            <h5>{{ apartment.address }} {{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h5>
+                            <p>Size: {{ apartment.size }}</p>
+                            <p>Rooms: {{ apartment.rooms }}</p>
+                            <h5 class="align-bottom">Price: {{ apartment.price | dotSeperator }} ISK</h5>
+                        </div>
+                    </div>
+                    <a href="{% url 'homepage' %}">
+                        <button type="submit" class="btn red-button float-right" style="width: fit-content;">Back to homepage</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

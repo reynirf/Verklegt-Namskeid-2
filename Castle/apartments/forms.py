@@ -11,5 +11,5 @@ class ContactInfoForm(forms.Form):
 class PaymentInfoForm(forms.Form):
     cardholder = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}), required=True)
     cardnumber = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}), required=True)
-    expires = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}), required=True)
-    cvc = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'number'}), required=True)
+    expires = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control w-25', 'type': 'number'}), required=True)
+    cvc = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control w-25', 'type': 'number'}), required=True)

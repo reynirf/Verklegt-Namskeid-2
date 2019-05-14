@@ -7,12 +7,12 @@
     <div class="m-3">
         <div class="gray-background border-shadow w-100">
             <div class="row">
-                <div class="col-4 apartment_info_small">
+                <digv class="col-4 apartment_info_small">
                     <img class="w-50 d-inline" src="{{ apartment.main_pic }}" alt="apartment pic">
                     {% for img in apartment.apartment_images_set.values %}
                         <img class="w-50" src="{{ img.image }}" alt="apartment pic">
                     {% endfor %}
-                </div>
+                </digv>
                 <div class="col-8 apartment_info_main_pic">
                     <img src="{{ apartment.main_pic }}" alt="apartment pic">
                     {% for img in apartment.apartment_images_set.values %}

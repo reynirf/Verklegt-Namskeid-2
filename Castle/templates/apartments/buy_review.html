@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 {% block title %}Review{% endblock %}
+{% load pipes %}
+
 {% block mainbody %}
 
     <div class="m-3">
         <div class="w-100 gray-background border-shadow">
             <div class="card border-shadow">
                 <div class="card-body row">
-                    <div class="col-4"><button class="btn red-button w-100">Contact information</button></div>
-                    <div class="col-4"><button class="btn red-button w-100">Payment</button></div>
+                    <div class="col-4">
+                        <a href="{% url 'buy_contact' pk %}">
+                            <button class="btn red-button w-100">Contact information</button>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="{% url 'buy_payment' pk %}">
+                            <button class="btn red-button w-100">Payment</button>
+                        </a>
+                    </div>
                     <div class="col-4"><button class="btn green-button w-100">Review</button></div>
                 </div>
             </div>
@@ -17,8 +27,41 @@
         <div class="w-100 red-background border-shadow mb-3">
             <div class="card border-shadow">
                 <div class="card-body">
-                    <h5 class="card-title">Review information</h5>
-                    <p>add info here</p>
+                    <h5 class="card-title">Make sure all the information is correct</h5>
+                    <br>
+                    <div class="row">
+                        <div class="col-4"><img class="w-100 simple-border" src="{{ apartment.main_pic }}" alt="apartment pic" /></div>
+                        <div class="col-8">
+                            <h5>{{ apartment.address }} {{ apartment.zip_code.id }} {{ apartment.zip_code.town }}</h5>
+                            <p>Size: {{ apartment.size }}</p>
+                            <p>Rooms: {{ apartment.rooms }}</p>
+                            <h5 class="align-bottom">Price: {{ apartment.price | dotSeperator }} ISK</h5>
+                        </div>
+                    </div>
+                    <hr class="bg-custom">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <p>Name: {{ contact.name }}</p>
+                            <p>SSN: {{ contact.ssn }}</p>
+                            <p>Address: {{ contact.address }} {{ contact.zipcode }} {{ contact.city }}</p>
+                            <p>Country: {{ contact.country }}</p>
+                            <br class="xs-only">
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <p>Cardholder: {{ payment.cardholder }}</p>
+                            <p>Cardnumber: {{ payment.cardnumber }}</p>
+                            <p>Expires: {{ payment.expires }}</p>
+                            <p>CVC: {{ payment.cvc }}</p>
+                        </div>
+                    </div>
+                    <hr class="bg-custom">
+                    <a href="{% url 'homepage' %}">
+                        <button type="button" class="btn red-button">Cancel</button>
+                    </a>
+                    <form method="POST" class="float-right">
+                        {% csrf_token %}
+                        <button type="submit" class="btn green-button" style="width: fit-content">Buy this apartment</button>
+                    </form>
                 </div>
             </div>
         </div>
