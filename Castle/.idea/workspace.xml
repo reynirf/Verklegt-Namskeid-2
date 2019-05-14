@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d37e011-c968-4c7b-82a4-5ce1adbfb449" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/apartments/buy_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/buy_review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/apartments/buy_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apartments/buy_success.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/sellers/seller_info.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,14 +100,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/apartments/buy_success.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="204">
               <caret line="21" column="80" lean-forward="true" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
               <folding>
                 <element signature="e#1274#1301#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/sellers/seller_info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -174,7 +181,6 @@
         <option value="$PROJECT_DIR$/templates/sellers/sellers_list.html" />
         <option value="$PROJECT_DIR$/sellers/views.py" />
         <option value="$PROJECT_DIR$/templates/sellers/single_seller.html" />
-        <option value="$PROJECT_DIR$/templates/sellers/seller_info.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/276efa4f-d6e5-4942-94d6-07a1c36c56dd/console.sql" />
         <option value="276efa4f-d6e5-4942-94d6-07a1c36c56dd/database/rdmzryoe/schema/public/table/apartments_zipcode.sql" />
         <option value="$PROJECT_DIR$/sellers/urls.py" />
@@ -205,6 +211,7 @@
         <option value="$PROJECT_DIR$/apartments/views.py" />
         <option value="$PROJECT_DIR$/templates/apartments/buy_review.html" />
         <option value="$PROJECT_DIR$/templates/apartments/buy_success.html" />
+        <option value="$PROJECT_DIR$/templates/sellers/seller_info.html" />
       </list>
     </option>
   </component>
@@ -360,7 +367,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="254129000" />
+    <option name="totallyTimeSpent" value="254321000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -450,13 +457,6 @@
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sellers/seller_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -828,11 +828,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/apartments/buy_success.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="204">
           <caret line="21" column="80" lean-forward="true" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
           <folding>
             <element signature="e#1274#1301#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sellers/seller_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
         </state>
       </provider>
     </entry>
