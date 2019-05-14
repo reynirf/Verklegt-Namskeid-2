@@ -406,3 +406,10 @@ input[name="profile_pic"], input[name='logo'] {
 #id_description{
     width:100%
 }
+
+.seller_title {
+    color:#5e1d1d;
+}
+.seller_title:hover {
+    color:rgba(94,29,29,0.7)
+}

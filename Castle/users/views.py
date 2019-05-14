@@ -146,6 +146,7 @@ def change_image(request):
                 return redirect('/users/profile')
         args = {'form': form}
         return render(request, 'users/change_image.html', args)
+
 #SELLER_REQUIRED?
 @login_required
 def add_apartment(request):
