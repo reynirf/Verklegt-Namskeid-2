@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
-from .models import User_info
+from .models import Buyer, User_info
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+import requests
 
 class NewUserForm(UserCreationForm):
 
@@ -53,6 +54,23 @@ class Edit_buyer(UserChangeForm):
         model = User_info
         fields = ('name', 'phone', 'email')
 
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()
+class Edit_image(UserChangeForm):
+    password = None
+    def __init__(self, *args, **kwargs):
+        super(Edit_image, self).__init__(*args, **kwargs)
+        for fieldname in ['profile_pic']:
+            self.fields[fieldname].help_text = None
+
+    def clean_profile_pic(self):
+        profile_pic = self.cleaned_data['profile_pic']
+        if not self.validateImage(profile_pic):
+            raise ValidationError("Image is not valid / URL is broken")
+        return profile_pic
+
+    def validateImage(self, url):
+        req = requests.head(url)
+        return req.status_code == requests.codes.ok
+
+    class Meta:
+        model = Buyer
+        fields = ('profile_pic',)

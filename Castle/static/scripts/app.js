@@ -429,4 +429,13 @@ $(document).ready(function(){
 		asNavFor: $('.apartment_info_main_pic'),
 		focusOnSelect: true
 	});
+
+
+	$('#uploadImage').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget)
+	  var currentImg = button.data('current_img')
+
+	  var modal = $(this)
+	  modal.find('.modal-body input').val(currentImg)
+	})
 });

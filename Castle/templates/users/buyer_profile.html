@@ -7,10 +7,17 @@
             <div class="card-body">
                 <div class="col-md-4 col-lg-4 col-12" id="editProfilePicture" style="float:left;text-align:center">
                     <div class="avatar-container">
-                        <img class="profile-picture" style="width: 100%;" src="https://banner2.kisspng.com/20180325/wae/kisspng-business-google-account-organization-service-avatar-5ab752c6a54db0.2719189215219637186771.jpg">
+                        {% if user.buyer.profile_pic %}
+                           <img class="profile-picture" style="width: 100%;" alt="User avatar" src="{{ user.buyer.profile_pic }}">
                          <div class="middle">
-                            <div class="text">Edit <i class="fas fa-pencil-alt"></i></div>
+                            <div class="text" onclick="window.location.href='/users/change_image'">Edit <i class="fas fa-pencil-alt"></i></div>
                         </div>
+                        {% else %}
+                           <img class="profile-picture" style="width: 100%;" src="/static/images/userimagenotfound.jpg">
+                         <div class="middle">
+                            <div class="text" onclick="window.location.href='/users/change_image'">Edit <i class="fas fa-pencil-alt"></i></div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 <a class="profile-info col-md-8 col-lg-8 col-12" style="float:right;text-align:center">
@@ -31,15 +38,6 @@
         </div>
     </div>
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="document">
-        <button type="submit">Upload picture</button>
-    </form>
-    {% if url %}
-        <p>Uploaded file: <a href="{{ url }}">{{ url }}</a> </p>
-    {% endif %}
-
     <div class="w-100 p-3">
         <div class="w-100 gray-background border-shadow">
              <div class="row" style="margin:auto !important">
@@ -56,5 +54,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

@@ -10,7 +10,6 @@ from django.contrib.auth import update_session_auth_hash
 from django.db.models import Count
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
-from .forms import UploadFileForm
 
 
 from sellers.models import Seller
@@ -23,7 +22,7 @@ import json
 import ssl
 
 from .models import User_info, Buyer
-from .forms import NewUserForm, Edit_buyer
+from .forms import NewUserForm, Edit_buyer, Edit_image
 from django.contrib.auth import authenticate
 
 # Create your views here.
@@ -113,19 +112,13 @@ def change_password(request):
     return render(request, 'users/change_password.html', args)
 
 @login_required
-def upload_image(request):
-    #context = {}
+def change_image(request):
+    form = Edit_image(instance=request.user.buyer)
     if request.method == "POST":
-        #uploaded_file = request.FILES['document']
-        #fs = FileSystemStorage()
-        #name = fs.save(uploaded_file.name, uploaded_file)
-        #context['url'] = fs.url(name)
-        form = Buyer(request.POST, request.FILES)
+        form = Edit_image(data=request.POST, instance=request.user.buyer)
         if form.is_valid():
-            instance = Buyer(file_field=request.FILES['file'])
-            instance.save()
-            return HttpResponseRedirect('/users/profile')
-    else:
-        form = Buyer()
-    return render(request, 'edit_user.html', {'form': form})
-    #return render(request, 'users/edit_user.html', context)
+            form.save()
+            #update_session_auth_hash(request, form.user)
+            return redirect('/users/profile')
+    args = {'form': form}
+    return render(request, 'users/change_image.html', args)
