@@ -145,7 +145,7 @@ def buy_payment(request, pk):
         form = PaymentInfoForm()
     return render(request, 'apartments/buy_payment.html', {
         'pk': pk,
-        'form': PaymentInfoForm(data=request.session['payment'])
+        'form': form
     })
 
 @login_required
