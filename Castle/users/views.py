@@ -28,6 +28,8 @@ from django.contrib.auth import authenticate
 # Create your views here.
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('profile')
     form = NewUserForm()
     if request.method == 'POST':
         form = NewUserForm(data=request.POST)
@@ -61,7 +63,6 @@ def register(request):
                 return redirect("login")
             else:
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
-        print(form.errors)
     return render(request, "users/register.html", {
         'form': form
     })

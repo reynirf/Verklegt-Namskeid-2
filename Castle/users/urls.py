@@ -13,7 +13,6 @@ urlpatterns = [
     path("edit_user", views.edit_user, name="edit_user"),
     path("edit_seller", views.edit_user, name="edit_seller"),
     path("add_apartment", views.add_apartment, name="add_apartment"),
-
     url(r'^password_reset/$', PasswordResetView.as_view(template_name='users/reset_password.html'), name='password_reset'),
     url(r'^password_reset/done/$', PasswordResetDoneView.as_view(template_name='users/reset_password_done.html'), name='password_reset_done'),
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',

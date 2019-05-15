@@ -8,6 +8,7 @@ from users.models import Search_history
 from .models import Apartment, Apartment_featured, Zipcode, Apartment_images
 from datetime import date
 from django.core import serializers
+from django.contrib import messages
 import datetime
 
 # Create your views here.
@@ -192,4 +193,22 @@ def buy_success(request, pk):
         return redirect('homepage')
     return render(request, 'apartments/buy_success.html', {
         'apartment': get_object_or_404(Apartment, pk=pk)
+    })
+
+@login_required
+def remove_apartment(request, pk):
+    apartment = get_object_or_404(Apartment, pk=pk)
+    if request.method == 'GET':
+        if apartment:
+            if request.user.seller.id == apartment.seller.id:
+                context = {'user': request.user,
+                           'info': request.user.user_info,
+                           'seller': request.user.seller,
+                           'messages': ['Apartment removed!']
+                           }
+                apartment.delete()
+                return render(request, 'users/seller_profile.html', context)
+
+    return render(request, 'apartments/apartment_info.html', {
+        'apartment': apartment,
     })

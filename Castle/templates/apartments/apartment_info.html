@@ -42,8 +42,11 @@
             <button type="button" class="btn green-button float-right" style="width: fit-content">Buy this apartment</button>
         </a>
         {% endif %}
+        {% if user.seller.id == apartment.seller.id %}
+        <a href="{% url 'remove_apartment' apartment.id %}">
+            <button type="button" class="btn btn-danger float-right" style="width: fit-content">Remove this apartment</button>
+        </a>
+        {% endif %}
     </div>
-
-
 {% endblock %}
 
