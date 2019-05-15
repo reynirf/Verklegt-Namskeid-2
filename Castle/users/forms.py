@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
+
+from apartments.models import Zipcode, Apartment
 from .models import Buyer, User_info
 from sellers.models import Seller
 from django.core.validators import validate_email
@@ -101,14 +103,43 @@ class Edit_logo(UserChangeForm):
         model = Seller
         fields = ('logo',)
 
+class MultiWidgetBasic(forms.widgets.MultiWidget):
+    def __init__(self, attrs=None):
+        widgets = [forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Copy URL here...'}) for _ in range(20)]
+        super(MultiWidgetBasic, self).__init__(widgets, attrs)
+
+    def decompress(self, value):
+        if value:
+            return value.split(" ")
+        else:
+            return []
+
+
+class MultiExampleField(forms.fields.MultiValueField):
+    widget = MultiWidgetBasic
+
+    def __init__(self, *args, **kwargs):
+        list_fields = [forms.fields.CharField(max_length=999, required=False)]
+        super(MultiExampleField, self).__init__(list_fields, *args, **kwargs)
+
+    def compress(self, values):
+        return values.join(" ")
+
+
 class Add_apartment(forms.Form):
-    address = forms.CharField(max_length=255, required=True)
-    zip_code = forms.Select()
-    rooms = forms.Select()
-    size = forms.IntegerField(required=True)
-    price = forms.IntegerField(required=True)
-    description = forms.CharField(required=True)
-    main_pic = forms.CharField(required=True)
+    address = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    zip_code = forms.ModelChoiceField(queryset=Zipcode.objects.all(), widget=forms.Select(attrs={'class':'form-control w-75'}))
+    room_choices = (('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6+','6+'))
+    rooms = forms.ChoiceField(choices=room_choices, widget=forms.Select(attrs={'class':'form-control w-50'}))
+    size = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number'}))
+    price = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number'}))
+    description = forms.CharField(required=True, widget=forms.Textarea(attrs={'class': 'form-control'}))
+    main_pic = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Copy URL here...'}))
+    images = MultiExampleField(required=False)
+
+    # class Meta:
+    #     model = Apartment
+    #     exclude = ['id', 'seller', 'sold', 'date_added']
 
 
 class Edit_seller(UserChangeForm):

@@ -12,6 +12,8 @@ from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
 
 from django.forms import modelformset_factory
+
+from apartments.models import Apartment_images
 from sellers.models import Seller
 from .models import User_info, Buyer, Search_history
 from .forms import NewUserForm
@@ -154,8 +156,22 @@ def add_apartment(request):
         form = Add_apartment()
         if request.method == 'POST':
             apartment = Add_apartment(data=request.POST)
+            print(request.POST['images_0'])
             if form.is_valid():
+                apartment.save(commit=False)
+                apartment.seller = request.user.seller
                 apartment.save()
+                print('apartment saved')
+                for num in range(20):
+                    num_str = 'images_' + str(num)
+                    image = Apartment_images(apartment=apartment, image=request.POST[num_str])
+                    image.save()
+                print('images saved')
+                return redirect('homepage')
+            else:
+                return render(request, "users/add_apartment.html", {
+                    'form': form
+                })
         else:
             return render(request, "users/add_apartment.html", {
                 'form': form

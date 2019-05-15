@@ -9,19 +9,11 @@
                     <h5 style="color:#5F1C1C; margin-bottom:2%;">Add an apartment</h5>
                     <form class="form" method="POST">
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        <script src='https://www.google.com/recaptcha/api.js'></script>
-                        <div style="margin:0.5rem 0rem" class="g-recaptcha" data-sitekey="6LfyraIUAAAAAA1tDGYMKxPIa1ksf3xiPN5IHoHP"></div>
+                        <table class="w-100">
+                           {{ form }}
+                        </table>
 
-                        <button type="submit" class="green-button">Submit</button>
-
-                        {% if messages %} {# For Google Captcha #}
-                            {% for message in messages %}
-                                <div class="alert alert-danger">
-                                    {{ message|safe }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
+                        <button type="submit" class="btn green-button">Submit</button>
 
                         {% if form.errors %}
                             {% for field in form %}

@@ -7,13 +7,16 @@ class Zipcode(models.Model):
     def natural_key(self):
         return [self.town, self.id]
 
+    def __str__(self):
+        return str(self.id) + " " + self.town
+
 class Apartment(models.Model):
     address = models.CharField(max_length=255)
     zip_code = models.ForeignKey(Zipcode, on_delete=models.DO_NOTHING)
     rooms = models.IntegerField()
     size = models.IntegerField()
     price = models.IntegerField()
-    description = models.CharField(max_length=999)
+    description = models.TextField(max_length=999)
     main_pic = models.CharField(max_length=999)
     date_added = models.DateTimeField(auto_now=True)
     sold = models.BooleanField(default=False)

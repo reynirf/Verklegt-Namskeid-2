@@ -5,8 +5,8 @@ class ContactInfoForm(forms.Form):
     ssn = forms.IntegerField(max_value=99999999999999999999, widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'number', 'placeholder': '1212122020'}), required=True)
     country = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Iceland'}), required=True)
     address = forms.CharField(max_length=255,  widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Þórláksgeisli 29'}), required=True)
-    zipcode = forms.IntegerField( widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'number', 'placeholder': '113'}), required=True)
-    city = forms.CharField( widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Reykjavík'}), required=True)
+    zipcode = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'number', 'placeholder': '113'}), required=True)
+    city = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Reykjavík'}), required=True)
 
 class PaymentInfoForm(forms.Form):
     cardholder = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'John Doe'}), required=True)
