@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from apartments.models import Apartment
 from sellers.models import Seller
 
 # Create your views here.
@@ -10,5 +12,6 @@ def sellers_list(request):
 def seller_info(request, pk):
     seller = Seller.objects.get(pk=pk)
     return render(request, 'sellers/seller_info.html', {
-        'seller': seller
+        'seller': seller,
+        'apartments': Apartment.objects.filter(seller=seller)
     })

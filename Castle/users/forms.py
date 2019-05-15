@@ -101,9 +101,15 @@ class Edit_logo(UserChangeForm):
         model = Seller
         fields = ('logo',)
 
-class add_apartment(UserCreationForm):
+class add_apartment(forms.Form):
+    address = forms.CharField(max_length=255, required=True)
+    zip_code = forms.Select()
+    rooms = forms.Select()
+    size = forms.IntegerField(required=True)
+    price = forms.IntegerField(required=True)
+    description = forms.CharField(required=True)
+    main_pic = forms.CharField(required=True)
 
-    name = forms.CharField(max_length=255, required=True)
 
 class Edit_seller(UserChangeForm):
     password = None

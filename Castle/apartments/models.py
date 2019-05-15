@@ -15,7 +15,7 @@ class Apartment(models.Model):
     price = models.IntegerField()
     description = models.CharField(max_length=999)
     main_pic = models.CharField(max_length=999)
-    date_added = models.DateField()
+    date_added = models.DateTimeField(auto_now=True)
     sold = models.BooleanField(default=False)
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
 
