@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 
@@ -123,23 +124,24 @@ class MultiExampleField(forms.fields.MultiValueField):
         super(MultiExampleField, self).__init__(list_fields, *args, **kwargs)
 
     def compress(self, values):
-        return values.join(" ")
+        return ",".join(values)
 
 
-class Add_apartment(forms.Form):
-    address = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Þórláksgeisli 29'}))
-    zip_code = forms.ModelChoiceField(queryset=Zipcode.objects.all(), widget=forms.Select(attrs={'class':'form-control w-75'}))
-    room_choices = (('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6+','6+'))
-    rooms = forms.ChoiceField(choices=room_choices, widget=forms.Select(attrs={'class':'form-control w-50'}))
-    size = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '200'}))
-    price = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '45000000'}))
-    description = forms.CharField(required=True, widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': '...'}))
-    main_pic = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'https://website.com/image.png'}))
+class Add_apartment(ModelForm):
     images = MultiExampleField(required=False)
-
-    # class Meta:
-    #     model = Apartment
-    #     exclude = ['id', 'seller', 'sold', 'date_added']
+    class Meta:
+        room_choices = (('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6+'))
+        model = Apartment
+        exclude = ['id', 'sold', 'date_added', 'seller']
+        widgets = {
+            'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Þórláksgeisli 29'}),
+            'zip_code': forms.Select(attrs={'class':'form-control w-75'}),
+            'rooms': forms.Select(choices=room_choices, attrs={'class':'form-control w-50'}),
+            'size': forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '200'}),
+            'price': forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '45000000'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': '...'}),
+            'main_pic': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'https://website.com/image.png'})
+        }
 
 
 class Edit_seller(UserChangeForm):

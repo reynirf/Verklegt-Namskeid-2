@@ -167,41 +167,27 @@ def add_apartment(request):
     if request.user.user_info.seller:
         form = Add_apartment()
         if request.method == 'POST':
-            apartment = Add_apartment(data=request.POST)
-            print(request.POST['images_0'])
+            form = Add_apartment(data=request.POST)
             if form.is_valid():
-                apartment.save(commit=False)
+                apartment = form.save(commit=False)
                 apartment.seller = request.user.seller
                 apartment.save()
                 print('apartment saved')
                 for num in range(20):
                     num_str = 'images_' + str(num)
-                    image = Apartment_images(apartment=apartment, image=request.POST[num_str])
-                    image.save()
+                    if Apartment_images(apartment=apartment, image=request.POST[num_str]) != "":
+                        image = Apartment_images(apartment=apartment, image=request.POST[num_str])
+                        image.save()
                 print('images saved')
-                return redirect('homepage')
+                return redirect('profile')
             else:
+                print(request.POST)
                 return render(request, "users/add_apartment.html", {
                     'form': form
                 })
         else:
             return render(request, "users/add_apartment.html", {
                 'form': form
-            })
-    else:
-        return redirect('homepage')
-
-@login_required
-def seller_stats(request):
-    if request.user.user_info.seller:
-        all = Apartment.objects.filter(seller=request.user.seller.id)
-        sold = Apartment.objects.filter(seller=request.user.seller.id, sold=True)
-        price = sold.aggregate(Sum('price'))
-        return render(request, "users/seller_stats.html", {
-            'sold_apartments': sold,
-            'all': len(all),
-            'for_sale': len(all) - len(sold),
-            'money': price
             })
     else:
         return redirect('homepage')
