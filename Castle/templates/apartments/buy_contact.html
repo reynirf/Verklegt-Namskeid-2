@@ -17,6 +17,13 @@
         <div class="w-100 red-background border-shadow mb-3">
             <div class="card border-shadow">
                 <div class="card-body">
+                     {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success">
+                                {{ message|safe }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                     <h5 class="card-title">Add your contact information</h5>
                     <form class="form" method="POST">
                         {% csrf_token %}

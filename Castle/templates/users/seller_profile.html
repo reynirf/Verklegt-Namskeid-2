@@ -4,13 +4,6 @@
      <div class="m-3 red-background border-shadow">
         <div class="card border-shadow bg-white">
             <div class="card-body">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-success">
-                        {{ message|safe }}
-                    </div>
-                {% endfor %}
-            {% endif %}
                 <div class="col-md-4 col-lg-4 col-12" id="editProfilePicture" style="float:left;text-align:center">
                     <div class="avatar-container">
                         {% if user.seller.logo%}
