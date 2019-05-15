@@ -57,9 +57,42 @@
     </div>
 
     <div class="row w-100 p-3">
-        <div class="col-4"><button id="seller_apartments" type="submit" class="btn green-button w-100">See my apartments</button></div>
-        <div class="col-4"><button id="sale_stats" type="submit" class="btn green-button w-100">See sales statistics</button></div>
-        <div class="col-4"><a href="{% url 'add_apartment' %}"><button id="new_apartment" type="submit" class="btn green-button w-100">Add new apartment</button></a></div>
+        <div class="col-6"><button id="sale_stats" type="submit" class="btn green-button w-100">See sales statistics</button></div>
+        <div class="col-6"><a href="{% url 'add_apartment' %}"><button id="new_apartment" type="submit" class="btn green-button w-100">Add new apartment</button></a></div>
+    </div>
+
+     <div class="w-100 px-3 pb-3">
+        <div class="gray-background border-shadow w-100">
+            <div class="row" style="margin:auto !important">
+                <div class="col-2"><h4 class="prev_arrow"><</h4></div>
+                <div class="col-8" style="text-align:center"><h5>{{ seller.user.user_info.name }}'s apartments on sale</h5></div>
+                <div class="col-2"><h4 class="next_arrow text-right">></h4></div>
+            </div>
+            <div class="new_aparts-container container px-0 m-0">
+                <div class="newest_apartments">
+                    {% for apartment in apartments %}
+                        {% include 'apartments/single_apartment.html' with apartment=apartment %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="w-100 px-3 pb-3">
+        <div class="gray-background border-shadow w-100">
+            <div class="row" style="margin:auto !important">
+                <div class="col-2"><h4 class="prev_arrow"><</h4></div>
+                <div class="col-8" style="text-align:center"><h5>{{ seller.user.user_info.name }}'s apartments sold</h5></div>
+                <div class="col-2"><h4 class="next_arrow text-right">></h4></div>
+            </div>
+            <div class="new_aparts-container container px-0 m-0">
+                <div class="sold_apartments">
+                    {% for apartment in sold_apartments %}
+                        {% include 'apartments/single_apartment.html' with apartment=apartment %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

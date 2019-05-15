@@ -14,6 +14,7 @@ from django.http import HttpResponseRedirect
 from django.forms import modelformset_factory
 from sellers.models import Seller
 from .models import User_info, Buyer, Search_history
+from apartments.models import Apartment
 from .forms import NewUserForm
 
 
@@ -80,7 +81,9 @@ def profile(request):
     if request.user.user_info.seller == True:
         context = {'user': request.user,
                    'info': request.user.user_info,
-                   'seller': Seller.objects.filter(user=request.user.id).first()}
+                   'seller': Seller.objects.filter(user=request.user.id).first(),
+                   'apartments': Apartment.objects.filter(seller=request.user.seller.id, sold=False),
+                   'sold_apartments': Apartment.objects.filter(seller=request.user.seller.id, sold=True)}
         return render(request, "users/seller_profile.html", context)
     else:
         context = {'user': request.user,
