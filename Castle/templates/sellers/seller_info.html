@@ -1,28 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}{{ seller.user.user_info.name }}{% endblock %}
 {% block mainbody %}
-
-    <div class="w-100 p-3">
-        <div class="w-100 gray-background border-shadow">
-            <div class="card white-background border-shadow">
-                <div class="card-body row p-0">
-                    <div class="col-5">
-                        <img src="{{ seller.logo }}" class="img-thumbnail simple-border" alt="seller logo">
-                    </div>
-                    <div class="col-7">
-                        <h5>{{ seller.user.user_info.name }}</h5>
-                        <p>E-mail: {{ seller.user.user_info.email }}</p>
-                        <p>Phone: {{ seller.user.user_info.phone }}</p>
-                        <p>Address: {{ seller.address }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p>Description:</p>
-        <p>{{ seller.description }}</p>
-        <button class="btn green-button">Contact</button>
-    </div>
-    <div class="w-100 px-3 pb-3">
+<div class="m-3">
+    {% include 'sellers/single_seller.html' %}
+</div>
+<div class="w-100 px-3 pb-3">
         <div class="gray-background border-shadow w-100">
             <div class="row" style="margin:auto !important">
                 <div class="col-2"><h4 class="prev_arrow"><</h4></div>

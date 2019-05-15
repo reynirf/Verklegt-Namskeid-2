@@ -198,7 +198,7 @@ $(document).ready(function(){
 	})
 
 
-	$('i[id^="open_"').on('click', (e) => {
+	$('i[id^="open_"]').on('click', (e) => {
 		if($(e.target).attr('class') === 'fas fa-plus-square') {
 			$(e.target).attr('class', 'fas fa-minus-square')
 			$('.'+$(e.target).data('area')).css('display', 'block')
@@ -210,7 +210,7 @@ $(document).ready(function(){
 		}
 	})
 
-	$('a[id^="choose_all_"').on('click', (e) => {
+	$('a[id^="choose_all_"]').on('click', (e) => {
 		$('.'+$(e.target).data('area')+ ' input').prop('checked', true);
 		zipCodes = $('.zip_option input:checked')
 		$('#howManyZips').text(zipCodes.length + ' zip code/s')

@@ -9,11 +9,11 @@
                 {% endif %}
             </div>
             <div class="col-4">
-                <h5><a href="{{ seller.id }}">{{ seller.user.user_info.name }}</a></h5>
+                <h5><a class="seller_title" href="{{ seller.id }}">{{ seller.user.user_info.name }}</a></h5>
                 <p><strong>E-mail:</strong> {{ seller.user.user_info.email }}</p>
                 <p><strong>Phone:</strong> {{ seller.user.user_info.phone }}</p>
                 <p><strong>Address:</strong> {{ seller.address }}</p>
-                <a href="mailto:{{ seller.user.user_info.email }}"<button class="btn green-button">Contact</button></a>
+                <a href="mailto:{{ seller.user.user_info.email }}"><button class="btn green-button">Contact</button></a>
             </div>
             {% if seller.description %}
                 <div class="col-5">
