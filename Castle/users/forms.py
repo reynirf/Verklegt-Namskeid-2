@@ -105,7 +105,7 @@ class Edit_logo(UserChangeForm):
 
 class MultiWidgetBasic(forms.widgets.MultiWidget):
     def __init__(self, attrs=None):
-        widgets = [forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Copy URL here...'}) for _ in range(20)]
+        widgets = [forms.TextInput(attrs={'class': 'form-control', 'placeholder':'https://website.com/image.png'}) for _ in range(20)]
         super(MultiWidgetBasic, self).__init__(widgets, attrs)
 
     def decompress(self, value):
@@ -127,14 +127,14 @@ class MultiExampleField(forms.fields.MultiValueField):
 
 
 class Add_apartment(forms.Form):
-    address = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Þórláksgeisli 29'}))
     zip_code = forms.ModelChoiceField(queryset=Zipcode.objects.all(), widget=forms.Select(attrs={'class':'form-control w-75'}))
     room_choices = (('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6+','6+'))
     rooms = forms.ChoiceField(choices=room_choices, widget=forms.Select(attrs={'class':'form-control w-50'}))
-    size = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number'}))
-    price = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number'}))
-    description = forms.CharField(required=True, widget=forms.Textarea(attrs={'class': 'form-control'}))
-    main_pic = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Copy URL here...'}))
+    size = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '200'}))
+    price = forms.IntegerField(required=True, widget=forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '45000000'}))
+    description = forms.CharField(required=True, widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': '...'}))
+    main_pic = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'https://website.com/image.png'}))
     images = MultiExampleField(required=False)
 
     # class Meta:
