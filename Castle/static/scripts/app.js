@@ -1,5 +1,6 @@
 var zipCodes = []
 var apartments = []
+var imageInputsShowed = 3
 
 
 function allowNumbersOnly(e) {
@@ -371,6 +372,7 @@ $(document).ready(function(){
 			}
 		}
 	})
+
 	$('.featured_apartments').slick({
 		slidesToShow: 1,
 		fade: true,
@@ -471,5 +473,12 @@ $(document).ready(function(){
 
 	  var modal = $(this)
 	  modal.find('.modal-body input').val(currentImg)
+	})
+
+	$('#addMoreImageFields').on('click', (e) => {
+
+		$('#id_images_' + imageInputsShowed).css('display', 'block')
+		if(imageInputsShowed == 19) $(e.target).css('display', 'none')
+		imageInputsShowed += 1
 	})
 });
