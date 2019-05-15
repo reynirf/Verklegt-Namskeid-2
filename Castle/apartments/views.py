@@ -139,7 +139,6 @@ def buy_payment(request, pk):
         if payment.is_valid():
             request.session['payment'] = payment.cleaned_data
             return redirect('buy_review', pk)
-    print(request.session['payment'])
     try:
         form = PaymentInfoForm(data=request.session['payment'])
     except KeyError:
@@ -201,13 +200,8 @@ def remove_apartment(request, pk):
     if request.method == 'GET':
         if apartment:
             if request.user.seller.id == apartment.seller.id:
-                context = {'user': request.user,
-                           'info': request.user.user_info,
-                           'seller': request.user.seller,
-                           'messages': ['Apartment removed!']
-                           }
                 apartment.delete()
-                return render(request, 'users/seller_profile.html', context)
+                return redirect('profile')
 
     return render(request, 'apartments/apartment_info.html', {
         'apartment': apartment,
