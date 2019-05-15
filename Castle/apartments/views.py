@@ -8,6 +8,7 @@ from users.models import Search_history
 from .models import Apartment, Apartment_featured, Zipcode, Apartment_images
 from datetime import date
 from django.core import serializers
+from django.contrib import messages
 import datetime
 
 # Create your views here.
@@ -138,14 +139,13 @@ def buy_payment(request, pk):
         if payment.is_valid():
             request.session['payment'] = payment.cleaned_data
             return redirect('buy_review', pk)
-    print(request.session['payment'])
     try:
         form = PaymentInfoForm(data=request.session['payment'])
     except KeyError:
         form = PaymentInfoForm()
     return render(request, 'apartments/buy_payment.html', {
         'pk': pk,
-        'form': PaymentInfoForm(data=request.session['payment'])
+        'form': form
     })
 
 @login_required
@@ -192,4 +192,17 @@ def buy_success(request, pk):
         return redirect('homepage')
     return render(request, 'apartments/buy_success.html', {
         'apartment': get_object_or_404(Apartment, pk=pk)
+    })
+
+@login_required
+def remove_apartment(request, pk):
+    apartment = get_object_or_404(Apartment, pk=pk)
+    if request.method == 'GET':
+        if apartment:
+            if request.user.seller.id == apartment.seller.id:
+                apartment.delete()
+                return redirect('profile')
+
+    return render(request, 'apartments/apartment_info.html', {
+        'apartment': apartment,
     })

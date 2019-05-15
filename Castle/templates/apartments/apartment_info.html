@@ -36,14 +36,19 @@
         <p>Rooms: {{ apartment.rooms }}</p>
         <hr class="bg-custom">
         <p>{{ apartment.description }}</p>
-        <h6>Seller: <a href="{% url 'seller_info' apartment.seller.id %}">{{ apartment.seller.user.name }}</a></h6>
-        {% if not user.user_info.seller %}
+        <h6>Seller: <a href="{% url 'seller_info' apartment.seller.id %}">{{ apartment.seller.user.user_info.name }}</a></h6>
+        {% if not user.user_info.seller and not apartment.sold %}
         <a href="{% url 'buy_contact' apartment.id %}">
             <button type="button" class="btn green-button float-right" style="width: fit-content">Buy this apartment</button>
         </a>
+        {% elif apartment.sold %}
+            <h2 style="color:red">Apartment has been sold!</h2>
+        {% endif %}
+        {% if user.seller.id == apartment.seller.id %}
+        <a href="{% url 'remove_apartment' apartment.id %}">
+            <button type="button" class="btn btn-danger float-right" style="width: fit-content">Remove this apartment</button>
+        </a>
         {% endif %}
     </div>
-
-
 {% endblock %}
 
