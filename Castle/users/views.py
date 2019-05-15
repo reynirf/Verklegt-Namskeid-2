@@ -22,7 +22,7 @@ import json
 import ssl
 
 from .models import User_info, Buyer
-from .forms import NewUserForm, Edit_buyer, Edit_image, Edit_seller, Edit_logo
+from .forms import NewUserForm, Edit_buyer, Edit_image, Edit_seller, Edit_logo, Add_apartment
 from django.contrib.auth import authenticate
 
 # Create your views here.
@@ -151,9 +151,9 @@ def change_image(request):
 @login_required
 def add_apartment(request):
     if request.user.user_info.seller:
-        form = add_apartment()
+        form = Add_apartment()
         if request.method == 'POST':
-            apartment = add_apartment(data=request.POST)
+            apartment = Add_apartment(data=request.POST)
             if form.is_valid():
                 apartment.save()
         else:

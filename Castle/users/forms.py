@@ -101,7 +101,7 @@ class Edit_logo(UserChangeForm):
         model = Seller
         fields = ('logo',)
 
-class add_apartment(forms.Form):
+class Add_apartment(forms.Form):
     address = forms.CharField(max_length=255, required=True)
     zip_code = forms.Select()
     rooms = forms.Select()
