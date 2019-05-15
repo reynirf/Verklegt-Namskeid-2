@@ -172,7 +172,6 @@ def add_apartment(request):
                 apartment = form.save(commit=False)
                 apartment.seller = request.user.seller
                 apartment.save()
-                print('apartment saved')
                 for num in range(20):
                     num_str = 'images_' + str(num)
                     if Apartment_images(apartment=apartment, image=request.POST[num_str]) != "":

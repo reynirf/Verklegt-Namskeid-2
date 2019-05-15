@@ -11,7 +11,7 @@
                 <p>{{ apartment.size }} sqm</p>
             </div>
             <div>
-                <p>Rooms: {{ apartment.rooms }}</p>
+                <p>Rooms: {{ apartment.rooms | roomFixer }}</p>
             </div>
         </div>
     </div>

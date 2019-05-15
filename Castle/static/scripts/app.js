@@ -17,6 +17,14 @@ $(document).ready(function(){
 			return Number(target.split('.').join(''));
 	};
 
+	String.prototype.roomFixer = function() {
+			var target = this;
+			if (target == '6') {
+				return '6+'
+			}
+			return target
+	};
+
 	Number.prototype.dotSeperator = function() {
 			var target = this;
 			return Number(target).toLocaleString('de')
@@ -245,7 +253,9 @@ $(document).ready(function(){
 			type: 'GET',
 			success: function(res) {
 				res = res.map(item => {
+					pk = item.pk
 					item = item.fields
+					item.id = pk
 					return item
 				})
 				res = {'data': res}
@@ -254,9 +264,9 @@ $(document).ready(function(){
 						<div data-address="${ apartment.address }" data-price="${ apartment.price }" class="col-md-4 col-lg-3 col-12 col-sm-6 single-apartment" style="padding:1rem">
             				<div class="gray-background border-shadow">
 								<div class="card bg-custom border-shadow text-white">
-									<a href="${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
+									<a href="/apartments/${ apartment.id }"><img class="card-img-top" src="${ apartment.main_pic }" alt="apartment pic"></a>
 									<div class="card-body single-apartment-card">
-										<h5 class="card-title"><a href="/${apartment.id}">${ apartment.address }</a></h5>
+										<h5 class="card-title"><a href="/apartments/${apartment.id}">${ apartment.address }</a></h5>
 										<h6 class="card-subtitle">${ apartment.zip_code.id || apartment.zip_code[1]} ${ apartment.zip_code.town || apartment.zip_code[0]}</h6>
 										<h6>${ Number(apartment.price).dotSeperator() } ISK</h6>
 										<div class="d-flex justify-content-between">
@@ -264,7 +274,7 @@ $(document).ready(function(){
 												<p>${ apartment.size } sqm</p>
 											</div>
 											<div>
-												<p>Rooms: ${ apartment.rooms }</p>
+												<p>Rooms: ${ String(apartment.rooms).roomFixer() }</p>
 											</div>
 										</div>
 									</div>
@@ -358,7 +368,12 @@ $(document).ready(function(){
 			$("#size-range").slider({
 				values: [min_size_django.val().numberize(), max_size_django.val().numberize()]
 			});
-			$('#search_rooms').val($('#rooms_django').val())
+			rooms = $('#rooms_django').val()
+			console.log(rooms)
+			if(rooms === '6') {
+				rooms = '6+'
+			}
+			$('#search_rooms').val(rooms)
 			let zipcodes = $('#zipcodes_django').val()
 			zipcodes = zipcodes.split(',')
 			var options = $('.zip_option input')
