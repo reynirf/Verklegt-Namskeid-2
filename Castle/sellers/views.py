@@ -13,5 +13,5 @@ def seller_info(request, pk):
     seller = Seller.objects.get(pk=pk)
     return render(request, 'sellers/seller_info.html', {
         'seller': seller,
-        'apartments': Apartment.objects.filter(seller=seller)
+        'apartments': Apartment.objects.filter(seller=seller, sold=False)
     })
