@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db.models.signals import post_save
+from django.db.models import Sum
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -81,11 +82,19 @@ def create_user_info(sender, instance, created, **kwargs):
 @login_required
 def profile(request):
     if request.user.user_info.seller == True:
+
+        all = Apartment.objects.filter(seller=request.user.seller.id)
+        for_sale = Apartment.objects.filter(seller=request.user.seller.id, sold=False)
+        sold = Apartment.objects.filter(seller=request.user.seller.id, sold=True)
+        price = sold.aggregate(Sum('price'))['price__sum']
         context = {'user': request.user,
                    'info': request.user.user_info,
                    'seller': Seller.objects.filter(user=request.user.id).first(),
-                   'apartments': Apartment.objects.filter(seller=request.user.seller.id, sold=False),
-                   'sold_apartments': Apartment.objects.filter(seller=request.user.seller.id, sold=True)}
+                   'apartments': all,
+                   'sold_apartments': sold,
+                   'for_sale': for_sale,
+                   'money': price
+                   }
         return render(request, "users/seller_profile.html", context)
     else:
         context = {'user': request.user,
@@ -153,7 +162,6 @@ def change_image(request):
         args = {'form': form}
         return render(request, 'users/change_image.html', args)
 
-#SELLER_REQUIRED?
 @login_required
 def add_apartment(request):
     if request.user.user_info.seller:
@@ -179,6 +187,21 @@ def add_apartment(request):
         else:
             return render(request, "users/add_apartment.html", {
                 'form': form
+            })
+    else:
+        return redirect('homepage')
+
+@login_required
+def seller_stats(request):
+    if request.user.user_info.seller:
+        all = Apartment.objects.filter(seller=request.user.seller.id)
+        sold = Apartment.objects.filter(seller=request.user.seller.id, sold=True)
+        price = sold.aggregate(Sum('price'))
+        return render(request, "users/seller_stats.html", {
+            'sold_apartments': sold,
+            'all': len(all),
+            'for_sale': len(all) - len(sold),
+            'money': price
             })
     else:
         return redirect('homepage')
