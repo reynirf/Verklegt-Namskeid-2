@@ -186,7 +186,8 @@ def add_apartment(request):
                 # if the value returned is not None
                 for num in range(20):
                     num_str = 'images_' + str(num)
-                    if request.POST[num_str] != None:
+                    print(request.POST[num_str])
+                    if request.POST[num_str] != "":
                         image = Apartment_images(
                             apartment=apartment,
                             image=request.POST[num_str]
