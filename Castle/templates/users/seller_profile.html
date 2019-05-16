@@ -32,8 +32,6 @@
                         <h5>Address: <span class="font-weight-normal">{{ user.seller.address }}, {{ user.seller.zip_code }}</span></h5>
                     {% elif user.seller.address %}
                         <h5>Address: {{ user.seller.address }}</h5>
-                    {% else %}
-                        <h5>Address: not set</h5>
                     {% endif %}
 
                     {% if user.seller.description %}
