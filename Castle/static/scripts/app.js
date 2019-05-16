@@ -450,10 +450,11 @@ $(document).ready(function(){
 	// slider for images on apartment info page
 	$('.apartment_info_main_pic').slick({
 		arrows:true,
-		slidesToShow:2,
+		slidesToShow:3,
 		prevArrow: $('.apartment-left'),
 		nextArrow: $('.apartment-right'),
 		centerMode: true,
+		variableWidth: true
 	})
 
 	// add more image fields (inputs) to the add apartment form, if requested.
