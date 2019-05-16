@@ -437,8 +437,8 @@ $(document).ready(function(){
 		slidesToShow: 4,
 		slidesToScroll: 4,
 		arrows: true,
-		prevArrow: $('.prev_arrow'),
-		nextArrow: $('.next_arrow'),
+		prevArrow: $('.prev_arrow_sold'),
+		nextArrow: $('.next_arrow_sold'),
 		responsive: [
 			{
 				breakpoint: 1024,
