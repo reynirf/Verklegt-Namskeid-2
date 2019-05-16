@@ -11,6 +11,7 @@
                         {% csrf_token %}
                            {{ form.as_p }}
                         <p href="#" id="addMoreImageFields">Add another image</p><br><br>
+                        <a href="{% url 'profile' %}"><button type="button" class="btn red-button">Cancel</button></a>
                         <button type="submit" class="btn green-button">Submit</button>
 
                         {% if form.errors %}

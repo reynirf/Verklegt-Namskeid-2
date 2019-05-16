@@ -2,17 +2,16 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
-
-from apartments.models import Zipcode, Apartment
-from .models import Buyer, User_info
-from sellers.models import Seller
-from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 import requests
 
+from apartments.models import Apartment
+from .models import Buyer, User_info
+from sellers.models import Seller
+
 
 class NewUserForm(UserCreationForm):
-
+    # A form for user registration
     def __init__(self, *args, **kwargs):
         super(NewUserForm, self).__init__(*args, **kwargs)
 
@@ -20,6 +19,7 @@ class NewUserForm(UserCreationForm):
             self.fields[fieldname].help_text = None
 
     def clean_email(self):
+        # Checking that the email entered is valid
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():
             raise ValidationError("A user has already registered an account with this email")
@@ -34,33 +34,19 @@ class NewUserForm(UserCreationForm):
         fields = ('username', 'name', 'phone', 'email', 'seller', 'password1', 'password2')
 
 class Edit_buyer(UserChangeForm):
+    # A form used when editing buyer profile
     password = None
     def __init__(self, *args, **kwargs):
         super(Edit_buyer, self).__init__(*args, **kwargs)
         for fieldname in ['name', 'phone']:
             self.fields[fieldname].help_text = None
 
-    # def clean_email(self):
-    #     email = self.cleaned_data['email']
-    #     print(User.objects.filter(email=email).exists())
-    #     if User.objects.filter(email=email).exists():
-    #         raise ValidationError("A user has already registered an account with this email")
-    #     if not self.validateEmail(email):
-    #         raise ValidationError("Email is not valid")
-    #     return email
-    #
-    # def validateEmail(self, email):
-    #     try:
-    #         validate_email(email)
-    #         return True
-    #     except ValidationError:
-    #         return False
-
     class Meta:
         model = User_info
         fields = ('name', 'phone')
 
 class Edit_image(UserChangeForm):
+    # A form for changing a buyer's profile image
     password = None
     def __init__(self, *args, **kwargs):
         super(Edit_image, self).__init__(*args, **kwargs)
@@ -83,6 +69,7 @@ class Edit_image(UserChangeForm):
         fields = ('profile_pic',)
 
 class Edit_logo(UserChangeForm):
+    # A form for changing a seller's logo
     password = None
     def __init__(self, *args, **kwargs):
         super(Edit_logo, self).__init__(*args, **kwargs)
@@ -105,8 +92,12 @@ class Edit_logo(UserChangeForm):
         fields = ('logo',)
 
 class MultiWidgetBasic(forms.widgets.MultiWidget):
+    # A widget used to process multiple entries when adding images for a new apartment
     def __init__(self, attrs=None):
-        widgets = [forms.TextInput(attrs={'class': 'form-control', 'placeholder':'https://website.com/image.png'}) for _ in range(20)]
+        widgets = [forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder':'https://website.com/image.png'
+        }) for _ in range(20)]
         super(MultiWidgetBasic, self).__init__(widgets, attrs)
 
     def decompress(self, value):
@@ -117,6 +108,7 @@ class MultiWidgetBasic(forms.widgets.MultiWidget):
 
 
 class MultiExampleField(forms.fields.MultiValueField):
+    # A field used to add multiple images for a new apartment
     widget = MultiWidgetBasic
 
     def __init__(self, *args, **kwargs):
@@ -128,45 +120,52 @@ class MultiExampleField(forms.fields.MultiValueField):
 
 
 class Add_apartment(ModelForm):
+    # A form used when adding a new apartment, makes use of MultiWidgetBasic
+    # and MultiExampleField
     images = MultiExampleField(required=False)
     class Meta:
         room_choices = (('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6+'))
         model = Apartment
         exclude = ['id', 'sold', 'date_added', 'seller']
         widgets = {
-            'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Þórláksgeisli 29'}),
-            'zip_code': forms.Select(attrs={'class':'form-control w-75'}),
-            'rooms': forms.Select(choices=room_choices, attrs={'class':'form-control w-50'}),
-            'size': forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '200', 'min': '0', 'max': '500'}),
-            'price': forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '45000000', 'min': '0', 'max': '200000000'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': '...'}),
-            'main_pic': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'https://website.com/image.png'})
+            'address': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Þórláksgeisli 29'
+            }),
+            'zip_code': forms.Select(attrs={
+                'class':'form-control w-75'
+            }),
+            'rooms': forms.Select(choices=room_choices, attrs={
+                'class':'form-control w-50'
+            }),
+            'size': forms.TextInput(attrs={
+                'class': 'form-control w-50',
+                'type': 'number',
+                'placeholder': '200',
+                'min': '0',
+                'max': '500'
+            }),
+            'price': forms.TextInput(attrs={
+                'class': 'form-control w-50',
+                'type': 'number',
+                'placeholder': '45000000',
+                'min': '0',
+                'max': '200000000'
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': '...'
+            }),
+            'main_pic': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder':'https://website.com/image.png'
+            })
         }
 
 
 class Edit_seller(UserChangeForm):
+    # A form for editing a seller's information
     password = None
-    #def __init__(self, *args, **kwargs):
-    #    super(Edit_buyer, self).__init__(*args, **kwargs)
-    #    for fieldname in ['description', 'address', 'zip_code']:
-    #        self.fields[fieldname].help_text = None
-
-
-    #def clean_email(self):
-    #    email = self.cleaned_data['email']
-    #    if User.objects.filter(email=email).exists():
-    #        raise ValidationError("A user has already registered an account with this email")
-    #    if not self.validateEmail(email):
-    #        raise ValidationError("Email is not valid")
-    #    return email
-
-    #def validateEmail(self, email):
-    #    try:
-    #        validate_email(email)
-    #        return True
-    #    except ValidationError:
-    #        return False
-
     class Meta:
         model = Seller
         fields = ('description', 'address', 'zip_code')
