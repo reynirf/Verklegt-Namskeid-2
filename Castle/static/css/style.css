@@ -498,3 +498,8 @@ input[name="profile_pic"], input[name='logo'] {
 .fit-content {
     width:fit-content;
 }
+
+.checkspam {
+    color:#5F1C1C;
+    margin-bottom:2%;
+}
