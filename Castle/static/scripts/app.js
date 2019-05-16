@@ -465,21 +465,21 @@ $(document).ready(function(){
 		]
 	});
 
-	$('.apartment_info_main_pic').slick({
+	/*$('.apartment_info_main_pic').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		fade: true,
 		// asNavFor: $('.apartment_info_small')
 	});
-	$('.apartment_info_small').slick({
-		rows: 4,
-		slidesPerRow: 2,
-		slidesToScroll: 1,
-		// vertical: true,
-		infinite: true,
-		asNavFor: $('.apartment_info_main_pic'),
-		focusOnSelect: true
-	});
+	 */
+
+	$('.apartment_info_main_pic').slick({
+		arrows:true,
+		slidesToShow:2,
+		prevArrow: $('.apartment-left'),
+		nextArrow: $('.apartment-right'),
+		centerMode: true,
+	})
 
 
 	$('#uploadImage').on('show.bs.modal', function (event) {

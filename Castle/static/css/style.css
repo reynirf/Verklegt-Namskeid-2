@@ -441,3 +441,28 @@ input[name="profile_pic"], input[name='logo'] {
 .apartment-container {
     height:100%
 }
+
+.apartment-left {
+    position: absolute;
+    left: 1.3rem;
+    font-size: 3rem;
+    font-weight: bold;
+    z-index: 1;
+    top: 17rem;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 0rem 2rem;
+    cursor: pointer;
+}
+.apartment-right {
+    position: absolute;
+    right: 1.3rem;
+    font-size: 3rem;
+    font-weight: bold;
+    z-index: 1;
+    top: 17rem;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 0rem 2rem;
+    cursor: pointer;
+}
