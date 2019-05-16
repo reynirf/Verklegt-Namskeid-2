@@ -5,13 +5,13 @@
         <div class="col-sm-5 col-centered login-column red-background border-shadow">
             <div class="card border-shadow">
                 <div class="card-body">
-                    <h5 style="color:#5F1C1C; margin-bottom:2%;">Login</h5>
+                    <h5 class="checkspam">Login</h5>
                     <!-- form for login -->
                     <form class="form" method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <a href="/users/password_reset">Forgot password?</a>
-                        <div style="margin-top:0.4rem">
+                        <div class="changeDiv">
                             <button type="submit" class="btn green-button">Login</button>
                         </div>
 

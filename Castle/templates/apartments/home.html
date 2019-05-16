@@ -36,7 +36,7 @@
                             <div class="form-row">
                                 <div class="price-range-block">
                                     <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-                                    <div class="slide-prices-container" style="margin:0.5rem auto;text-align:center">
+                                    <div class="slide-prices-container textcenter apt-margin-auto">
                                         <div class="min_price">
                                             <span class="input-group-addon m-1">ISK</span>
                                             <input type="text" placeholder="Min price" min=0 autocomplete="off" max="199999999" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='20000000');" id="min_price" class="price-range-field form-control m-1" />
@@ -52,7 +52,7 @@
                             <div class="form-row">
                                 <div class="size-range-block">
                                     <div id="size-range" class="size-filter-range" name="rangeInput"></div>
-                                    <div class="slide-sizes-container" style="margin:0.5rem auto;text-align:center">
+                                    <div class="slide-sizes-container textcenter apt-margin-auto">
                                         <div class="min_size">
                                             <span class="input-group-addon m-1">SQM</span>
                                             <input type="text" placeholder="Min size" min=0 autocomplete="off" max="499" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='40');" id="min_size" class="size-range-field form-control m-1" />
@@ -66,7 +66,7 @@
                             </div>
                             <br>
                             <div class="form-row">
-                                <div class="form-group col-12" style="text-align: right">
+                                <div class="form-group col-12 text-right">
                                     <a id="clearFormButton" class="btn red-button">Clear</a>
                                     <button id="submitFormHomeButton" class="btn green-button">Search</button>
                                 </div>
@@ -109,7 +109,7 @@
                             <div class="form-row">
                                 <div class="price-range-block">
                                     <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-                                    <div class="slide-prices-container" style="margin:0.5rem auto;text-align:center">
+                                    <div class="slide-prices-container textcenter apt-margin-auto">
                                         <div class="min_price">
                                             <span class="input-group-addon m-1">ISK</span>
                                             <input type="text" placeholder="Min price" min=0 autocomplete="off" max="199999999" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='20000000');" id="min_price" class="price-range-field form-control m-1" />
@@ -125,7 +125,7 @@
                             <div class="form-row">
                                 <div class="size-range-block">
                                     <div id="size-range" class="size-filter-range" name="rangeInput"></div>
-                                    <div class="slide-sizes-container" style="margin:0.5rem auto;text-align:center">
+                                    <div class="slide-sizes-container textcenter apt-margin-auto">
                                         <div class="min_size">
                                             <span class="input-group-addon m-1">SQM</span>
                                             <input type="text" placeholder="Min size" min=0 autocomplete="off" max="499" onkeypress="allowNumbersOnly(event)" oninput="validity.valid||(value='40');" id="min_size" class="size-range-field form-control m-1" />
@@ -139,7 +139,7 @@
                             </div>
                             <br>
                             <div class="form-row">
-                                <div class="form-group col-12" style="text-align: right">
+                                <div class="form-group col-12 text-right">
                                     <a id="clearFormButton" class="btn red-button">Clear</a>
                                     <button id="submitFormHomeButton" class="btn green-button">Search</button>
                                 </div>
@@ -154,8 +154,8 @@
 
         <!-- featured apartments -->
         <div class="col-md-6 col-lg-6 col-12 col-sm-12 pl-0 pr-2">
-            <div class="col-12 gray-background border-shadow" style="height: 100%;">
-                <div class="featured_apartments" style="height:100%">
+            <div class="col-12 gray-background border-shadow height100">
+                <div class="featured_apartments height100">
                     {% for apartment in featured %}
                         {% include 'apartments/single_apartment.html' with apartment=apartment.apartment %}
                     {% endfor %}
@@ -169,14 +169,14 @@
     <!-- newest apartments -->
     <div class="w-100 px-3 pb-3">
         <div class="gray-background border-shadow w-100">
-            <div class="row" style="margin:auto !important">
+            <div class="row marginauto">
                 <div class="col-2"><h4 class="prev_arrow"><</h4></div>
-                <div class="col-8" style="text-align:center"><h5>Newest apartments</h5></div>
+                <div class="col-8 textcenter"><h5>Newest apartments</h5></div>
                 <div class="col-2"><h4 class="next_arrow text-right">></h4></div>
             </div>
             <div class="new_aparts-container container px-0 m-0">
             {% if newest|length == 0 %}
-                <h4 style="text-align:center">No apartments for sale at the moment</h4>
+                <h4 class="textcenter">No apartments for sale at the moment</h4>
             {% else %}
                 <div class="newest_apartments apartment-container">
                     {% for apartment in newest %}

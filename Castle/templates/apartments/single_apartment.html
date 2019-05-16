@@ -2,7 +2,7 @@
 
 <!-- single apartmnet -->
 
-<div class="card bg-custom border-shadow text-white" style="height:100%">
+<div class="card bg-custom border-shadow text-white height100">
     <a href="{% url 'apartment_info' apartment.id %}">
         {% if apartment.main_pic %}
         <img class="card-img-top" src="{{ apartment.main_pic }}" alt="apartment pic">

@@ -503,3 +503,49 @@ input[name="profile_pic"], input[name='logo'] {
     color:#5F1C1C;
     margin-bottom:2%;
 }
+
+.changeDiv {
+    margin-top:0.4rem
+}
+
+.captcha {
+    margin:0.5rem 0rem
+}
+
+.marginbottom0 {
+    margin-bottom:0 !important
+}
+
+.height100 {
+    height:100% !important;
+}
+
+.apartment-img {
+    height:400px;
+    max-height:500px;
+    object-fit:contain;
+}
+
+.red-text {
+    color:red
+}
+
+.apartments {
+    margin:0.5rem auto !important;
+}
+
+.margin0 {
+    margin:0 !important;
+}
+
+.lineheight3 {
+    line-height: 3;
+}
+
+.single-apt-padding {
+    padding:1rem
+}
+
+.apt-margin-auto {
+    margin:0.5rem auto !important;
+}
