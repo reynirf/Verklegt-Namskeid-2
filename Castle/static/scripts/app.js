@@ -4,6 +4,7 @@ var imageInputsShowed = 3
 
 
 function allowNumbersOnly(e) {
+	//function used in text inputs
 	var code = (e.which) ? e.which : e.keyCode;
 	if (code > 31 && (code < 48 || code > 57)) {
 		e.preventDefault();
@@ -11,12 +12,13 @@ function allowNumbersOnly(e) {
 }
 
 $(document).ready(function(){
-	
+	//remove dots between a numeric value (string) and convert it to a number
 	String.prototype.numberize = function() {
 			var target = this;
 			return Number(target.split('.').join(''));
 	};
 
+	//if room has "6" rooms, fix it so it says "6+" instead
 	String.prototype.roomFixer = function() {
 			var target = this;
 			if (target == '6') {
@@ -25,22 +27,19 @@ $(document).ready(function(){
 			return target
 	};
 
+	//add a thousand seperator for numbers (dots)
 	Number.prototype.dotSeperator = function() {
 			var target = this;
 			return Number(target).toLocaleString('de')
 	}
 
-	$('#search_zip').on('mousedown', function(e) {
-		e.preventDefault();
-		this.blur();
-		window.focus();
-	});
-
+	//detect how many zips are checked, and update a text value to match the number
 	$('.zip_option').on('click', (e) => {
 		zipCodes = $('.zip_option input:checked')
 		$('#howManyZips').text(zipCodes.length + ' zip code/s')
 	})
 
+	//slider for min- and max price
 	$("#min_price,#max_price").on("paste keyup change", function (e) {                                        
 		var min_price_range = $('#min_price').val().numberize()
 		var max_price_range = $('#max_price').val().numberize()
@@ -60,6 +59,7 @@ $(document).ready(function(){
 
 	});
 
+	//slider for min- and max size
 	$("#min_size,#max_size").on("paste keyup change", function (e) {
 		var min_size_range = $('#min_size').val().numberize()
 		var max_size_range = $('#max_size').val().numberize()
@@ -79,6 +79,7 @@ $(document).ready(function(){
 
 	});
 
+	//clear search engine inputs
 	$("#clearFormButton").on('click', (e) => {
 		$('#min_price').val('20.000.000')
 		$('#max_price').val('90.000.000')
@@ -101,6 +102,7 @@ $(document).ready(function(){
 		e.preventDefault()
 	})
 
+	//on page load, run this. The function does intiialize sliders for search engine
 	$(function () {
 		$("#slider-range").slider({
 		range: true,
@@ -167,12 +169,22 @@ $(document).ready(function(){
 
 	});
 
+
+
+	//prevent default functionality when clicking the select input for searching, since it should open up a modal instead.
 	$('#search_zip').on('click', (e) => {
 		e.preventDefault()
 		$('#chooseZIP').modal('show');
 	})
 
+	//prevent the select box from opening when on mousedown.
+	$('#search_zip').on('mousedown', function(e) {
+		e.preventDefault();
+		this.blur();
+		window.focus();
+	});
 
+	//open area in zipcode modal
 	$('i[id^="open_"]').on('click', (e) => {
 		if($(e.target).attr('class') === 'fas fa-plus-square') {
 			$(e.target).attr('class', 'fas fa-minus-square')
@@ -185,6 +197,7 @@ $(document).ready(function(){
 		}
 	})
 
+	//choose all zip codes in a specific area
 	$('a[id^="choose_all_"]').on('click', (e) => {
 		$('.'+$(e.target).data('area')+ ' input').prop('checked', true);
 		zipCodes = $('.zip_option input:checked')
@@ -197,7 +210,7 @@ $(document).ready(function(){
 		$('#howManyZips').text('Zip codes')
 	})
 
-
+	//search engine request, returns a JSON object and displays the correct information
 	$('#submitFormButton').on('click', (e) => {
 		e.preventDefault()
 		var searchText = $('#search_address').val()
@@ -261,7 +274,7 @@ $(document).ready(function(){
 		})
 	})
 
-
+	// search engine from home, redirects to apartments page with the right params to display the correct information
 	$('#submitFormHomeButton').on('click', (e) => {
 		e.preventDefault()
 		var searchText = $('#search_address').val()
@@ -281,6 +294,7 @@ $(document).ready(function(){
 
 	})
 
+	// handle order_by functionality
 	$('#order_by').on('change', function() {
   		let selected = this.value
 		let apartments = $('.single-apartment')
@@ -317,6 +331,7 @@ $(document).ready(function(){
 		}
 	});
 
+	// on load, run this. If the user is on /apartments/, fill the search engine with data captured from the request in django
 	$(function () {
 		if(window.location.pathname === '/apartments/') {
 			let min_price_django = $('#min_price_django')
@@ -352,6 +367,7 @@ $(document).ready(function(){
 		}
 	})
 
+	// slider for featured apartments
 	$('.featured_apartments').slick({
 		slidesToShow: 1,
 		fade: true,
@@ -361,6 +377,7 @@ $(document).ready(function(){
 		pauseOnHover: true
 	});
 
+	// slider for newest apartments
 	$('.newest_apartments').slick({
 		infinite: true,
 		speed: 300,
@@ -395,6 +412,7 @@ $(document).ready(function(){
 		]
 	});
 
+	// slider for sold apartments
 	$('.sold_apartments').slick({
 		infinite: true,
 		speed: 300,
@@ -429,6 +447,7 @@ $(document).ready(function(){
 		]
 	});
 
+	// slider for images on apartment info page
 	$('.apartment_info_main_pic').slick({
 		arrows:true,
 		slidesToShow:2,
@@ -437,14 +456,7 @@ $(document).ready(function(){
 		centerMode: true,
 	})
 
-
-	$('#uploadImage').on('show.bs.modal', function (event) {
-	  var button = $(event.relatedTarget)
-	  var currentImg = button.data('current_img')
-	  var modal = $(this)
-	  modal.find('.modal-body input').val(currentImg)
-	})
-
+	// add more image fields (inputs) to the add apartment form, if requested.
 	$('#addMoreImageFields').on('click', (e) => {
 		$('#id_images_' + imageInputsShowed).css('display', 'block')
 		if(imageInputsShowed == 19) $(e.target).css('display', 'none')
