@@ -1,10 +1,12 @@
 from django import template
-
 register = template.Library()
 
 @register.filter(name='dotSeperator')
 def dotSeperator(value):
-    return "{:,}".format(value).replace(',', '.')
+    if value:
+        return "{:,}".format(value).replace(',', '.')
+    else:
+        return '0'
 
 @register.filter(name='roomFixer')
 def roomFixer(value):

@@ -475,7 +475,7 @@ input[name="profile_pic"], input[name='logo'] {
 }
 
 .textcenter {
-    text-align:center !important;
+    text-align:center;
 }
 
 .nav-padding {
@@ -509,7 +509,7 @@ input[name="profile_pic"], input[name='logo'] {
 }
 
 .captcha {
-    margin:0.5rem 0rem
+    margin:0.5rem 0rem;
 }
 
 .marginbottom0 {
