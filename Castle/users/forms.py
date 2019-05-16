@@ -96,7 +96,8 @@ class MultiWidgetBasic(forms.widgets.MultiWidget):
     def __init__(self, attrs=None):
         widgets = [forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder':'https://website.com/image.png'
+            'placeholder':'https://website.com/image.png',
+            'autocomplete': 'off'
         }) for _ in range(20)]
         super(MultiWidgetBasic, self).__init__(widgets, attrs)
 
@@ -130,10 +131,12 @@ class Add_apartment(ModelForm):
         widgets = {
             'address': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Þórláksgeisli 29'
+                'placeholder': 'Þórláksgeisli 29',
+                'autocomplete': 'off'
             }),
             'zip_code': forms.Select(attrs={
-                'class':'form-control w-75'
+                'class':'form-control w-75',
+                'autocomplete': 'off'
             }),
             'rooms': forms.Select(choices=room_choices, attrs={
                 'class':'form-control w-50'
@@ -143,22 +146,26 @@ class Add_apartment(ModelForm):
                 'type': 'number',
                 'placeholder': '200',
                 'min': '0',
-                'max': '500'
+                'max': '500',
+                'autocomplete': 'off'
             }),
             'price': forms.TextInput(attrs={
                 'class': 'form-control w-50',
                 'type': 'number',
                 'placeholder': '45000000',
                 'min': '0',
-                'max': '200000000'
+                'max': '200000000',
+                'autocomplete': 'off'
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': '...'
+                'placeholder': '...',
+                'autocomplete': 'off'
             }),
             'main_pic': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder':'https://website.com/image.png'
+                'placeholder':'https://website.com/image.png',
+                'autocomplete': 'off'
             })
         }
 
