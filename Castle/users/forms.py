@@ -137,8 +137,8 @@ class Add_apartment(ModelForm):
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Þórláksgeisli 29'}),
             'zip_code': forms.Select(attrs={'class':'form-control w-75'}),
             'rooms': forms.Select(choices=room_choices, attrs={'class':'form-control w-50'}),
-            'size': forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '200'}),
-            'price': forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '45000000'}),
+            'size': forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '200', 'min': '0', 'max': '500'}),
+            'price': forms.TextInput(attrs={'class': 'form-control w-50', 'type': 'number', 'placeholder': '45000000', 'min': '0', 'max': '200000000'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': '...'}),
             'main_pic': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'https://website.com/image.png'})
         }

@@ -11,6 +11,14 @@ from django.core import serializers
 from django.contrib import messages
 import datetime
 
+from django.core.serializers.json import DjangoJSONEncoder
+
+class LazyEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Zipcode):
+            return str(obj)
+        return super().default(obj)
+
 # Create your views here.
 def home(request):
     today = date.today()
@@ -75,18 +83,15 @@ def apartment_list(request):
 
     if 'zipcodes' in request.GET:
         zipcodes = request.GET['zipcodes']
-        print(zipcodes)
         if zipcodes != '':
             zipcodes_list = zipcodes.split(',')
             zipcodes_list = list(map(int, zipcodes_list))
             apartments = apartments.filter(zip_code__in=zipcodes_list)
             search['zipcodes'] = zipcodes
-
     if json and home:
         return render(request, "apartments/apartment_list.html", {'apartments': apartments, 'details': search})
     elif json:
-
-        apartments = serializers.serialize('json', apartments, use_natural_foreign_keys = True, use_natural_primary_keys = True)
+        apartments = serializers.serialize('json', apartments, cls=LazyEncoder, use_natural_foreign_keys = True)
         return HttpResponse(apartments, content_type='application/json')
 
     context = {'apartments': apartments.order_by('address'), 'details': search}

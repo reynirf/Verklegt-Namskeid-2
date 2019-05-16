@@ -427,3 +427,17 @@ input[name="profile_pic"], input[name='logo'] {
 #id_images_3, #id_images_4, #id_images_5, #id_images_6, #id_images_7, #id_images_8, #id_images_9, #id_images_10, #id_images_11, #id_images_12, #id_images_13, #id_images_14, #id_images_15, #id_images_16, #id_images_17, #id_images_18, #id_images_19 {
     display:none
 }
+
+.next-container {
+    text-align:right;
+}
+
+@media screen and (min-width:958px) and (max-width:1142px) {
+    .profile-button {
+        text-align:right;
+    }
+}
+
+.apartment-container {
+    height:100%
+}
