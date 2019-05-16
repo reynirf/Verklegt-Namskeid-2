@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}{{ seller.user.user_info.name }}{% endblock %}
 {% block mainbody %}
-
     <div class="m-3">
         {% include 'sellers/single_seller.html' %}
     </div>
@@ -14,7 +13,7 @@
             </div>
             <div class="new_aparts-container container px-0 m-0">
                 <div class="newest_apartments">
-                    {% for apartment in apartments %}
+                    {% for apartment in apartments %} <!-- show seller's apartments -->
                         {% include 'apartments/single_apartment.html' with apartment=apartment %}
                     {% endfor %}
                 </div>

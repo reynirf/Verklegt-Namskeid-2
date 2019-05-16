@@ -1,5 +1,7 @@
 {% load pipes %}
 
+<!-- single apartmnet -->
+
 <div class="card bg-custom border-shadow text-white" style="height:100%">
     <a href="{% url 'apartment_info' apartment.id %}">
         {% if apartment.main_pic %}
@@ -23,3 +25,4 @@
     </div>
 </div>
 
+<!-- / single apartment -->

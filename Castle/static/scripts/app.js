@@ -6,7 +6,7 @@ var imageInputsShowed = 3
 function allowNumbersOnly(e) {
 	var code = (e.which) ? e.which : e.keyCode;
 	if (code > 31 && (code < 48 || code > 57)) {
-			e.preventDefault();
+		e.preventDefault();
 	}
 }
 
@@ -30,31 +30,18 @@ $(document).ready(function(){
 			return Number(target).toLocaleString('de')
 	}
 
-
 	$('#search_zip').on('mousedown', function(e) {
 		e.preventDefault();
 		this.blur();
 		window.focus();
 	});
 
-	// $('#search_rooms').on('click', (e) => {
-	// 	$(e.target).hide()
-	// 	$("#choose_rooms").show()
-	// })
-
 	$('.zip_option').on('click', (e) => {
 		zipCodes = $('.zip_option input:checked')
 		$('#howManyZips').text(zipCodes.length + ' zip code/s')
 	})
 
-	// $('#price-range-submit').hide();
-
-
 	$("#min_price,#max_price").on("paste keyup change", function (e) {                                        
-		console.log('new search', e)
-
-		// var min_price_range = parseInt($("#min_price").val())
-		// var max_price_range = parseInt($("#max_price").val());
 		var min_price_range = $('#min_price').val().numberize()
 		var max_price_range = $('#max_price').val().numberize()
 		
@@ -67,16 +54,13 @@ $(document).ready(function(){
 		}
 		$("#slider-range").slider({
 			values: [$('#min_price').val().numberize(), $('#max_price').val().numberize()]
-			// values: [$('#min_price').val(), $('#max_price').val()]
 		});
 	
 		$(e.target).val(Number(e.target.value.numberize()).dotSeperator())
 
 	});
 
-	$("#min_size,#max_size").on("paste keyup change", function (e) {                                        
-		console.log('new search', e)
-
+	$("#min_size,#max_size").on("paste keyup change", function (e) {
 		var min_size_range = $('#min_size').val().numberize()
 		var max_size_range = $('#max_size').val().numberize()
 		
@@ -116,8 +100,6 @@ $(document).ready(function(){
 		$('#howManyZips').text('Zip codes')
 		e.preventDefault()
 	})
-	
-
 
 	$(function () {
 		$("#slider-range").slider({
@@ -135,8 +117,6 @@ $(document).ready(function(){
 
 			$("#min_price").val(Number(ui.values[0]).dotSeperator());
 			$("#max_price").val(Number(ui.values[1]).dotSeperator());
-			// var min_price_range = parseInt($("#min_price").val())
-			// var min_price_range = parseInt($("#min_price").val())
 			var min_price_range = $('#min_price').val().numberize();
 			var max_price_range = $('#max_price').val().numberize();
 			
@@ -149,6 +129,7 @@ $(document).ready(function(){
 			}
 		}
 		});
+
 		$("#size-range").slider({
 		range: true,
 		orientation: "horizontal",
@@ -164,8 +145,6 @@ $(document).ready(function(){
 
 			$("#min_size").val(Number(ui.values[0]).dotSeperator());
 			$("#max_size").val(Number(ui.values[1]).dotSeperator());
-			// var min_size_range = parseInt($("#min_size").val())
-			// var min_size_range = parseInt($("#min_size").val())
 			var min_size_range = $('#min_size').val().numberize();
 			var max_size_range = $('#max_size').val().numberize();
 			
@@ -185,20 +164,7 @@ $(document).ready(function(){
 		$("#min_size").val(Number($("#size-range").slider("values", 0)).dotSeperator());
 		$("#max_size").val(Number($("#size-range").slider("values", 1)).dotSeperator());
 
-		// $("#max_price").val(Number($("#max_price").val()).toLocaleString('de'));
 
-	});
-
-	$("#slider-range").click(function () {
-
-		console.log($("#min_price").val().numberize())
-		console.log($("#max_price").val().numberize())
-	});
-
-	$("#size-range").click(function () {
-
-		console.log($("#min_size").val().numberize())
-		console.log($("#max_size").val().numberize())
 	});
 
 	$('#search_zip').on('click', (e) => {
@@ -225,7 +191,6 @@ $(document).ready(function(){
 		$('#howManyZips').text(zipCodes.length + ' zip code/s')
 	})
 
-	//clear all checkboxes
 	$('#clear_zip_query').on('click', (e) => {
 		$('.item .zip_option input').prop('checked', false)
 		zipCodes = []
@@ -369,7 +334,6 @@ $(document).ready(function(){
 				values: [min_size_django.val().numberize(), max_size_django.val().numberize()]
 			});
 			rooms = $('#rooms_django').val()
-			console.log(rooms)
 			if(rooms === '6') {
 				rooms = '6+'
 			}
@@ -465,14 +429,6 @@ $(document).ready(function(){
 		]
 	});
 
-	/*$('.apartment_info_main_pic').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		fade: true,
-		// asNavFor: $('.apartment_info_small')
-	});
-	 */
-
 	$('.apartment_info_main_pic').slick({
 		arrows:true,
 		slidesToShow:2,
@@ -485,13 +441,11 @@ $(document).ready(function(){
 	$('#uploadImage').on('show.bs.modal', function (event) {
 	  var button = $(event.relatedTarget)
 	  var currentImg = button.data('current_img')
-
 	  var modal = $(this)
 	  modal.find('.modal-body input').val(currentImg)
 	})
 
 	$('#addMoreImageFields').on('click', (e) => {
-
 		$('#id_images_' + imageInputsShowed).css('display', 'block')
 		if(imageInputsShowed == 19) $(e.target).css('display', 'none')
 		imageInputsShowed += 1

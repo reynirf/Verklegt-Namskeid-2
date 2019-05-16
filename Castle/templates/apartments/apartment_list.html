@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Apartments{% endblock %}
 {% block mainbody %}
-
     <div class="m-3 red-background border-shadow">
         <div class="card border-shadow bg-white">
             <div class="card-body">
+                <!-- form for searching-->
                 <form>
                     <div class="row form-group">
                         <div class="col-12 col-lg-8 col-md-8">
@@ -63,9 +63,12 @@
                         </div>
                     </div>
                 </form>
+                <!-- / form -->
             </div>
         </div>
     </div>
+
+    <!-- search results header -->
     <div class="m-3 simple-border">
         <div class="row mx-2">
             <div class="col-6" style="line-height:3">
@@ -82,7 +85,9 @@
             </div>
         </div>
     </div>
+    <!-- / results header -->
 
+    <!-- hidden values to be feteched from javascript -->
     <div class="values" style="display:none">
         <input id="min_price_django" type="text" value="{{ details.min_price }}">
         <input id="max_price_django" type="text" value="{{ details.max_price }}">
@@ -91,9 +96,11 @@
         <input id="rooms_django" type="text" value="{{ details.rooms }}">
         <input id="zipcodes_django" type="text" value="{{ details.zipcodes }}">
     </div>
+    <!-- hidden values -->
 
-    {% include 'apartments/zip_codes.html' %}
+    {% include 'apartments/zip_codes.html' %} <!-- include zip_code module -->
 
+    <!-- list of apartments -->
     <div class="row apartments-list">
     {% for apartment in apartments %}
         <div data-address="{{ apartment.address }}" data-price="{{ apartment.price }}" class="col-md-4 col-lg-3 col-12 col-sm-6 single-apartment" style="padding:1rem">
@@ -103,6 +110,7 @@
         </div>
     {% endfor %}
     </div>
+    <!-- / list -->
 
 
 {% endblock %}

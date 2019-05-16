@@ -4,6 +4,7 @@
 
 {% block mainbody %}
 
+    <!-- process header -->
     <div class="m-3">
         <div class="w-100 gray-background border-shadow">
             <div class="card border-shadow">
@@ -23,6 +24,8 @@
             </div>
         </div>
     </div>
+    <!-- / process header -->
+
     <div class="m-3">
         <div class="w-100 red-background border-shadow mb-3">
             <div class="card border-shadow">
@@ -58,10 +61,12 @@
                     <a href="{% url 'homepage' %}">
                         <button type="button" class="btn red-button">Cancel</button>
                     </a>
+                    <!-- form for buying the apartment and ending the process -->
                     <form method="POST" class="float-right">
                         {% csrf_token %}
                         <button type="submit" class="btn green-button" style="width: fit-content">Buy this apartment</button>
                     </form>
+                    <!-- / form -->
                 </div>
             </div>
         </div>
