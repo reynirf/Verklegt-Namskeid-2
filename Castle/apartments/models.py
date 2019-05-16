@@ -23,7 +23,6 @@ class Apartment(models.Model):
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
 
     def natural_key(self):
-        #return [self.zip_code.natural_key()]
         return self.pk
 
 class Apartment_images(models.Model):
