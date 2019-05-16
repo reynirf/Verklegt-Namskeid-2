@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <!-- css imports -->
-    <link rel="stylesheet" href="{% static 'lib/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static  'lib/jquery.css'%}">
-    <link rel="stylesheet" href="{% static  'lib/slick.css'%}">
+    <link rel="stylesheet" href="/static/lib/bootstrap.css">
+    <link rel="stylesheet" href="/static/lib/jquery.css">
+    <link rel="stylesheet" href="/static/lib/slick.css">
     <!-- fontawesome has to be via the CDN -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static  'css/style.css'%}">
+    <link rel="stylesheet" href="/static/css/style.css">
     <!-- / css imports -->
 </head>
 
@@ -21,7 +21,7 @@
     <!-- heeader -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
         <a class="navbar-brand" href="{% url 'homepage' %}">
-            <img src="{% static 'images/logo.png' %}", alt="castle apartments">
+            <img src="/static/images/logo.png" alt="castle apartments">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,16 +32,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'apartment_list' %}">Apartments</a>
                 </li>
-                <li class="nav-item sellers-nav" style="border-right: 1px solid rgba(255,255,255,.5);padding-right:0.8rem">
+                <li class="nav-item sellers-nav nav-sellers">
                     <a class="nav-link" href="{% url 'sellers_list' %}">Sellers</a>
                 </li>
                 {% if request.user.is_authenticated %}
-                    <li class ="nav-item login-nav" style="padding-left: 0.8rem">
+                    <li class ="nav-item login-nav nav-padding">
                         <a class ="nav-link" href="{% url 'profile' %}"> My Profile </a></li>
                     <li class ="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}"> Logout </a></li>
                 {% else %}
-                    <li class ="nav-item login-nav" style="padding-left: 0.8rem">
+                    <li class ="nav-item login-nav nav-padding">
                         <a class="nav-link" href="{% url 'login' %}"> Log in </a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'register' %}"> Register </a></li>
@@ -74,12 +74,12 @@
     <!-- /footer -->
 
     <!-- javascript imports -->
-    <script src="{% static 'lib/jquery.js' %}"></script>
-    <script src="{% static 'lib/bootstrap.js' %}"></script>
-    <script src="{% static 'lib/jquery_ui.js' %}"></script>
-    <script src="{% static 'lib/slick.js' %}"></script>
+    <script src="/static/lib/jquery.js"></script>
+    <script src="/static/lib/bootstrap.js"></script>
+    <script src="/static/lib/jquery_ui.js"></script>
+    <script src="/static/lib/slick.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="{% static  'scripts/app.js'%}"></script>
+    <script src="/static/scripts/app.js"></script>
     <!-- / javascript imports -->
 </body>
 </html>

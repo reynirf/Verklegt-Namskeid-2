@@ -1,32 +1,39 @@
 .bg-custom {
     background-color: #5e1d1d;
 }
+
 .simple-border {
     border: 2px solid #5E1D1D;
     border-radius: 5px;
 }
+
 .border-shadow {
     border-width: 0;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.25) 0 4px 4px;
 }
+
 .gray-background {
     display: inline-block;
     background-color: #d9d6d6;
     padding: 1rem;
 }
+
 .white-background {
     background-color: white;
     padding: 1rem;
 }
+
 .green-background {
     background-color: #257E29;
     padding: 1rem;
 }
+
 .red-background {
     background-color: #5E1D1D;
     padding: 1rem;
 }
+
 .red-button, #clearFormButton {
     background: #5E1D1D;
     color: white;
@@ -34,6 +41,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
+
 .red-button:hover, .green-button:hover, #clearFormButton:hover {
     color:rgba(255, 255, 255, 0.7)
 }
@@ -49,6 +57,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
+
 .gray-button {
     background: #d9d6d6;
     color: #5E1D1D;
@@ -56,10 +65,12 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
+
 #slider-range, #size-range {
     width:100%;
     background: #5e1d1d;
 }
+
 .sliderText {
     width:40%;
     margin-bottom:30px;
@@ -67,98 +78,86 @@
     padding: 10px 0 10px 0px;
     font-weight:bold;
 }
+
 #order_by {
     width: 8rem;
 }
+
 .single-apartment-card {
     padding: 0.5rem;
 }
+
 .single-apartment-card p, .card-title, h6 {
-    /*margin-bottom: 0;*/
     margin-bottom:0.3rem;
 }
+
 .single-apartment-card .card-subtitle {
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
 }
+
 .newest_apartments, .sold_apartments {
     box-sizing: border-box;
 }
+
 .login-column {
     float:none;
     margin:0 auto;
 }
-.username-label{
-    display:inline-block;
-    padding-right:40px;
-    float:left;
-}
-.password-label{
-    display:inline-block;
-    padding-right:44px;
-    float:left;
-}
-.forgot-password-label{
-    padding-left:70%;
-    padding-bottom:15px;
-}
-.user_input{
-    display: block;
-    width: 70%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+
 .price-range-block, .size-range-block {
     width:100%;
 }
+
 .expander {
     background: gray;
     width:100%
 }
+
 .item {
     font-size: 1.5rem;
 }
+
 .item .zip_option {
     font-size:1rem;
     margin-left:1rem
 }
+
 .item a, .item p {
     height:0.8rem;
     display:none;
 }
+
 .item h4 i:hover {
     text-decoration: underline;
     cursor:pointer;
 }
+
 .item h4 {
     margin-bottom:0;
 }
+
 #choose_rooms {
     display:none;
 }
+
 input[type="checkbox"]
 {
     vertical-align:middle;
 }
+
 @media screen and (max-width: 1240px) {
     .forgot-password-label{
         padding-left:62%;
     }
 }
+
 @media screen and (max-width: 1208px) {
     .forgot-password-label{
         padding-left:62%;
     }
 }
+
 @media screen and (max-width: 1035px) {
     .forgot-password-label{
         padding-left:50%;
@@ -168,9 +167,11 @@ input[type="checkbox"]
 .min_price, .min_size {
     float:left;
 }
+
 .max_price, .max_size {
     float:right;
 }
+
 #order_by {
     width:50%
 }
@@ -180,6 +181,7 @@ input[type="checkbox"]
         width:70%
     }
 }
+
 @media screen and (max-width:650px) {
     #order_by_text {
         display:none !important
@@ -189,13 +191,12 @@ input[type="checkbox"]
     }
 }
 
-
 .min_size, .max_size, .min_price, .max_price {
     display:table !important;
 }
+
 .min_size span, .max_size span, .min_price span, .max_price span {
     display:table-cell;
-    /* vertical-align:middle; */
 }
 
 @media screen and (max-width: 971px) {
@@ -216,15 +217,6 @@ input[type="checkbox"]
         float:left
     }
 }
-
-/* .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    text-align: center; 
-} */
 
 @media screen and (max-width:992px) {
     .login-nav {
@@ -249,12 +241,12 @@ input[type="checkbox"]
     margin: 0.4rem;
 }
 
-
 @media screen and (max-width: 1140px) {
     .max_price, .min_price, .max_size, .min_size {
         width:100%;
     }
 }
+
 @media screen and (max-width: 863px) {
     .profile-picture {
         max-width:50%;
@@ -263,11 +255,13 @@ input[type="checkbox"]
         width:100%;
     }
 }
+
 @media screen and (max-width: 863px) and (min-width: 768px) {
     .profile-info {
         text-align: left !important;
     }
 }
+
 @media screen and (min-width: 864px) {
     .profile-info  {
         text-align: left !important;
@@ -280,8 +274,6 @@ input[type="checkbox"]
 .apartments-list {
     margin:0;
 }
-
-
 
 .footer {
   position: absolute;
@@ -320,6 +312,7 @@ body {
 .zip-option input[type="checkbox"] {
     vertical-align: unset;
 }
+
 .new_aparts-container, .search-history-container {
     margin:auto !important;
 }
@@ -331,9 +324,11 @@ body {
 .errorlist {
     display:none
 }
+
 .change_password ul {
     display: none;
 }
+
 .xs-only {
     display: block;
 }
@@ -343,6 +338,7 @@ body {
         display: none;
     }
 }
+
 .profile-picture {
     border:solid 1px #5e1d1d;
     border-radius:100%
@@ -368,6 +364,7 @@ body {
     opacity: 0.4;
     filter:brightness(0.6)
 }
+
 .avatar-container:hover .middle {
     opacity: 1;
 }
@@ -396,9 +393,11 @@ body {
 .search-engine-container {
     height: 100%;
 }
+
 .sub-container {
     height:100%;
 }
+
 input[name="profile_pic"], input[name='logo'] {
     width:100%
 }
@@ -410,6 +409,7 @@ input[name="profile_pic"], input[name='logo'] {
 .seller_title {
     color:#5e1d1d;
 }
+
 .seller_title:hover {
     color:rgba(94,29,29,0.7)
 }
@@ -442,9 +442,8 @@ input[name="profile_pic"], input[name='logo'] {
     height:100%
 }
 
-.apartment-left {
+.apartment-left, .apartment-right {
     position: absolute;
-    left: 1.3rem;
     font-size: 3rem;
     font-weight: bold;
     z-index: 1;
@@ -454,15 +453,48 @@ input[name="profile_pic"], input[name='logo'] {
     padding: 0rem 2rem;
     cursor: pointer;
 }
+
 .apartment-right {
-    position: absolute;
     right: 1.3rem;
-    font-size: 3rem;
-    font-weight: bold;
-    z-index: 1;
-    top: 17rem;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    padding: 0rem 2rem;
-    cursor: pointer;
+}
+
+.apartment-left {
+    left: 1.3rem;
+}
+
+.single-seller {
+    margin:0rem 0rem 1rem 0rem;
+}
+
+.width100 {
+    width:100% !important;
+}
+
+.marginauto {
+    margin:auto !important
+}
+
+.textcenter {
+    text-align:center !important;
+}
+
+.nav-padding {
+    padding-left: 0.8rem
+}
+
+.nav-sellers {
+    border-right: 1px solid rgba(255,255,255,.5);
+    padding-right:0.8rem
+}
+
+.floatleft {
+    float:left !important
+}
+
+.floatright {
+    float:right !important;
+}
+
+.fit-content {
+    width:fit-content;
 }

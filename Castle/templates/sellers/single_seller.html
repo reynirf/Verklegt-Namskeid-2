@@ -2,14 +2,14 @@
 {% load static %}
 {% get_static_prefix as STATIC_PREFIX %}
 
-<div class="w-100 gray-background border-shadow" style="margin:0rem 0rem 1rem 0rem">
+<div class="w-100 gray-background border-shadow single-seller">
     <div class="card white-background border-shadow">
         <div class="card-body row p-0">
             <div class="col-3">
                 {% if seller.logo %}
-                    <img src="{{ seller.logo }}" class="img-thumbnail simple-border" style="width:100%" alt="seller logo">
+                    <img src="{{ seller.logo }}" class="img-thumbnail simple-border width100" alt="seller logo">
                 {% else %}
-                    <img src="{{ STATIC_PREFIX }}images/userimagenotfound.jpg" class="img-thumbnail simple-border" style="width:100%" alt="seller logo">
+                    <img src="{{ STATIC_PREFIX }}images/userimagenotfound.jpg" class="img-thumbnail simple-border width100" alt="seller logo">
                 {% endif %}
             </div>
             <div class="col-4">
