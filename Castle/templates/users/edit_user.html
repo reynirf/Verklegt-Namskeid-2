@@ -7,18 +7,21 @@
             <div class="card border-shadow">
                 <div class="card-body">
                     <h5 style="color:#5F1C1C; margin-bottom:2%;">Edit profile</h5>
+                    <!-- form for editing profile -->
                     <form method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        {% if form2 %}
+                        {% if form2 %} <!-- basically, if user is seller, show this form. That's because seller has more fields to edit -->
                             {{ form2.as_p }}
                         {% endif %}
                           <div style="margin-top:0.4rem">
                             <button type="submit" class="green-button">Update</button>
                         </div>
                     </form>
+                    <!-- / form -->
 
-                     {% if form.errors %}
+                    <!-- errors -->
+                    {% if form.errors %}
                         {% for field in form %}
                             {% for error in field.errors %}
                                 <div class="alert alert-danger">
@@ -32,7 +35,7 @@
                             </div>
                         {% endfor %}
                     {% endif %}
-
+                    <!-- / errors -->
                 </div>
             </div>
         </div>

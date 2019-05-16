@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Contact information{% endblock %}
 {% block mainbody %}
-
+    <!-- process header -->
     <div class="m-3">
         <div class="w-100 gray-background border-shadow">
             <div class="card border-shadow">
@@ -13,11 +13,14 @@
             </div>
         </div>
     </div>
+    <!-- / process header -->
+
     <div class="m-3">
         <div class="w-100 red-background border-shadow mb-3">
             <div class="card border-shadow">
                 <div class="card-body">
-                     {% if form.errors %}
+                        <!-- errors -->
+                        {% if form.errors %}
                             {% for field in form %}
                                 {% for error in field.errors %}
                                     <div class="alert alert-danger">
@@ -31,7 +34,9 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
+                        <!-- / errors -->
                     <h5 class="card-title">Add your contact information</h5>
+                    <!-- form for adding contact information and going to next step in the process -->
                     <form class="form" method="POST">
                         {% csrf_token %}
                         <table class="w-75 m-3">
@@ -42,6 +47,7 @@
                         </a>
                         <button type="submit" class="btn green-button float-right">Continue</button>
                     </form>
+                    <!-- form -->
                 </div>
             </div>
         </div>

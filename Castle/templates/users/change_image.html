@@ -7,6 +7,7 @@
             <div class="card border-shadow">
                 <div class="card-body">
                     <h5 style="color:#5F1C1C; margin-bottom:2%;">Change image</h5>
+                    <!-- form for changing image -->
                     <form method="POST">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -14,8 +15,10 @@
                             <button type="submit" class="green-button">Update</button>
                         </div>
                     </form>
+                    <!-- / form -->
 
-                     {% if form.errors %}
+                    <!-- errors -->
+                    {% if form.errors %}
                         {% for field in form %}
                             {% for error in field.errors %}
                                 <div class="alert alert-danger">
@@ -29,7 +32,7 @@
                             </div>
                         {% endfor %}
                     {% endif %}
-
+                    <!-- / errors -->
                 </div>
             </div>
         </div>

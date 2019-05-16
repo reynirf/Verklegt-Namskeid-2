@@ -7,12 +7,14 @@
             <div class="card border-shadow">
                 <div class="card-body">
                     <h5 style="color:#5F1C1C; margin-bottom:2%;">Add an apartment</h5>
+                    <!-- form for adding apartment -->
                     <form class="form" method="POST">
                         {% csrf_token %}
                            {{ form.as_p }}
                         <p href="#" id="addMoreImageFields">Add another image</p><br><br>
                         <button type="submit" class="btn green-button">Submit</button>
 
+                        <!-- errors -->
                         {% if form.errors %}
                             {% for field in form %}
                                 {% for error in field.errors %}
@@ -27,7 +29,9 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
-                    </form> <!-- /form -->
+                        <!-- / errors -->
+                    </form>
+                    <!-- / form -->
                 </div>
             </div>
         </div>
