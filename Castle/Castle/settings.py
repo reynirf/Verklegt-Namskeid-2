@@ -25,20 +25,10 @@ SECRET_KEY = ')9v)h=by3%ix0mp-#x0-ifsm7_dgy4scrcd2#y#s7b^_s#vc&4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LfyraIUAAAAABPvVItctwl8nzTO0d0-Car59OhF'
 
-# only when debugging
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-#EMAIL_HOST = 'smtp.sendgrid.net'
-#EMAIL_PORT = 587
-#EMAIL_HOST_USER = 'castle'
-#EMAIL_HOST_PASSWORD = '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'
-#EMAIL_USE_TLS = True
-#DEFAULT_FROM_EMAIL = 'Castle Apartments'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
