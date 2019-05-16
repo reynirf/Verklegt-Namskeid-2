@@ -175,7 +175,7 @@ def add_apartment(request):
                 print('apartment saved')
                 for num in range(20):
                     num_str = 'images_' + str(num)
-                    if Apartment_images(apartment=apartment, image=request.POST[num_str]) != "":
+                    if request.POST[num_str] != None:
                         image = Apartment_images(apartment=apartment, image=request.POST[num_str])
                         image.save()
                 print('images saved')
