@@ -437,3 +437,7 @@ input[name="profile_pic"], input[name='logo'] {
         text-align:right;
     }
 }
+
+.apartment-container {
+    height:100%
+}

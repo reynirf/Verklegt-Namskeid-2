@@ -26,11 +26,11 @@
                     <h5>Phone: <span style="font-weight:normal">{{ info.phone }}</span></h5>
                     <h5>E-mail: <span style="font-weight:normal">{{ info.email }}</span></h5>
                     <br>
-                    <div>
+                    <div class="profile-button">
                         <a href="/users/edit_user"><button id="editButton" type="submit" class="btn green-button">Edit profile</button></a>
                     </div>
                     <br>
-                    <div>
+                    <div class="profile-button">
                         <a href="/users/change_password"><button id="changePassword" type="submit" class="btn green-button">Change password</button></a>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="col-2"><h4 class="next_arrow text-right">></h4></div>
             </div>
             <div class="search-history-container container px-0 m-0">
-                <div class="newest_apartments">
+                <div class="newest_apartments apartment-container">
                     {% for search in history %}
                         {% include 'apartments/single_apartment.html' with apartment=search.apartment %}
                     {% endfor %}

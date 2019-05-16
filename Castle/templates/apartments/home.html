@@ -170,7 +170,7 @@
             {% if newest|length == 0 %}
                 <h4 style="text-align:center">No apartments for sale at the moment</h4>
             {% else %}
-                <div class="newest_apartments">
+                <div class="newest_apartments apartment-container">
                     {% for apartment in newest %}
                         {% include 'apartments/single_apartment.html' with apartment=apartment %}
                     {% endfor %}
