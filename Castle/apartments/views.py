@@ -22,7 +22,7 @@ def home(request):
     today = datetime.date.today()
     # Finding the newest apartments and apartments that are featured today
     context = {
-        'newest': Apartment.objects.filter(sold=False).order_by('date_added')[:12],
+        'newest': Apartment.objects.filter(sold=False).order_by('-date_added')[:12],
         'featured': Apartment_featured.objects.filter(start_date__lte=today, end_date__gte=today)
     }
     return render(request, "apartments/home.html", context)
