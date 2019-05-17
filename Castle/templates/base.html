@@ -36,15 +36,28 @@
                     <a class="nav-link" href="{% url 'sellers_list' %}">Sellers</a>
                 </li>
                 {% if request.user.is_authenticated %}
-                    <li class ="nav-item login-nav nav-padding">
-                        <a class ="nav-link" href="{% url 'profile' %}"> My Profile </a></li>
+                    {% if request.user.user_info.seller %}
+                        <li class ="nav-item login-nav fit-content nav-padding">
+                            <a class ="nav-link" href="{% url 'add_apartment' %}"> Add new apartment</a>
+                        </li>
+                        <li class ="nav-item">
+                            <a class ="nav-link" href="{% url 'profile' %}"> My Profile </a>
+                        </li>
+                    {% else %}
+                        <li class ="nav-item login-nav nav-padding">
+                            <a class ="nav-link" href="{% url 'profile' %}"> My Profile </a>
+                        </li>
+                    {% endif %}
                     <li class ="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}"> Logout </a></li>
+                        <a class="nav-link" href="{% url 'logout' %}"> Logout </a>
+                    </li>
                 {% else %}
                     <li class ="nav-item login-nav nav-padding">
-                        <a class="nav-link" href="{% url 'login' %}"> Log in </a></li>
+                        <a class="nav-link" href="{% url 'login' %}"> Log in </a>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}"> Register </a></li>
+                        <a class="nav-link" href="{% url 'register' %}"> Register </a>
+                    </li>
                 {% endif %}
 
             </ul>
